@@ -1,592 +1,578 @@
-{\rtf1\ansi\ansicpg932\cocoartf2870
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;}
-{\colortbl;\red255\green255\blue255;\red27\green31\blue34;\red255\green255\blue255;\red31\green118\blue44;
-\red91\green40\blue180;\red6\green33\blue79;\red7\green68\blue184;\red203\green35\blue57;\red87\green96\blue106;
-\red218\green76\blue12;}
-{\*\expandedcolortbl;;\cssrgb\c14118\c16078\c18039;\cssrgb\c100000\c100000\c100000;\cssrgb\c13333\c52549\c22745;
-\cssrgb\c43529\c25882\c75686;\cssrgb\c1176\c18431\c38431;\cssrgb\c0\c36078\c77255;\cssrgb\c84314\c22745\c28627;\cssrgb\c41569\c45098\c49020;
-\cssrgb\c89020\c38431\c3529;}
-\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
-\deftab720
-\pard\pardeftab720\partightenfactor0
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>保留ボタン</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: #f0f4f8;
+      color: #1e293b;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 32px 16px;
+    }
 
-\f0\fs30 \cf2 \cb3 \expnd0\expndtw0\kerning0
-\outl0\strokewidth0 \strokec2 <!\cf4 \strokec4 DOCTYPE\cf2 \strokec2  \cf5 \strokec5 html\cf2 \strokec2 >\cb1 \
-\cb3 <\cf4 \strokec4 html\cf2 \strokec2  \cf5 \strokec5 lang\cf2 \strokec2 =\cf6 \strokec6 "ja"\cf2 \strokec2 >\cb1 \
-\cb3 <\cf4 \strokec4 head\cf2 \strokec2 >\cb1 \
-\cb3   <\cf4 \strokec4 meta\cf2 \strokec2  \cf5 \strokec5 charset\cf2 \strokec2 =\cf6 \strokec6 "UTF-8"\cf2 \strokec2 >\cb1 \
-\cb3   <\cf4 \strokec4 meta\cf2 \strokec2  \cf5 \strokec5 name\cf2 \strokec2 =\cf6 \strokec6 "viewport"\cf2 \strokec2  \cf5 \strokec5 content\cf2 \strokec2 =\cf6 \strokec6 "width=device-width, initial-scale=1.0"\cf2 \strokec2 >\cb1 \
-\cb3   <\cf4 \strokec4 title\cf2 \strokec2 >\uc0\u20445 \u30041 \u12508 \u12479 \u12531 </\cf4 \strokec4 title\cf2 \strokec2 >\cb1 \
-\cb3   <\cf4 \strokec4 style\cf2 \strokec2 >\cb1 \
-\cb3     \cf4 \strokec4 *\cf2 \strokec2  \{ \cf7 \strokec7 box-sizing\cf2 \strokec2 : \cf7 \strokec7 border-box\cf2 \strokec2 ; \cf7 \strokec7 margin\cf2 \strokec2 : \cf7 \strokec7 0\cf2 \strokec2 ; \cf7 \strokec7 padding\cf2 \strokec2 : \cf7 \strokec7 0\cf2 \strokec2 ; \}\cb1 \
-\cb3     \cb1 \
-\cb3     \cf4 \strokec4 body\cf2 \strokec2  \{\cb1 \
-\cb3       \cf7 \strokec7 font-family\cf2 \strokec2 : \cf7 \strokec7 -apple-system\cf2 \strokec2 , BlinkMacSystemFont, \cf6 \strokec6 "Segoe UI"\cf2 \strokec2 , Roboto, \cf7 \strokec7 sans-serif\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 background-color\cf2 \strokec2 : #\cf7 \strokec7 f0f4f8\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 color\cf2 \strokec2 : #\cf7 \strokec7 1e293b\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 display\cf2 \strokec2 : \cf7 \strokec7 flex\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 flex-direction\cf2 \strokec2 : \cf7 \strokec7 column\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 align-items\cf2 \strokec2 : \cf7 \strokec7 center\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 min-height\cf2 \strokec2 : \cf7 \strokec7 100\cf8 \strokec8 vh\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 padding\cf2 \strokec2 : \cf7 \strokec7 32\cf8 \strokec8 px\cf2 \strokec2  \cf7 \strokec7 16\cf8 \strokec8 px\cf2 \strokec2 ;\cb1 \
-\cb3     \}\cb1 \
-\
-\cb3     .\cf5 \strokec5 container\cf2 \strokec2  \{\cb1 \
-\cb3       \cf7 \strokec7 width\cf2 \strokec2 : \cf7 \strokec7 100\cf8 \strokec8 %\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 max-width\cf2 \strokec2 : \cf7 \strokec7 420\cf8 \strokec8 px\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 display\cf2 \strokec2 : \cf7 \strokec7 flex\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 flex-direction\cf2 \strokec2 : \cf7 \strokec7 column\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 gap\cf2 \strokec2 : \cf7 \strokec7 20\cf8 \strokec8 px\cf2 \strokec2 ;\cb1 \
-\cb3     \}\cb1 \
-\
-\cb3     \cf4 \strokec4 header\cf2 \strokec2  \{ \cf7 \strokec7 text-align\cf2 \strokec2 : \cf7 \strokec7 center\cf2 \strokec2 ; \}\cb1 \
-\cb3     \cf4 \strokec4 h1\cf2 \strokec2  \{ \cf7 \strokec7 font-size\cf2 \strokec2 : \cf7 \strokec7 1.5\cf8 \strokec8 rem\cf2 \strokec2 ; \cf7 \strokec7 font-weight\cf2 \strokec2 : \cf7 \strokec7 700\cf2 \strokec2 ; \cf7 \strokec7 color\cf2 \strokec2 : #\cf7 \strokec7 0f172a\cf2 \strokec2 ; \}\cb1 \
-\cb3     .\cf5 \strokec5 sub-title\cf2 \strokec2  \{ \cf7 \strokec7 font-size\cf2 \strokec2 : \cf7 \strokec7 0.85\cf8 \strokec8 rem\cf2 \strokec2 ; \cf7 \strokec7 color\cf2 \strokec2 : #\cf7 \strokec7 64748b\cf2 \strokec2 ; \cf7 \strokec7 margin-top\cf2 \strokec2 : \cf7 \strokec7 4\cf8 \strokec8 px\cf2 \strokec2 ; \}\cb1 \
-\
-\cb3     \cf9 \strokec9 /* \uc0\u29983 \u25104 \u30011 \u20687 \u34920 \u31034 \u12456 \u12522 \u12450  */\cf2 \cb1 \strokec2 \
-\cb3     .\cf5 \strokec5 image-preview-area\cf2 \strokec2  \{\cb1 \
-\cb3       \cf7 \strokec7 display\cf2 \strokec2 : \cf7 \strokec7 none\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 flex-direction\cf2 \strokec2 : \cf7 \strokec7 column\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 align-items\cf2 \strokec2 : \cf7 \strokec7 center\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 gap\cf2 \strokec2 : \cf7 \strokec7 16\cf8 \strokec8 px\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 animation\cf2 \strokec2 : fadeIn \cf7 \strokec7 0.4\cf8 \strokec8 s\cf2 \strokec2  \cf7 \strokec7 ease-out\cf2 \strokec2 ;\cb1 \
-\cb3     \}\cb1 \
-\
-\cb3     @\cf8 \strokec8 keyframes\cf2 \strokec2  \cf10 \strokec10 fadeIn\cf2 \strokec2  \{\cb1 \
-\cb3       \cf5 \strokec5 from\cf2 \strokec2  \{ \cf7 \strokec7 opacity\cf2 \strokec2 : \cf7 \strokec7 0\cf2 \strokec2 ; \cf7 \strokec7 transform\cf2 \strokec2 : \cf7 \strokec7 translateY\cf2 \strokec2 (\cf7 \strokec7 -10\cf8 \strokec8 px\cf2 \strokec2 ); \}\cb1 \
-\cb3       \cf5 \strokec5 to\cf2 \strokec2  \{ \cf7 \strokec7 opacity\cf2 \strokec2 : \cf7 \strokec7 1\cf2 \strokec2 ; \cf7 \strokec7 transform\cf2 \strokec2 : \cf7 \strokec7 translateY\cf2 \strokec2 (\cf7 \strokec7 0\cf2 \strokec2 ); \}\cb1 \
-\cb3     \}\cb1 \
-\
-\cb3     \cf4 \strokec4 canvas\cf2 \strokec2  \{\cb1 \
-\cb3       \cf7 \strokec7 width\cf2 \strokec2 : \cf7 \strokec7 100\cf8 \strokec8 %\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 height\cf2 \strokec2 : \cf7 \strokec7 auto\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 border-radius\cf2 \strokec2 : \cf7 \strokec7 16\cf8 \strokec8 px\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 box-shadow\cf2 \strokec2 : \cf7 \strokec7 0\cf2 \strokec2  \cf7 \strokec7 10\cf8 \strokec8 px\cf2 \strokec2  \cf7 \strokec7 25\cf8 \strokec8 px\cf2 \strokec2  \cf7 \strokec7 -5\cf8 \strokec8 px\cf2 \strokec2  \cf7 \strokec7 rgba\cf2 \strokec2 (\cf7 \strokec7 15\cf2 \strokec2 , \cf7 \strokec7 23\cf2 \strokec2 , \cf7 \strokec7 42\cf2 \strokec2 , \cf7 \strokec7 0.2\cf2 \strokec2 );\cb1 \
-\cb3     \}\cb1 \
-\
-\cb3     \cf9 \strokec9 /* SNS\uc0\u12539 \u30011 \u20687 \u12450 \u12463 \u12471 \u12519 \u12531 \u12508 \u12479 \u12531  */\cf2 \cb1 \strokec2 \
-\cb3     .\cf5 \strokec5 share-container\cf2 \strokec2  \{\cb1 \
-\cb3       \cf7 \strokec7 width\cf2 \strokec2 : \cf7 \strokec7 100\cf8 \strokec8 %\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 display\cf2 \strokec2 : \cf7 \strokec7 flex\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 flex-direction\cf2 \strokec2 : \cf7 \strokec7 column\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 gap\cf2 \strokec2 : \cf7 \strokec7 10\cf8 \strokec8 px\cf2 \strokec2 ;\cb1 \
-\cb3     \}\cb1 \
-\
-\cb3     .\cf5 \strokec5 share-label\cf2 \strokec2  \{\cb1 \
-\cb3       \cf7 \strokec7 font-size\cf2 \strokec2 : \cf7 \strokec7 0.8\cf8 \strokec8 rem\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 color\cf2 \strokec2 : #\cf7 \strokec7 64748b\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 text-align\cf2 \strokec2 : \cf7 \strokec7 center\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 font-weight\cf2 \strokec2 : \cf7 \strokec7 600\cf2 \strokec2 ;\cb1 \
-\cb3     \}\cb1 \
-\
-\cb3     .\cf5 \strokec5 share-buttons-grid\cf2 \strokec2  \{\cb1 \
-\cb3       \cf7 \strokec7 display\cf2 \strokec2 : \cf7 \strokec7 grid\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 grid-template-columns\cf2 \strokec2 : \cf7 \strokec7 repeat\cf2 \strokec2 (\cf7 \strokec7 3\cf2 \strokec2 , \cf7 \strokec7 1\cf8 \strokec8 fr\cf2 \strokec2 );\cb1 \
-\cb3       \cf7 \strokec7 gap\cf2 \strokec2 : \cf7 \strokec7 8\cf8 \strokec8 px\cf2 \strokec2 ;\cb1 \
-\cb3     \}\cb1 \
-\
-\cb3     .\cf5 \strokec5 action-buttons-grid\cf2 \strokec2  \{\cb1 \
-\cb3       \cf7 \strokec7 display\cf2 \strokec2 : \cf7 \strokec7 grid\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 grid-template-columns\cf2 \strokec2 : \cf7 \strokec7 1\cf8 \strokec8 fr\cf2 \strokec2  \cf7 \strokec7 1\cf8 \strokec8 fr\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 gap\cf2 \strokec2 : \cf7 \strokec7 8\cf8 \strokec8 px\cf2 \strokec2 ;\cb1 \
-\cb3     \}\cb1 \
-\
-\cb3     .\cf5 \strokec5 share-btn\cf2 \strokec2  \{\cb1 \
-\cb3       \cf7 \strokec7 padding\cf2 \strokec2 : \cf7 \strokec7 10\cf8 \strokec8 px\cf2 \strokec2  \cf7 \strokec7 0\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 border\cf2 \strokec2 : \cf7 \strokec7 none\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 border-radius\cf2 \strokec2 : \cf7 \strokec7 8\cf8 \strokec8 px\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 font-size\cf2 \strokec2 : \cf7 \strokec7 0.85\cf8 \strokec8 rem\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 font-weight\cf2 \strokec2 : \cf7 \strokec7 bold\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 color\cf2 \strokec2 : #\cf7 \strokec7 ffffff\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 cursor\cf2 \strokec2 : \cf7 \strokec7 pointer\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 text-decoration\cf2 \strokec2 : \cf7 \strokec7 none\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 text-align\cf2 \strokec2 : \cf7 \strokec7 center\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 display\cf2 \strokec2 : \cf7 \strokec7 flex\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 align-items\cf2 \strokec2 : \cf7 \strokec7 center\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 justify-content\cf2 \strokec2 : \cf7 \strokec7 center\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 gap\cf2 \strokec2 : \cf7 \strokec7 4\cf8 \strokec8 px\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 transition\cf2 \strokec2 : opacity \cf7 \strokec7 0.2\cf8 \strokec8 s\cf2 \strokec2 ;\cb1 \
-\cb3     \}\cb1 \
-\cb3     .\cf5 \strokec5 share-btn\cf2 \strokec2 :\cf5 \strokec5 hover\cf2 \strokec2  \{ \cf7 \strokec7 opacity\cf2 \strokec2 : \cf7 \strokec7 0.85\cf2 \strokec2 ; \}\cb1 \
-\
-\cb3     .\cf5 \strokec5 btn-x\cf2 \strokec2  \{ \cf7 \strokec7 background-color\cf2 \strokec2 : #\cf7 \strokec7 000000\cf2 \strokec2 ; \}\cb1 \
-\cb3     .\cf5 \strokec5 btn-line\cf2 \strokec2  \{ \cf7 \strokec7 background-color\cf2 \strokec2 : #\cf7 \strokec7 06c755\cf2 \strokec2 ; \}\cb1 \
-\cb3     .\cf5 \strokec5 btn-fb\cf2 \strokec2  \{ \cf7 \strokec7 background-color\cf2 \strokec2 : #\cf7 \strokec7 1877f2\cf2 \strokec2 ; \}\cb1 \
-\cb3     .\cf5 \strokec5 btn-copy-img\cf2 \strokec2  \{ \cf7 \strokec7 background-color\cf2 \strokec2 : #\cf7 \strokec7 2563eb\cf2 \strokec2 ; \}\cb1 \
-\cb3     .\cf5 \strokec5 btn-download\cf2 \strokec2  \{ \cf7 \strokec7 background-color\cf2 \strokec2 : #\cf7 \strokec7 475569\cf2 \strokec2 ; \}\cb1 \
-\
-\cb3     \cf9 \strokec9 /* \uc0\u20837 \u21147 \u12501 \u12457 \u12540 \u12512 \u31995  */\cf2 \cb1 \strokec2 \
-\cb3     .\cf5 \strokec5 input-group\cf2 \strokec2  \{\cb1 \
-\cb3       \cf7 \strokec7 display\cf2 \strokec2 : \cf7 \strokec7 flex\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 flex-direction\cf2 \strokec2 : \cf7 \strokec7 column\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 gap\cf2 \strokec2 : \cf7 \strokec7 12\cf8 \strokec8 px\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 background-color\cf2 \strokec2 : #\cf7 \strokec7 ffffff\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 padding\cf2 \strokec2 : \cf7 \strokec7 20\cf8 \strokec8 px\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 border-radius\cf2 \strokec2 : \cf7 \strokec7 16\cf8 \strokec8 px\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 box-shadow\cf2 \strokec2 : \cf7 \strokec7 0\cf2 \strokec2  \cf7 \strokec7 4\cf8 \strokec8 px\cf2 \strokec2  \cf7 \strokec7 6\cf8 \strokec8 px\cf2 \strokec2  \cf7 \strokec7 -1\cf8 \strokec8 px\cf2 \strokec2  \cf7 \strokec7 rgba\cf2 \strokec2 (\cf7 \strokec7 0\cf2 \strokec2 , \cf7 \strokec7 0\cf2 \strokec2 , \cf7 \strokec7 0\cf2 \strokec2 , \cf7 \strokec7 0.05\cf2 \strokec2 );\cb1 \
-\cb3       \cf7 \strokec7 border\cf2 \strokec2 : \cf7 \strokec7 1\cf8 \strokec8 px\cf2 \strokec2  \cf7 \strokec7 solid\cf2 \strokec2  #\cf7 \strokec7 e2e8f0\cf2 \strokec2 ;\cb1 \
-\cb3     \}\cb1 \
-\
-\cb3     \cf4 \strokec4 input\cf2 \strokec2 [\cf5 \strokec5 type\cf8 \strokec8 =\cf6 \strokec6 "text"\cf2 \strokec2 ] \{\cb1 \
-\cb3       \cf7 \strokec7 width\cf2 \strokec2 : \cf7 \strokec7 100\cf8 \strokec8 %\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 padding\cf2 \strokec2 : \cf7 \strokec7 14\cf8 \strokec8 px\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 font-size\cf2 \strokec2 : \cf7 \strokec7 1\cf8 \strokec8 rem\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 border\cf2 \strokec2 : \cf7 \strokec7 1.5\cf8 \strokec8 px\cf2 \strokec2  \cf7 \strokec7 solid\cf2 \strokec2  #\cf7 \strokec7 cbd5e1\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 border-radius\cf2 \strokec2 : \cf7 \strokec7 10\cf8 \strokec8 px\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 outline\cf2 \strokec2 : \cf7 \strokec7 none\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 background-color\cf2 \strokec2 : #\cf7 \strokec7 f8fafc\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 color\cf2 \strokec2 : #\cf7 \strokec7 0f172a\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 text-align\cf2 \strokec2 : \cf7 \strokec7 center\cf2 \strokec2 ;\cb1 \
-\cb3     \}\cb1 \
-\
-\cb3     \cf4 \strokec4 input\cf2 \strokec2 [\cf5 \strokec5 type\cf8 \strokec8 =\cf6 \strokec6 "text"\cf2 \strokec2 ]:\cf5 \strokec5 focus\cf2 \strokec2  \{\cb1 \
-\cb3       \cf7 \strokec7 border-color\cf2 \strokec2 : #\cf7 \strokec7 2563eb\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 background-color\cf2 \strokec2 : #\cf7 \strokec7 ffffff\cf2 \strokec2 ;\cb1 \
-\cb3     \}\cb1 \
-\
-\cb3     .\cf5 \strokec5 preset-container\cf2 \strokec2  \{ \cf7 \strokec7 display\cf2 \strokec2 : \cf7 \strokec7 flex\cf2 \strokec2 ; \cf7 \strokec7 gap\cf2 \strokec2 : \cf7 \strokec7 6\cf8 \strokec8 px\cf2 \strokec2 ; \}\cb1 \
-\
-\cb3     .\cf5 \strokec5 preset-btn\cf2 \strokec2  \{\cb1 \
-\cb3       \cf7 \strokec7 flex\cf2 \strokec2 : \cf7 \strokec7 1\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 background-color\cf2 \strokec2 : #\cf7 \strokec7 f1f5f9\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 color\cf2 \strokec2 : #\cf7 \strokec7 334155\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 border\cf2 \strokec2 : \cf7 \strokec7 1\cf8 \strokec8 px\cf2 \strokec2  \cf7 \strokec7 solid\cf2 \strokec2  #\cf7 \strokec7 cbd5e1\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 padding\cf2 \strokec2 : \cf7 \strokec7 10\cf8 \strokec8 px\cf2 \strokec2  \cf7 \strokec7 0\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 font-size\cf2 \strokec2 : \cf7 \strokec7 0.8\cf8 \strokec8 rem\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 font-weight\cf2 \strokec2 : \cf7 \strokec7 600\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 border-radius\cf2 \strokec2 : \cf7 \strokec7 8\cf8 \strokec8 px\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 cursor\cf2 \strokec2 : \cf7 \strokec7 pointer\cf2 \strokec2 ;\cb1 \
-\cb3     \}\cb1 \
-\
-\cb3     .\cf5 \strokec5 preset-btn\cf2 \strokec2 :\cf5 \strokec5 hover\cf2 \strokec2  \{ \cf7 \strokec7 background-color\cf2 \strokec2 : #\cf7 \strokec7 e2e8f0\cf2 \strokec2 ; \}\cb1 \
-\
-\cb3     .\cf5 \strokec5 action-btn\cf2 \strokec2  \{\cb1 \
-\cb3       \cf7 \strokec7 background-color\cf2 \strokec2 : #\cf7 \strokec7 1e3a8a\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 color\cf2 \strokec2 : #\cf7 \strokec7 ffffff\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 font-size\cf2 \strokec2 : \cf7 \strokec7 1.1\cf8 \strokec8 rem\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 font-weight\cf2 \strokec2 : \cf7 \strokec7 700\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 padding\cf2 \strokec2 : \cf7 \strokec7 16\cf8 \strokec8 px\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 border\cf2 \strokec2 : \cf7 \strokec7 none\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 border-radius\cf2 \strokec2 : \cf7 \strokec7 10\cf8 \strokec8 px\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 cursor\cf2 \strokec2 : \cf7 \strokec7 pointer\cf2 \strokec2 ;\cb1 \
-\cb3     \}\cb1 \
-\
-\cb3     \cf9 \strokec9 /* \uc0\u30011 \u20687 \u12467 \u12500 \u12540 \u22833 \u25943 \u26178 \u12398 \u25937 \u28168 \u12514 \u12540 \u12480 \u12523  */\cf2 \cb1 \strokec2 \
-\cb3     .\cf5 \strokec5 modal\cf2 \strokec2  \{\cb1 \
-\cb3       \cf7 \strokec7 display\cf2 \strokec2 : \cf7 \strokec7 none\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 position\cf2 \strokec2 : \cf7 \strokec7 fixed\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 top\cf2 \strokec2 : \cf7 \strokec7 0\cf2 \strokec2 ; \cf7 \strokec7 left\cf2 \strokec2 : \cf7 \strokec7 0\cf2 \strokec2 ; \cf7 \strokec7 width\cf2 \strokec2 : \cf7 \strokec7 100\cf8 \strokec8 %\cf2 \strokec2 ; \cf7 \strokec7 height\cf2 \strokec2 : \cf7 \strokec7 100\cf8 \strokec8 %\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 background\cf2 \strokec2 : \cf7 \strokec7 rgba\cf2 \strokec2 (\cf7 \strokec7 0\cf2 \strokec2 ,\cf7 \strokec7 0\cf2 \strokec2 ,\cf7 \strokec7 0\cf2 \strokec2 ,\cf7 \strokec7 0.7\cf2 \strokec2 );\cb1 \
-\cb3       \cf7 \strokec7 align-items\cf2 \strokec2 : \cf7 \strokec7 center\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 justify-content\cf2 \strokec2 : \cf7 \strokec7 center\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 z-index\cf2 \strokec2 : \cf7 \strokec7 1000\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 padding\cf2 \strokec2 : \cf7 \strokec7 20\cf8 \strokec8 px\cf2 \strokec2 ;\cb1 \
-\cb3     \}\cb1 \
-\cb3     .\cf5 \strokec5 modal-content\cf2 \strokec2  \{\cb1 \
-\cb3       \cf7 \strokec7 background\cf2 \strokec2 : #\cf7 \strokec7 fff\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 padding\cf2 \strokec2 : \cf7 \strokec7 20\cf8 \strokec8 px\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 border-radius\cf2 \strokec2 : \cf7 \strokec7 16\cf8 \strokec8 px\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 text-align\cf2 \strokec2 : \cf7 \strokec7 center\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 max-width\cf2 \strokec2 : \cf7 \strokec7 360\cf8 \strokec8 px\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 display\cf2 \strokec2 : \cf7 \strokec7 flex\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 flex-direction\cf2 \strokec2 : \cf7 \strokec7 column\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 gap\cf2 \strokec2 : \cf7 \strokec7 12\cf8 \strokec8 px\cf2 \strokec2 ;\cb1 \
-\cb3     \}\cb1 \
-\cb3     .\cf5 \strokec5 modal-content\cf2 \strokec2  \cf4 \strokec4 img\cf2 \strokec2  \{ \cf7 \strokec7 width\cf2 \strokec2 : \cf7 \strokec7 100\cf8 \strokec8 %\cf2 \strokec2 ; \cf7 \strokec7 border-radius\cf2 \strokec2 : \cf7 \strokec7 8\cf8 \strokec8 px\cf2 \strokec2 ; \}\cb1 \
-\cb3     .\cf5 \strokec5 close-btn\cf2 \strokec2  \{\cb1 \
-\cb3       \cf7 \strokec7 padding\cf2 \strokec2 : \cf7 \strokec7 8\cf8 \strokec8 px\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 background\cf2 \strokec2 : #\cf7 \strokec7 475569\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 color\cf2 \strokec2 : \cf7 \strokec7 white\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 border\cf2 \strokec2 : \cf7 \strokec7 none\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 border-radius\cf2 \strokec2 : \cf7 \strokec7 6\cf8 \strokec8 px\cf2 \strokec2 ;\cb1 \
-\cb3       \cf7 \strokec7 cursor\cf2 \strokec2 : \cf7 \strokec7 pointer\cf2 \strokec2 ;\cb1 \
-\cb3     \}\cb1 \
-\cb3   </\cf4 \strokec4 style\cf2 \strokec2 >\cb1 \
-\cb3 </\cf4 \strokec4 head\cf2 \strokec2 >\cb1 \
-\cb3 <\cf4 \strokec4 body\cf2 \strokec2 >\cb1 \
-\
-\cb3   <\cf4 \strokec4 div\cf2 \strokec2  \cf5 \strokec5 class\cf2 \strokec2 =\cf6 \strokec6 "container"\cf2 \strokec2 >\cb1 \
-\cb3     <\cf4 \strokec4 header\cf2 \strokec2 >\cb1 \
-\cb3       <\cf4 \strokec4 h1\cf2 \strokec2 >\uc0\u9208 \u65039  \u20445 \u30041 \u12508 \u12479 \u12531 </\cf4 \strokec4 h1\cf2 \strokec2 >\cb1 \
-\cb3       <\cf4 \strokec4 p\cf2 \strokec2  \cf5 \strokec5 class\cf2 \strokec2 =\cf6 \strokec6 "sub-title"\cf2 \strokec2 >\uc0\u20170 \u27770 \u12417 \u12394 \u12356 \u12289 \u30693 \u30340 \u12391 \u12509 \u12472 \u12486 \u12451 \u12502 \u12394 \u36984 \u25246 </\cf4 \strokec4 p\cf2 \strokec2 >\cb1 \
-\cb3     </\cf4 \strokec4 header\cf2 \strokec2 >\cb1 \
-\
-\cb3     \cf9 \strokec9 <!-- \uc0\u30011 \u20687 \u34920 \u31034 \u12539 \u12471 \u12455 \u12450 \u12456 \u12522 \u12450  -->\cf2 \cb1 \strokec2 \
-\cb3     <\cf4 \strokec4 div\cf2 \strokec2  \cf5 \strokec5 id\cf2 \strokec2 =\cf6 \strokec6 "imagePreviewArea"\cf2 \strokec2  \cf5 \strokec5 class\cf2 \strokec2 =\cf6 \strokec6 "image-preview-area"\cf2 \strokec2 >\cb1 \
-\cb3       <\cf4 \strokec4 canvas\cf2 \strokec2  \cf5 \strokec5 id\cf2 \strokec2 =\cf6 \strokec6 "holdCanvas"\cf2 \strokec2  \cf5 \strokec5 width\cf2 \strokec2 =\cf6 \strokec6 "800"\cf2 \strokec2  \cf5 \strokec5 height\cf2 \strokec2 =\cf6 \strokec6 "800"\cf2 \strokec2 ></\cf4 \strokec4 canvas\cf2 \strokec2 >\cb1 \
-\cb3       \cb1 \
-\cb3       <\cf4 \strokec4 div\cf2 \strokec2  \cf5 \strokec5 class\cf2 \strokec2 =\cf6 \strokec6 "share-container"\cf2 \strokec2 >\cb1 \
-\cb3         <\cf4 \strokec4 div\cf2 \strokec2  \cf5 \strokec5 class\cf2 \strokec2 =\cf6 \strokec6 "share-label"\cf2 \strokec2 >\uc0\u65340  SNS\u12391 \u12471 \u12455 \u12450 \u12539 \u30011 \u20687 \u12434 \u20849 \u26377  \u65295 </\cf4 \strokec4 div\cf2 \strokec2 >\cb1 \
-\cb3         \cf9 \strokec9 <!-- LINE, X, Facebook \uc0\u12508 \u12479 \u12531  -->\cf2 \cb1 \strokec2 \
-\cb3         <\cf4 \strokec4 div\cf2 \strokec2  \cf5 \strokec5 class\cf2 \strokec2 =\cf6 \strokec6 "share-buttons-grid"\cf2 \strokec2 >\cb1 \
-\cb3           <\cf4 \strokec4 a\cf2 \strokec2  \cf5 \strokec5 id\cf2 \strokec2 =\cf6 \strokec6 "shareX"\cf2 \strokec2  \cf5 \strokec5 class\cf2 \strokec2 =\cf6 \strokec6 "share-btn btn-x"\cf2 \strokec2  \cf5 \strokec5 target\cf2 \strokec2 =\cf6 \strokec6 "_blank"\cf2 \strokec2 >X</\cf4 \strokec4 a\cf2 \strokec2 >\cb1 \
-\cb3           <\cf4 \strokec4 a\cf2 \strokec2  \cf5 \strokec5 id\cf2 \strokec2 =\cf6 \strokec6 "shareLine"\cf2 \strokec2  \cf5 \strokec5 class\cf2 \strokec2 =\cf6 \strokec6 "share-btn btn-line"\cf2 \strokec2  \cf5 \strokec5 target\cf2 \strokec2 =\cf6 \strokec6 "_blank"\cf2 \strokec2 >LINE</\cf4 \strokec4 a\cf2 \strokec2 >\cb1 \
-\cb3           <\cf4 \strokec4 a\cf2 \strokec2  \cf5 \strokec5 id\cf2 \strokec2 =\cf6 \strokec6 "shareFb"\cf2 \strokec2  \cf5 \strokec5 class\cf2 \strokec2 =\cf6 \strokec6 "share-btn btn-fb"\cf2 \strokec2  \cf5 \strokec5 target\cf2 \strokec2 =\cf6 \strokec6 "_blank"\cf2 \strokec2 >Facebook</\cf4 \strokec4 a\cf2 \strokec2 >\cb1 \
-\cb3         </\cf4 \strokec4 div\cf2 \strokec2 >\cb1 \
-\cb3         \cf9 \strokec9 <!-- \uc0\u12467 \u12500 \u12540 \u12539 \u12480 \u12454 \u12531 \u12525 \u12540 \u12489  \u12508 \u12479 \u12531  -->\cf2 \cb1 \strokec2 \
-\cb3         <\cf4 \strokec4 div\cf2 \strokec2  \cf5 \strokec5 class\cf2 \strokec2 =\cf6 \strokec6 "action-buttons-grid"\cf2 \strokec2 >\cb1 \
-\cb3           <\cf4 \strokec4 button\cf2 \strokec2  \cf5 \strokec5 type\cf2 \strokec2 =\cf6 \strokec6 "button"\cf2 \strokec2  \cf5 \strokec5 class\cf2 \strokec2 =\cf6 \strokec6 "share-btn btn-copy-img"\cf2 \strokec2  \cf5 \strokec5 onclick\cf2 \strokec2 =\cf6 \strokec6 "\cf5 \strokec5 copyCanvasImage\cf2 \strokec2 ()">\uc0\u55357 \u56523  \u30011 \u20687 \u12467 \u12500 \u12540 </\cf4 \strokec4 button\cf2 \strokec2 >\cb1 \
-\cb3           <\cf4 \strokec4 button\cf2 \strokec2  \cf5 \strokec5 type\cf2 \strokec2 =\cf6 \strokec6 "button"\cf2 \strokec2  \cf5 \strokec5 class\cf2 \strokec2 =\cf6 \strokec6 "share-btn btn-download"\cf2 \strokec2  \cf5 \strokec5 onclick\cf2 \strokec2 =\cf6 \strokec6 "\cf5 \strokec5 downloadImage\cf2 \strokec2 ()">\uc0\u55357 \u56510  \u30011 \u20687 \u20445 \u23384 </\cf4 \strokec4 button\cf2 \strokec2 >\cb1 \
-\cb3         </\cf4 \strokec4 div\cf2 \strokec2 >\cb1 \
-\cb3       </\cf4 \strokec4 div\cf2 \strokec2 >\cb1 \
-\cb3     </\cf4 \strokec4 div\cf2 \strokec2 >\cb1 \
-\
-\cb3     \cf9 \strokec9 <!-- \uc0\u20837 \u21147 \u12501 \u12457 \u12540 \u12512 \u12456 \u12522 \u12450  -->\cf2 \cb1 \strokec2 \
-\cb3     <\cf4 \strokec4 div\cf2 \strokec2  \cf5 \strokec5 class\cf2 \strokec2 =\cf6 \strokec6 "input-group"\cf2 \strokec2 >\cb1 \
-\cb3       <\cf4 \strokec4 input\cf2 \strokec2  \cf5 \strokec5 type\cf2 \strokec2 =\cf6 \strokec6 "text"\cf2 \strokec2  \cf5 \strokec5 id\cf2 \strokec2 =\cf6 \strokec6 "targetText"\cf2 \strokec2  \cf5 \strokec5 placeholder\cf2 \strokec2 =\cf6 \strokec6 "\uc0\u20309 \u12395 \u12388 \u12356 \u12390 \u20445 \u30041 \u12375 \u12414 \u12377 \u12363 \u65311 "\cf2 \strokec2 >\cb1 \
-\cb3       \cb1 \
-\cb3       <\cf4 \strokec4 div\cf2 \strokec2  \cf5 \strokec5 class\cf2 \strokec2 =\cf6 \strokec6 "preset-container"\cf2 \strokec2 >\cb1 \
-\cb3         <\cf4 \strokec4 button\cf2 \strokec2  \cf5 \strokec5 type\cf2 \strokec2 =\cf6 \strokec6 "button"\cf2 \strokec2  \cf5 \strokec5 class\cf2 \strokec2 =\cf6 \strokec6 "preset-btn"\cf2 \strokec2  \cf5 \strokec5 onclick\cf2 \strokec2 =\cf6 \strokec6 "\cf5 \strokec5 appendPreset\cf2 \strokec2 (\cf6 \strokec6 '\uc0\u12392 \u12356 \u12358 \u21028 \u26029 '\cf2 \strokec2 )">\uc0\u12392 \u12356 \u12358 \u21028 \u26029 </\cf4 \strokec4 button\cf2 \strokec2 >\cb1 \
-\cb3         <\cf4 \strokec4 button\cf2 \strokec2  \cf5 \strokec5 type\cf2 \strokec2 =\cf6 \strokec6 "button"\cf2 \strokec2  \cf5 \strokec5 class\cf2 \strokec2 =\cf6 \strokec6 "preset-btn"\cf2 \strokec2  \cf5 \strokec5 onclick\cf2 \strokec2 =\cf6 \strokec6 "\cf5 \strokec5 appendPreset\cf2 \strokec2 (\cf6 \strokec6 '\uc0\u12392 \u12356 \u12358 \u32080 \u35542 '\cf2 \strokec2 )">\uc0\u12392 \u12356 \u12358 \u32080 \u35542 </\cf4 \strokec4 button\cf2 \strokec2 >\cb1 \
-\cb3         <\cf4 \strokec4 button\cf2 \strokec2  \cf5 \strokec5 type\cf2 \strokec2 =\cf6 \strokec6 "button"\cf2 \strokec2  \cf5 \strokec5 class\cf2 \strokec2 =\cf6 \strokec6 "preset-btn"\cf2 \strokec2  \cf5 \strokec5 onclick\cf2 \strokec2 =\cf6 \strokec6 "\cf5 \strokec5 appendPreset\cf2 \strokec2 (\cf6 \strokec6 '\uc0\u12392 \u12356 \u12358 \u35413 \u20385 '\cf2 \strokec2 )">\uc0\u12392 \u12356 \u12358 \u35413 \u20385 </\cf4 \strokec4 button\cf2 \strokec2 >\cb1 \
-\cb3       </\cf4 \strokec4 div\cf2 \strokec2 >\cb1 \
-\
-\cb3       <\cf4 \strokec4 button\cf2 \strokec2  \cf5 \strokec5 type\cf2 \strokec2 =\cf6 \strokec6 "button"\cf2 \strokec2  \cf5 \strokec5 class\cf2 \strokec2 =\cf6 \strokec6 "action-btn"\cf2 \strokec2  \cf5 \strokec5 onclick\cf2 \strokec2 =\cf6 \strokec6 "\cf5 \strokec5 generateHoldCard\cf2 \strokec2 ()">\uc0\u20445 \u30041 </\cf4 \strokec4 button\cf2 \strokec2 >\cb1 \
-\cb3     </\cf4 \strokec4 div\cf2 \strokec2 >\cb1 \
-\cb3   </\cf4 \strokec4 div\cf2 \strokec2 >\cb1 \
-\
-\cb3   \cf9 \strokec9 <!-- \uc0\u30011 \u20687 \u38263 \u25276 \u12375 \u29992 \u12398 \u12514 \u12540 \u12480 \u12523 \u65288 \u12467 \u12500 \u12540 \u22833 \u25943 \u26178 \u12398 \u25937 \u28168 \u65289  -->\cf2 \cb1 \strokec2 \
-\cb3   <\cf4 \strokec4 div\cf2 \strokec2  \cf5 \strokec5 id\cf2 \strokec2 =\cf6 \strokec6 "copyModal"\cf2 \strokec2  \cf5 \strokec5 class\cf2 \strokec2 =\cf6 \strokec6 "modal"\cf2 \strokec2 >\cb1 \
-\cb3     <\cf4 \strokec4 div\cf2 \strokec2  \cf5 \strokec5 class\cf2 \strokec2 =\cf6 \strokec6 "modal-content"\cf2 \strokec2 >\cb1 \
-\cb3       <\cf4 \strokec4 p\cf2 \strokec2  \cf5 \strokec5 style\cf2 \strokec2 =\cf6 \strokec6 "\cf2 \strokec2 font-weight: bold; font-size: 0.9rem;">\uc0\u30011 \u20687 \u12434 \u38263 \u25276 \u12375 \u65288 \u12414 \u12383 \u12399 \u21491 \u12463 \u12522 \u12483 \u12463 \u65289 \u12375 \u12390 \u12300 \u12467 \u12500 \u12540 \u12301 \u12414 \u12383 \u12399 \u12300 \u20445 \u23384 \u12301 \u12375 \u12390 \u12367 \u12384 \u12373 \u12356 </\cf4 \strokec4 p\cf2 \strokec2 >\cb1 \
-\cb3       <\cf4 \strokec4 img\cf2 \strokec2  \cf5 \strokec5 id\cf2 \strokec2 =\cf6 \strokec6 "modalImg"\cf2 \strokec2  \cf5 \strokec5 src\cf2 \strokec2 =\cf6 \strokec6 ""\cf2 \strokec2  \cf5 \strokec5 alt\cf2 \strokec2 =\cf6 \strokec6 "\uc0\u20445 \u30041 \u12459 \u12540 \u12489 "\cf2 \strokec2 >\cb1 \
-\cb3       <\cf4 \strokec4 button\cf2 \strokec2  \cf5 \strokec5 class\cf2 \strokec2 =\cf6 \strokec6 "close-btn"\cf2 \strokec2  \cf5 \strokec5 onclick\cf2 \strokec2 =\cf6 \strokec6 "\cf5 \strokec5 closeModal\cf2 \strokec2 ()">\uc0\u38281 \u12376 \u12427 </\cf4 \strokec4 button\cf2 \strokec2 >\cb1 \
-\cb3     </\cf4 \strokec4 div\cf2 \strokec2 >\cb1 \
-\cb3   </\cf4 \strokec4 div\cf2 \strokec2 >\cb1 \
-\
-\cb3   <\cf4 \strokec4 script\cf2 \strokec2 >\cb1 \
-\cb3     \cf8 \strokec8 function\cf2 \strokec2  \cf5 \strokec5 appendPreset\cf2 \strokec2 (\cf10 \strokec10 textToAppend\cf2 \strokec2 ) \{\cb1 \
-\cb3       \cf8 \strokec8 var\cf2 \strokec2  inputEl \cf8 \strokec8 =\cf2 \strokec2  document.\cf5 \strokec5 getElementById\cf2 \strokec2 (\cf6 \strokec6 'targetText'\cf2 \strokec2 );\cb1 \
-\cb3       inputEl.value \cf8 \strokec8 =\cf2 \strokec2  inputEl.value \cf8 \strokec8 +\cf2 \strokec2  textToAppend;\cb1 \
-\cb3       inputEl.\cf5 \strokec5 focus\cf2 \strokec2 ();\cb1 \
-\cb3     \}\cb1 \
-\
-\cb3     \cf8 \strokec8 function\cf2 \strokec2  \cf5 \strokec5 generateHoldCard\cf2 \strokec2 () \{\cb1 \
-\cb3       \cf8 \strokec8 var\cf2 \strokec2  val \cf8 \strokec8 =\cf2 \strokec2  document.\cf5 \strokec5 getElementById\cf2 \strokec2 (\cf6 \strokec6 'targetText'\cf2 \strokec2 ).value;\cb1 \
-\cb3       \cf8 \strokec8 if\cf2 \strokec2  (\cf8 \strokec8 !\cf2 \strokec2 val \cf8 \strokec8 ||\cf2 \strokec2  \cf8 \strokec8 !\cf2 \strokec2 val.\cf5 \strokec5 trim\cf2 \strokec2 ()) \{\cb1 \
-\cb3         \cf5 \strokec5 alert\cf2 \strokec2 (\cf6 \strokec6 '\uc0\u20445 \u30041 \u12377 \u12427 \u20869 \u23481 \u12434 \u20837 \u21147 \u12375 \u12390 \u12367 \u12384 \u12373 \u12356 '\cf2 \strokec2 );\cb1 \
-\cb3         \cf8 \strokec8 return\cf2 \strokec2 ;\cb1 \
-\cb3       \}\cb1 \
-\
-\cb3       \cf8 \strokec8 var\cf2 \strokec2  text \cf8 \strokec8 =\cf2 \strokec2  val.\cf5 \strokec5 trim\cf2 \strokec2 ();\cb1 \
-\cb3       \cf8 \strokec8 var\cf2 \strokec2  canvas \cf8 \strokec8 =\cf2 \strokec2  document.\cf5 \strokec5 getElementById\cf2 \strokec2 (\cf6 \strokec6 'holdCanvas'\cf2 \strokec2 );\cb1 \
-\cb3       \cf8 \strokec8 var\cf2 \strokec2  ctx \cf8 \strokec8 =\cf2 \strokec2  canvas.\cf5 \strokec5 getContext\cf2 \strokec2 (\cf6 \strokec6 '2d'\cf2 \strokec2 );\cb1 \
-\
-\cb3       \cf9 \strokec9 // 5\uc0\u31278 \u39006 \u12398 \u12486 \u12540 \u12510 \u12363 \u12425 \u12521 \u12531 \u12480 \u12512 \u27770 \u23450 \cf2 \cb1 \strokec2 \
-\cb3       \cf8 \strokec8 var\cf2 \strokec2  themeIndex \cf8 \strokec8 =\cf2 \strokec2  Math.\cf5 \strokec5 floor\cf2 \strokec2 (Math.\cf5 \strokec5 random\cf2 \strokec2 () \cf8 \strokec8 *\cf2 \strokec2  \cf7 \strokec7 5\cf2 \strokec2 );\cb1 \
-\cb3       \cb1 \
-\cb3       \cf9 \strokec9 // Canvas\uc0\u25551 \u30011 \cf2 \cb1 \strokec2 \
-\cb3       \cf5 \strokec5 drawTheme\cf2 \strokec2 (ctx, themeIndex, text);\cb1 \
-\
-\cb3       \cf9 \strokec9 // \uc0\u34920 \u31034 \u20999 \u12426 \u26367 \u12360 \cf2 \cb1 \strokec2 \
-\cb3       document.\cf5 \strokec5 getElementById\cf2 \strokec2 (\cf6 \strokec6 'imagePreviewArea'\cf2 \strokec2 ).style.display \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 'flex'\cf2 \strokec2 ;\cb1 \
-\
-\cb3       \cf9 \strokec9 // SNS\uc0\u20849 \u26377 URL\u12398 \u35373 \u23450 \cf2 \cb1 \strokec2 \
-\cb3       \cf8 \strokec8 var\cf2 \strokec2  shareText \cf8 \strokec8 =\cf2 \strokec2  \cf5 \strokec5 encodeURIComponent\cf2 \strokec2 (\cf6 \strokec6 `\uc0\u12300 \cf2 \strokec2 $\{text\}\cf6 \strokec6 \uc0\u12301 \u12434 \u20445 \u30041 \u12375 \u12414 \u12375 \u12383 \u12290  #\u20445 \u30041 \u12508 \u12479 \u12531 `\cf2 \strokec2 );\cb1 \
-\cb3       \cf8 \strokec8 var\cf2 \strokec2  pageUrl \cf8 \strokec8 =\cf2 \strokec2  \cf5 \strokec5 encodeURIComponent\cf2 \strokec2 (window.location.href);\cb1 \
-\
-\cb3       document.\cf5 \strokec5 getElementById\cf2 \strokec2 (\cf6 \strokec6 'shareX'\cf2 \strokec2 ).href \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 `https://twitter.com/intent/tweet?text=\cf2 \strokec2 $\{shareText\}\cf6 \strokec6 &url=\cf2 \strokec2 $\{pageUrl\}\cf6 \strokec6 `\cf2 \strokec2 ;\cb1 \
-\cb3       document.\cf5 \strokec5 getElementById\cf2 \strokec2 (\cf6 \strokec6 'shareLine'\cf2 \strokec2 ).href \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 `https://line.me/R/msg/text/?\cf2 \strokec2 $\{shareText\}\cf6 \strokec6 %20\cf2 \strokec2 $\{pageUrl\}\cf6 \strokec6 `\cf2 \strokec2 ;\cb1 \
-\cb3       document.\cf5 \strokec5 getElementById\cf2 \strokec2 (\cf6 \strokec6 'shareFb'\cf2 \strokec2 ).href \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 `https://www.facebook.com/sharer/sharer.php?u=\cf2 \strokec2 $\{pageUrl\}\cf6 \strokec6 `\cf2 \strokec2 ;\cb1 \
-\cb3     \}\cb1 \
-\
-\cb3     \cf9 \strokec9 // \uc0\u35946 \u33775 \u12452 \u12521 \u12473 \u12488 \u25551 \u30011 \u38306 \u25968 \cf2 \cb1 \strokec2 \
-\cb3     \cf8 \strokec8 function\cf2 \strokec2  \cf5 \strokec5 drawTheme\cf2 \strokec2 (\cf10 \strokec10 ctx\cf2 \strokec2 , \cf10 \strokec10 themeIndex\cf2 \strokec2 , \cf10 \strokec10 text\cf2 \strokec2 ) \{\cb1 \
-\cb3       ctx.\cf5 \strokec5 clearRect\cf2 \strokec2 (\cf7 \strokec7 0\cf2 \strokec2 , \cf7 \strokec7 0\cf2 \strokec2 , \cf7 \strokec7 800\cf2 \strokec2 , \cf7 \strokec7 800\cf2 \strokec2 );\cb1 \
-\
-\cb3       \cf8 \strokec8 if\cf2 \strokec2  (themeIndex \cf8 \strokec8 ===\cf2 \strokec2  \cf7 \strokec7 0\cf2 \strokec2 ) \{\cb1 \
-\cb3         \cf9 \strokec9 // \uc0\u12304 1. \u55356 \u57225  POP! \u12497 \u12521 \u12480 \u12452 \u12473 \u12539 \u12463 \u12521 \u12483 \u12459 \u12540 \u65288 \u35222 \u35469 \u24615 \u65286 \u12452 \u12521 \u12473 \u12488 \u24375 \u21270 \u29256 \u65289 \u12305 \cf2 \cb1 \strokec2 \
-\cb3         \cf9 \strokec9 // \uc0\u12459 \u12521 \u12501 \u12523 \u12394 \u12489 \u12483 \u12488 \u32972 \u26223 \cf2 \cb1 \strokec2 \
-\cb3         ctx.fillStyle \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 '#FFFDE7'\cf2 \strokec2 ;\cb1 \
-\cb3         ctx.\cf5 \strokec5 fillRect\cf2 \strokec2 (\cf7 \strokec7 0\cf2 \strokec2 , \cf7 \strokec7 0\cf2 \strokec2 , \cf7 \strokec7 800\cf2 \strokec2 , \cf7 \strokec7 800\cf2 \strokec2 );\cb1 \
-\
-\cb3         \cf8 \strokec8 for\cf2 \strokec2  (\cf8 \strokec8 let\cf2 \strokec2  x \cf8 \strokec8 =\cf2 \strokec2  \cf7 \strokec7 40\cf2 \strokec2 ; x \cf8 \strokec8 <\cf2 \strokec2  \cf7 \strokec7 800\cf2 \strokec2 ; x \cf8 \strokec8 +=\cf2 \strokec2  \cf7 \strokec7 80\cf2 \strokec2 ) \{\cb1 \
-\cb3           \cf8 \strokec8 for\cf2 \strokec2  (\cf8 \strokec8 let\cf2 \strokec2  y \cf8 \strokec8 =\cf2 \strokec2  \cf7 \strokec7 40\cf2 \strokec2 ; y \cf8 \strokec8 <\cf2 \strokec2  \cf7 \strokec7 800\cf2 \strokec2 ; y \cf8 \strokec8 +=\cf2 \strokec2  \cf7 \strokec7 80\cf2 \strokec2 ) \{\cb1 \
-\cb3             ctx.fillStyle \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 '#FFE082'\cf2 \strokec2 ;\cb1 \
-\cb3             ctx.\cf5 \strokec5 beginPath\cf2 \strokec2 ();\cb1 \
-\cb3             ctx.\cf5 \strokec5 arc\cf2 \strokec2 (x, y, \cf7 \strokec7 6\cf2 \strokec2 , \cf7 \strokec7 0\cf2 \strokec2 , Math.\cf7 \strokec7 PI\cf2 \strokec2  \cf8 \strokec8 *\cf2 \strokec2  \cf7 \strokec7 2\cf2 \strokec2 );\cb1 \
-\cb3             ctx.\cf5 \strokec5 fill\cf2 \strokec2 ();\cb1 \
-\cb3           \}\cb1 \
-\cb3         \}\cb1 \
-\
-\cb3         \cf9 \strokec9 // \uc0\u22826 \u12356 POP\u22806 \u26528 \cf2 \cb1 \strokec2 \
-\cb3         ctx.strokeStyle \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 '#FF3D00'\cf2 \strokec2 ;\cb1 \
-\cb3         ctx.lineWidth \cf8 \strokec8 =\cf2 \strokec2  \cf7 \strokec7 16\cf2 \strokec2 ;\cb1 \
-\cb3         ctx.\cf5 \strokec5 strokeRect\cf2 \strokec2 (\cf7 \strokec7 30\cf2 \strokec2 , \cf7 \strokec7 30\cf2 \strokec2 , \cf7 \strokec7 740\cf2 \strokec2 , \cf7 \strokec7 740\cf2 \strokec2 );\cb1 \
-\
-\cb3         \cf9 \strokec9 // POP\uc0\u12452 \u12521 \u12473 \u12488 \u32676 \u65288 \u26143 \u12289 \u38899 \u31526 \u12289 \u12463 \u12521 \u12483 \u12459 \u12540 \u65289 \cf2 \cb1 \strokec2 \
-\cb3         \cf5 \strokec5 drawPopStar\cf2 \strokec2 (ctx, \cf7 \strokec7 100\cf2 \strokec2 , \cf7 \strokec7 100\cf2 \strokec2 , \cf6 \strokec6 '#FF4081'\cf2 \strokec2 , \cf7 \strokec7 30\cf2 \strokec2 );\cb1 \
-\cb3         \cf5 \strokec5 drawPopStar\cf2 \strokec2 (ctx, \cf7 \strokec7 700\cf2 \strokec2 , \cf7 \strokec7 100\cf2 \strokec2 , \cf6 \strokec6 '#00E676'\cf2 \strokec2 , \cf7 \strokec7 25\cf2 \strokec2 );\cb1 \
-\cb3         \cf5 \strokec5 drawPopStar\cf2 \strokec2 (ctx, \cf7 \strokec7 120\cf2 \strokec2 , \cf7 \strokec7 700\cf2 \strokec2 , \cf6 \strokec6 '#FF9100'\cf2 \strokec2 , \cf7 \strokec7 25\cf2 \strokec2 );\cb1 \
-\cb3         \cf5 \strokec5 drawPopStar\cf2 \strokec2 (ctx, \cf7 \strokec7 680\cf2 \strokec2 , \cf7 \strokec7 700\cf2 \strokec2 , \cf6 \strokec6 '#00E5FF'\cf2 \strokec2 , \cf7 \strokec7 30\cf2 \strokec2 );\cb1 \
-\
-\cb3         \cf5 \strokec5 drawPopPopper\cf2 \strokec2 (ctx, \cf7 \strokec7 90\cf2 \strokec2 , \cf7 \strokec7 240\cf2 \strokec2 , \cf6 \strokec6 '#FF4081'\cf2 \strokec2 , \cf7 \strokec7 false\cf2 \strokec2 );\cb1 \
-\cb3         \cf5 \strokec5 drawPopPopper\cf2 \strokec2 (ctx, \cf7 \strokec7 710\cf2 \strokec2 , \cf7 \strokec7 240\cf2 \strokec2 , \cf6 \strokec6 '#00E676'\cf2 \strokec2 , \cf7 \strokec7 true\cf2 \strokec2 );\cb1 \
-\
-\cb3         \cf5 \strokec5 drawMusicNote\cf2 \strokec2 (ctx, \cf7 \strokec7 220\cf2 \strokec2 , \cf7 \strokec7 120\cf2 \strokec2 , \cf6 \strokec6 '#D500F9'\cf2 \strokec2 );\cb1 \
-\cb3         \cf5 \strokec5 drawMusicNote\cf2 \strokec2 (ctx, \cf7 \strokec7 580\cf2 \strokec2 , \cf7 \strokec7 120\cf2 \strokec2 , \cf6 \strokec6 '#FF3D00'\cf2 \strokec2 );\cb1 \
-\
-\cb3         \cf9 \strokec9 // \uc0\u25991 \u23383 \u12398 \u35222 \u35469 \u24615 \u12434 \u39640 \u12417 \u12427 \u12300 \u30333 \u12503 \u12524 \u12540 \u12488 \u65288 \u24231 \u24067 \u22243 \u65289 \u12301 \cf2 \cb1 \strokec2 \
-\cb3         ctx.fillStyle \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 'rgba(255, 255, 255, 0.92)'\cf2 \strokec2 ;\cb1 \
-\cb3         ctx.strokeStyle \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 '#FF3D00'\cf2 \strokec2 ;\cb1 \
-\cb3         ctx.lineWidth \cf8 \strokec8 =\cf2 \strokec2  \cf7 \strokec7 6\cf2 \strokec2 ;\cb1 \
-\cb3         \cf5 \strokec5 roundRect\cf2 \strokec2 (ctx, \cf7 \strokec7 80\cf2 \strokec2 , \cf7 \strokec7 180\cf2 \strokec2 , \cf7 \strokec7 640\cf2 \strokec2 , \cf7 \strokec7 480\cf2 \strokec2 , \cf7 \strokec7 24\cf2 \strokec2 , \cf7 \strokec7 true\cf2 \strokec2 , \cf7 \strokec7 true\cf2 \strokec2 );\cb1 \
-\
-\cb3         \cf9 \strokec9 // \uc0\u12504 \u12483 \u12480 \u12540 \u12486 \u12461 \u12473 \u12488 \cf2 \cb1 \strokec2 \
-\cb3         ctx.fillStyle \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 '#FF3D00'\cf2 \strokec2 ;\cb1 \
-\cb3         ctx.font \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 'bold 38px sans-serif'\cf2 \strokec2 ;\cb1 \
-\cb3         ctx.textAlign \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 'center'\cf2 \strokec2 ;\cb1 \
-\cb3         ctx.\cf5 \strokec5 fillText\cf2 \strokec2 (\cf6 \strokec6 '\uc0\u55356 \u57225  \u65340  \u35211 \u20107 \u12394 \u27770 \u26029 \u65281  \u65295  \u55356 \u57225 '\cf2 \strokec2 , \cf7 \strokec7 400\cf2 \strokec2 , \cf7 \strokec7 250\cf2 \strokec2 );\cb1 \
-\
-\cb3         \cf9 \strokec9 // \uc0\u12513 \u12452 \u12531 \u20837 \u21147 \u25991 \u23383 \cf2 \cb1 \strokec2 \
-\cb3         \cf5 \strokec5 drawPopText\cf2 \strokec2 (ctx, text, \cf6 \strokec6 '#212121'\cf2 \strokec2 , \cf7 \strokec7 380\cf2 \strokec2 );\cb1 \
-\
-\cb3         \cf9 \strokec9 // \uc0\u32080 \u12403 \u12398 \u35328 \u33865 \cf2 \cb1 \strokec2 \
-\cb3         ctx.font \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 'bold 50px sans-serif'\cf2 \strokec2 ;\cb1 \
-\cb3         ctx.strokeStyle \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 '#FFFFFF'\cf2 \strokec2 ;\cb1 \
-\cb3         ctx.lineWidth \cf8 \strokec8 =\cf2 \strokec2  \cf7 \strokec7 14\cf2 \strokec2 ;\cb1 \
-\cb3         ctx.\cf5 \strokec5 strokeText\cf2 \strokec2 (\cf6 \strokec6 '\uc0\u12434 \u20445 \u30041 \u12375 \u12414 \u12375 \u12383 \u65281 '\cf2 \strokec2 , \cf7 \strokec7 400\cf2 \strokec2 , \cf7 \strokec7 580\cf2 \strokec2 );\cb1 \
-\cb3         ctx.fillStyle \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 '#FF3D00'\cf2 \strokec2 ;\cb1 \
-\cb3         ctx.\cf5 \strokec5 fillText\cf2 \strokec2 (\cf6 \strokec6 '\uc0\u12434 \u20445 \u30041 \u12375 \u12414 \u12375 \u12383 \u65281 '\cf2 \strokec2 , \cf7 \strokec7 400\cf2 \strokec2 , \cf7 \strokec7 580\cf2 \strokec2 );\cb1 \
-\
-\cb3       \} \cf8 \strokec8 else\cf2 \strokec2  \cf8 \strokec8 if\cf2 \strokec2  (themeIndex \cf8 \strokec8 ===\cf2 \strokec2  \cf7 \strokec7 1\cf2 \strokec2 ) \{\cb1 \
-\cb3         \cf9 \strokec9 // \uc0\u12304 2. \u55356 \u57286  \u40644 \u37329 \u12398 \u12488 \u12525 \u12501 \u12451 \u12540 \u65286 \u27583 \u22530 \u20837 \u12426 \u12305 \cf2 \cb1 \strokec2 \
-\cb3         \cf8 \strokec8 const\cf2 \strokec2  \cf7 \strokec7 grad\cf2 \strokec2  \cf8 \strokec8 =\cf2 \strokec2  ctx.\cf5 \strokec5 createRadialGradient\cf2 \strokec2 (\cf7 \strokec7 400\cf2 \strokec2 , \cf7 \strokec7 400\cf2 \strokec2 , \cf7 \strokec7 100\cf2 \strokec2 , \cf7 \strokec7 400\cf2 \strokec2 , \cf7 \strokec7 400\cf2 \strokec2 , \cf7 \strokec7 500\cf2 \strokec2 );\cb1 \
-\cb3         grad.\cf5 \strokec5 addColorStop\cf2 \strokec2 (\cf7 \strokec7 0\cf2 \strokec2 , \cf6 \strokec6 '#1E293B'\cf2 \strokec2 ); grad.\cf5 \strokec5 addColorStop\cf2 \strokec2 (\cf7 \strokec7 1\cf2 \strokec2 , \cf6 \strokec6 '#0F172A'\cf2 \strokec2 );\cb1 \
-\cb3         ctx.fillStyle \cf8 \strokec8 =\cf2 \strokec2  grad; ctx.\cf5 \strokec5 fillRect\cf2 \strokec2 (\cf7 \strokec7 0\cf2 \strokec2 , \cf7 \strokec7 0\cf2 \strokec2 , \cf7 \strokec7 800\cf2 \strokec2 , \cf7 \strokec7 800\cf2 \strokec2 );\cb1 \
-\
-\cb3         ctx.strokeStyle \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 '#F59E0B'\cf2 \strokec2 ; ctx.lineWidth \cf8 \strokec8 =\cf2 \strokec2  \cf7 \strokec7 12\cf2 \strokec2 ;\cb1 \
-\cb3         ctx.\cf5 \strokec5 strokeRect\cf2 \strokec2 (\cf7 \strokec7 40\cf2 \strokec2 , \cf7 \strokec7 40\cf2 \strokec2 , \cf7 \strokec7 720\cf2 \strokec2 , \cf7 \strokec7 720\cf2 \strokec2 );\cb1 \
-\
-\cb3         \cf8 \strokec8 for\cf2 \strokec2 (\cf8 \strokec8 let\cf2 \strokec2  i\cf8 \strokec8 =\cf7 \strokec7 0\cf2 \strokec2 ; i\cf8 \strokec8 <\cf7 \strokec7 30\cf2 \strokec2 ; i\cf8 \strokec8 ++\cf2 \strokec2 ) \{\cb1 \
-\cb3           \cf5 \strokec5 drawStar\cf2 \strokec2 (ctx, \cf7 \strokec7 80\cf2 \strokec2  \cf8 \strokec8 +\cf2 \strokec2  Math.\cf5 \strokec5 random\cf2 \strokec2 ()\cf8 \strokec8 *\cf7 \strokec7 640\cf2 \strokec2 , \cf7 \strokec7 80\cf2 \strokec2  \cf8 \strokec8 +\cf2 \strokec2  Math.\cf5 \strokec5 random\cf2 \strokec2 ()\cf8 \strokec8 *\cf7 \strokec7 640\cf2 \strokec2 , \cf7 \strokec7 5\cf2 \strokec2 , \cf7 \strokec7 12\cf2 \strokec2 , \cf7 \strokec7 6\cf2 \strokec2 , \cf6 \strokec6 '#FDE047'\cf2 \strokec2 );\cb1 \
-\cb3         \}\cb1 \
-\
-\cb3         \cf5 \strokec5 drawBigTrophy\cf2 \strokec2 (ctx, \cf7 \strokec7 400\cf2 \strokec2 , \cf7 \strokec7 200\cf2 \strokec2 );\cb1 \
-\
-\cb3         ctx.fillStyle \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 '#F8FAFC'\cf2 \strokec2 ; ctx.font \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 'bold 32px sans-serif'\cf2 \strokec2 ; ctx.textAlign \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 'center'\cf2 \strokec2 ;\cb1 \
-\cb3         ctx.\cf5 \strokec5 fillText\cf2 \strokec2 (\cf6 \strokec6 '\uc0\u55356 \u57286  \u27583 \u22530 \u20837 \u12426 \u32026 \u12398 \u33521 \u26029  \u55356 \u57286 '\cf2 \strokec2 , \cf7 \strokec7 400\cf2 \strokec2 , \cf7 \strokec7 290\cf2 \strokec2 );\cb1 \
-\
-\cb3         \cf5 \strokec5 drawText\cf2 \strokec2 (ctx, text, \cf6 \strokec6 '#38BDF8'\cf2 \strokec2 , \cf7 \strokec7 430\cf2 \strokec2 );\cb1 \
-\
-\cb3         ctx.font \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 'bold 48px sans-serif'\cf2 \strokec2 ; ctx.fillStyle \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 '#F59E0B'\cf2 \strokec2 ;\cb1 \
-\cb3         ctx.\cf5 \strokec5 fillText\cf2 \strokec2 (\cf6 \strokec6 '\uc0\u12434 \u20445 \u30041 \u12375 \u12414 \u12375 \u12383 '\cf2 \strokec2 , \cf7 \strokec7 400\cf2 \strokec2 , \cf7 \strokec7 600\cf2 \strokec2 );\cb1 \
-\
-\cb3       \} \cf8 \strokec8 else\cf2 \strokec2  \cf8 \strokec8 if\cf2 \strokec2  (themeIndex \cf8 \strokec8 ===\cf2 \strokec2  \cf7 \strokec7 2\cf2 \strokec2 ) \{\cb1 \
-\cb3         \cf9 \strokec9 // \uc0\u12304 3. \u55356 \u57205  \u12411 \u12387 \u12371 \u12426 \u21644 \u39080 \u33590 \u23627 \u12305 \cf2 \cb1 \strokec2 \
-\cb3         ctx.fillStyle \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 '#F8FAFC'\cf2 \strokec2 ; ctx.\cf5 \strokec5 fillRect\cf2 \strokec2 (\cf7 \strokec7 0\cf2 \strokec2 , \cf7 \strokec7 0\cf2 \strokec2 , \cf7 \strokec7 800\cf2 \strokec2 , \cf7 \strokec7 800\cf2 \strokec2 );\cb1 \
-\cb3         ctx.strokeStyle \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 '#334155'\cf2 \strokec2 ; ctx.lineWidth \cf8 \strokec8 =\cf2 \strokec2  \cf7 \strokec7 12\cf2 \strokec2 ;\cb1 \
-\cb3         ctx.\cf5 \strokec5 strokeRect\cf2 \strokec2 (\cf7 \strokec7 40\cf2 \strokec2 , \cf7 \strokec7 40\cf2 \strokec2 , \cf7 \strokec7 720\cf2 \strokec2 , \cf7 \strokec7 720\cf2 \strokec2 );\cb1 \
-\
-\cb3         \cf5 \strokec5 drawFuji\cf2 \strokec2 (ctx, \cf7 \strokec7 400\cf2 \strokec2 , \cf7 \strokec7 190\cf2 \strokec2 );\cb1 \
-\cb3         \cf5 \strokec5 drawDango\cf2 \strokec2 (ctx, \cf7 \strokec7 160\cf2 \strokec2 , \cf7 \strokec7 220\cf2 \strokec2 );\cb1 \
-\cb3         \cf5 \strokec5 drawTeacup\cf2 \strokec2 (ctx, \cf7 \strokec7 640\cf2 \strokec2 , \cf7 \strokec7 220\cf2 \strokec2 );\cb1 \
-\
-\cb3         ctx.fillStyle \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 '#1E293B'\cf2 \strokec2 ; ctx.font \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 'bold 34px serif'\cf2 \strokec2 ; ctx.textAlign \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 'center'\cf2 \strokec2 ;\cb1 \
-\cb3         ctx.\cf5 \strokec5 fillText\cf2 \strokec2 (\cf6 \strokec6 '\uc0\u55356 \u57205  \u12354 \u12379 \u12425 \u12378 \u12289 \u29087 \u32771 \u12398 \u19968 \u26381 '\cf2 \strokec2 , \cf7 \strokec7 400\cf2 \strokec2 , \cf7 \strokec7 280\cf2 \strokec2 );\cb1 \
-\
-\cb3         \cf5 \strokec5 drawText\cf2 \strokec2 (ctx, text, \cf6 \strokec6 '#0F172A'\cf2 \strokec2 , \cf7 \strokec7 430\cf2 \strokec2 );\cb1 \
-\
-\cb3         ctx.font \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 'bold 46px serif'\cf2 \strokec2 ; ctx.fillStyle \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 '#475569'\cf2 \strokec2 ;\cb1 \
-\cb3         ctx.\cf5 \strokec5 fillText\cf2 \strokec2 (\cf6 \strokec6 '\uc0\u12434 \u20445 \u30041 \u12356 \u12383 \u12375 \u12414 \u12375 \u12383 '\cf2 \strokec2 , \cf7 \strokec7 400\cf2 \strokec2 , \cf7 \strokec7 600\cf2 \strokec2 );\cb1 \
-\
-\cb3       \} \cf8 \strokec8 else\cf2 \strokec2  \cf8 \strokec8 if\cf2 \strokec2  (themeIndex \cf8 \strokec8 ===\cf2 \strokec2  \cf7 \strokec7 3\cf2 \strokec2 ) \{\cb1 \
-\cb3         \cf9 \strokec9 // \uc0\u12304 4. \u9889  \u12469 \u12452 \u12496 \u12540 \u12493 \u12458 \u12531 \u12539 \u12501 \u12455 \u12473 \u12486 \u12451 \u12496 \u12523 \u12305 \cf2 \cb1 \strokec2 \
-\cb3         ctx.fillStyle \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 '#020617'\cf2 \strokec2 ; ctx.\cf5 \strokec5 fillRect\cf2 \strokec2 (\cf7 \strokec7 0\cf2 \strokec2 , \cf7 \strokec7 0\cf2 \strokec2 , \cf7 \strokec7 800\cf2 \strokec2 , \cf7 \strokec7 800\cf2 \strokec2 );\cb1 \
-\
-\cb3         ctx.strokeStyle \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 '#38BDF8'\cf2 \strokec2 ; ctx.lineWidth \cf8 \strokec8 =\cf2 \strokec2  \cf7 \strokec7 8\cf2 \strokec2 ;\cb1 \
-\cb3         ctx.\cf5 \strokec5 strokeRect\cf2 \strokec2 (\cf7 \strokec7 40\cf2 \strokec2 , \cf7 \strokec7 40\cf2 \strokec2 , \cf7 \strokec7 720\cf2 \strokec2 , \cf7 \strokec7 720\cf2 \strokec2 );\cb1 \
-\
-\cb3         ctx.strokeStyle \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 'rgba(56, 189, 248, 0.15)'\cf2 \strokec2 ; ctx.lineWidth \cf8 \strokec8 =\cf2 \strokec2  \cf7 \strokec7 2\cf2 \strokec2 ;\cb1 \
-\cb3         \cf8 \strokec8 for\cf2 \strokec2 (\cf8 \strokec8 let\cf2 \strokec2  x\cf8 \strokec8 =\cf7 \strokec7 0\cf2 \strokec2 ; x\cf8 \strokec8 <\cf7 \strokec7 800\cf2 \strokec2 ; x\cf8 \strokec8 +=\cf7 \strokec7 40\cf2 \strokec2 ) \{ ctx.\cf5 \strokec5 beginPath\cf2 \strokec2 (); ctx.\cf5 \strokec5 moveTo\cf2 \strokec2 (x,\cf7 \strokec7 0\cf2 \strokec2 ); ctx.\cf5 \strokec5 lineTo\cf2 \strokec2 (x,\cf7 \strokec7 800\cf2 \strokec2 ); ctx.\cf5 \strokec5 stroke\cf2 \strokec2 (); \}\cb1 \
-\cb3         \cf8 \strokec8 for\cf2 \strokec2 (\cf8 \strokec8 let\cf2 \strokec2  y\cf8 \strokec8 =\cf7 \strokec7 0\cf2 \strokec2 ; y\cf8 \strokec8 <\cf7 \strokec7 800\cf2 \strokec2 ; y\cf8 \strokec8 +=\cf7 \strokec7 40\cf2 \strokec2 ) \{ ctx.\cf5 \strokec5 beginPath\cf2 \strokec2 (); ctx.\cf5 \strokec5 moveTo\cf2 \strokec2 (\cf7 \strokec7 0\cf2 \strokec2 ,y); ctx.\cf5 \strokec5 lineTo\cf2 \strokec2 (\cf7 \strokec7 800\cf2 \strokec2 ,y); ctx.\cf5 \strokec5 stroke\cf2 \strokec2 (); \}\cb1 \
-\
-\cb3         ctx.fillStyle \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 '#F43F5E'\cf2 \strokec2 ; ctx.font \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 'bold 38px monospace'\cf2 \strokec2 ; ctx.textAlign \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 'center'\cf2 \strokec2 ;\cb1 \
-\cb3         ctx.\cf5 \strokec5 fillText\cf2 \strokec2 (\cf6 \strokec6 '\uc0\u9889  [SYSTEM: PENDING] \u9889 '\cf2 \strokec2 , \cf7 \strokec7 400\cf2 \strokec2 , \cf7 \strokec7 180\cf2 \strokec2 );\cb1 \
-\
-\cb3         \cf5 \strokec5 drawText\cf2 \strokec2 (ctx, text, \cf6 \strokec6 '#22C55E'\cf2 \strokec2 , \cf7 \strokec7 380\cf2 \strokec2 );\cb1 \
-\
-\cb3         ctx.font \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 'bold 50px monospace'\cf2 \strokec2 ; ctx.fillStyle \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 '#38BDF8'\cf2 \strokec2 ;\cb1 \
-\cb3         ctx.\cf5 \strokec5 fillText\cf2 \strokec2 (\cf6 \strokec6 '\uc0\u12434 \u20445 \u30041 \u12375 \u12414 \u12375 \u12383 \u65281 '\cf2 \strokec2 , \cf7 \strokec7 400\cf2 \strokec2 , \cf7 \strokec7 580\cf2 \strokec2 );\cb1 \
-\
-\cb3       \} \cf8 \strokec8 else\cf2 \strokec2  \{\cb1 \
-\cb3         \cf9 \strokec9 // \uc0\u12304 5. \u55357 \u56540  \u35946 \u33775 \u12539 \u29305 \u35377 \u65286 \u35469 \u23450 \u26360 \u12305 \cf2 \cb1 \strokec2 \
-\cb3         ctx.fillStyle \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 '#FFFBEB'\cf2 \strokec2 ; ctx.\cf5 \strokec5 fillRect\cf2 \strokec2 (\cf7 \strokec7 0\cf2 \strokec2 , \cf7 \strokec7 0\cf2 \strokec2 , \cf7 \strokec7 800\cf2 \strokec2 , \cf7 \strokec7 800\cf2 \strokec2 );\cb1 \
-\
-\cb3         ctx.strokeStyle \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 '#B45309'\cf2 \strokec2 ; ctx.lineWidth \cf8 \strokec8 =\cf2 \strokec2  \cf7 \strokec7 16\cf2 \strokec2 ;\cb1 \
-\cb3         ctx.\cf5 \strokec5 strokeRect\cf2 \strokec2 (\cf7 \strokec7 30\cf2 \strokec2 , \cf7 \strokec7 30\cf2 \strokec2 , \cf7 \strokec7 740\cf2 \strokec2 , \cf7 \strokec7 740\cf2 \strokec2 );\cb1 \
-\cb3         ctx.strokeStyle \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 '#D97706'\cf2 \strokec2 ; ctx.lineWidth \cf8 \strokec8 =\cf2 \strokec2  \cf7 \strokec7 4\cf2 \strokec2 ;\cb1 \
-\cb3         ctx.\cf5 \strokec5 strokeRect\cf2 \strokec2 (\cf7 \strokec7 50\cf2 \strokec2 , \cf7 \strokec7 50\cf2 \strokec2 , \cf7 \strokec7 700\cf2 \strokec2 , \cf7 \strokec7 700\cf2 \strokec2 );\cb1 \
-\
-\cb3         \cf5 \strokec5 drawMedal\cf2 \strokec2 (ctx, \cf7 \strokec7 400\cf2 \strokec2 , \cf7 \strokec7 160\cf2 \strokec2 );\cb1 \
-\
-\cb3         ctx.fillStyle \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 '#78350F'\cf2 \strokec2 ; ctx.font \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 'bold 44px serif'\cf2 \strokec2 ; ctx.textAlign \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 'center'\cf2 \strokec2 ;\cb1 \
-\cb3         ctx.\cf5 \strokec5 fillText\cf2 \strokec2 (\cf6 \strokec6 '\uc0\u20844 \u24335  \u20445 \u30041 \u35469 \u23450 \u26360 '\cf2 \strokec2 , \cf7 \strokec7 400\cf2 \strokec2 , \cf7 \strokec7 260\cf2 \strokec2 );\cb1 \
-\
-\cb3         \cf5 \strokec5 drawText\cf2 \strokec2 (ctx, text, \cf6 \strokec6 '#1E293B'\cf2 \strokec2 , \cf7 \strokec7 410\cf2 \strokec2 );\cb1 \
-\
-\cb3         ctx.font \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 'bold 44px serif'\cf2 \strokec2 ; ctx.fillStyle \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 '#B45309'\cf2 \strokec2 ;\cb1 \
-\cb3         ctx.\cf5 \strokec5 fillText\cf2 \strokec2 (\cf6 \strokec6 '\uc0\u12434 \u20445 \u30041 \u12375 \u12383 \u12371 \u12392 \u12434 \u35388 \u26126 \u12377 \u12427 '\cf2 \strokec2 , \cf7 \strokec7 400\cf2 \strokec2 , \cf7 \strokec7 600\cf2 \strokec2 );\cb1 \
-\cb3       \}\cb1 \
-\cb3     \}\cb1 \
-\
-\cb3     \cf9 \strokec9 // --- \uc0\u12486 \u12461 \u12473 \u12488 \u25551 \u30011 \u35036 \u21161 \u38306 \u25968  ---\cf2 \cb1 \strokec2 \
-\cb3     \cf8 \strokec8 function\cf2 \strokec2  \cf5 \strokec5 drawText\cf2 \strokec2 (\cf10 \strokec10 ctx\cf2 \strokec2 , \cf10 \strokec10 text\cf2 \strokec2 , \cf10 \strokec10 color\cf2 \strokec2 , \cf10 \strokec10 startY\cf2 \strokec2 ) \{\cb1 \
-\cb3       ctx.fillStyle \cf8 \strokec8 =\cf2 \strokec2  color; ctx.font \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 'bold 52px sans-serif'\cf2 \strokec2 ; ctx.textAlign \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 'center'\cf2 \strokec2 ;\cb1 \
-\cb3       \cf8 \strokec8 let\cf2 \strokec2  words \cf8 \strokec8 =\cf2 \strokec2  text.\cf5 \strokec5 split\cf2 \strokec2 (\cf6 \strokec6 ''\cf2 \strokec2 ); \cf8 \strokec8 let\cf2 \strokec2  line \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 ''\cf2 \strokec2 ; \cf8 \strokec8 let\cf2 \strokec2  lines \cf8 \strokec8 =\cf2 \strokec2  [];\cb1 \
-\cb3       \cf8 \strokec8 for\cf2 \strokec2  (\cf8 \strokec8 let\cf2 \strokec2  n \cf8 \strokec8 =\cf2 \strokec2  \cf7 \strokec7 0\cf2 \strokec2 ; n \cf8 \strokec8 <\cf2 \strokec2  words.\cf7 \strokec7 length\cf2 \strokec2 ; n\cf8 \strokec8 ++\cf2 \strokec2 ) \{\cb1 \
-\cb3         \cf8 \strokec8 let\cf2 \strokec2  testLine \cf8 \strokec8 =\cf2 \strokec2  line \cf8 \strokec8 +\cf2 \strokec2  words[n];\cb1 \
-\cb3         \cf8 \strokec8 if\cf2 \strokec2  (ctx.\cf5 \strokec5 measureText\cf2 \strokec2 (testLine).width \cf8 \strokec8 >\cf2 \strokec2  \cf7 \strokec7 600\cf2 \strokec2  \cf8 \strokec8 &&\cf2 \strokec2  n \cf8 \strokec8 >\cf2 \strokec2  \cf7 \strokec7 0\cf2 \strokec2 ) \{\cb1 \
-\cb3           lines.\cf5 \strokec5 push\cf2 \strokec2 (line); line \cf8 \strokec8 =\cf2 \strokec2  words[n];\cb1 \
-\cb3         \} \cf8 \strokec8 else\cf2 \strokec2  \{ line \cf8 \strokec8 =\cf2 \strokec2  testLine; \}\cb1 \
-\cb3       \}\cb1 \
-\cb3       lines.\cf5 \strokec5 push\cf2 \strokec2 (line);\cb1 \
-\cb3       lines.\cf5 \strokec5 forEach\cf2 \strokec2 ((\cf10 \strokec10 l\cf2 \strokec2 , \cf10 \strokec10 index\cf2 \strokec2 ) \cf8 \strokec8 =>\cf2 \strokec2  \{ ctx.\cf5 \strokec5 fillText\cf2 \strokec2 (l, \cf7 \strokec7 400\cf2 \strokec2 , startY \cf8 \strokec8 +\cf2 \strokec2  (index \cf8 \strokec8 *\cf2 \strokec2  \cf7 \strokec7 64\cf2 \strokec2 )); \});\cb1 \
-\cb3     \}\cb1 \
-\
-\cb3     \cf8 \strokec8 function\cf2 \strokec2  \cf5 \strokec5 drawPopText\cf2 \strokec2 (\cf10 \strokec10 ctx\cf2 \strokec2 , \cf10 \strokec10 text\cf2 \strokec2 , \cf10 \strokec10 color\cf2 \strokec2 , \cf10 \strokec10 startY\cf2 \strokec2 ) \{\cb1 \
-\cb3       ctx.font \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 'bold 54px sans-serif'\cf2 \strokec2 ;\cb1 \
-\cb3       ctx.textAlign \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 'center'\cf2 \strokec2 ;\cb1 \
-\cb3       \cb1 \
-\cb3       \cf8 \strokec8 let\cf2 \strokec2  words \cf8 \strokec8 =\cf2 \strokec2  text.\cf5 \strokec5 split\cf2 \strokec2 (\cf6 \strokec6 ''\cf2 \strokec2 ); \cf8 \strokec8 let\cf2 \strokec2  line \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 ''\cf2 \strokec2 ; \cf8 \strokec8 let\cf2 \strokec2  lines \cf8 \strokec8 =\cf2 \strokec2  [];\cb1 \
-\cb3       \cf8 \strokec8 for\cf2 \strokec2  (\cf8 \strokec8 let\cf2 \strokec2  n \cf8 \strokec8 =\cf2 \strokec2  \cf7 \strokec7 0\cf2 \strokec2 ; n \cf8 \strokec8 <\cf2 \strokec2  words.\cf7 \strokec7 length\cf2 \strokec2 ; n\cf8 \strokec8 ++\cf2 \strokec2 ) \{\cb1 \
-\cb3         \cf8 \strokec8 let\cf2 \strokec2  testLine \cf8 \strokec8 =\cf2 \strokec2  line \cf8 \strokec8 +\cf2 \strokec2  words[n];\cb1 \
-\cb3         \cf8 \strokec8 if\cf2 \strokec2  (ctx.\cf5 \strokec5 measureText\cf2 \strokec2 (testLine).width \cf8 \strokec8 >\cf2 \strokec2  \cf7 \strokec7 560\cf2 \strokec2  \cf8 \strokec8 &&\cf2 \strokec2  n \cf8 \strokec8 >\cf2 \strokec2  \cf7 \strokec7 0\cf2 \strokec2 ) \{\cb1 \
-\cb3           lines.\cf5 \strokec5 push\cf2 \strokec2 (line); line \cf8 \strokec8 =\cf2 \strokec2  words[n];\cb1 \
-\cb3         \} \cf8 \strokec8 else\cf2 \strokec2  \{ line \cf8 \strokec8 =\cf2 \strokec2  testLine; \}\cb1 \
-\cb3       \}\cb1 \
-\cb3       lines.\cf5 \strokec5 push\cf2 \strokec2 (line);\cb1 \
-\
-\cb3       lines.\cf5 \strokec5 forEach\cf2 \strokec2 ((\cf10 \strokec10 l\cf2 \strokec2 , \cf10 \strokec10 index\cf2 \strokec2 ) \cf8 \strokec8 =>\cf2 \strokec2  \{\cb1 \
-\cb3         \cf8 \strokec8 let\cf2 \strokec2  y \cf8 \strokec8 =\cf2 \strokec2  startY \cf8 \strokec8 +\cf2 \strokec2  (index \cf8 \strokec8 *\cf2 \strokec2  \cf7 \strokec7 68\cf2 \strokec2 );\cb1 \
-\cb3         ctx.strokeStyle \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 '#FFFFFF'\cf2 \strokec2 ;\cb1 \
-\cb3         ctx.lineWidth \cf8 \strokec8 =\cf2 \strokec2  \cf7 \strokec7 16\cf2 \strokec2 ;\cb1 \
-\cb3         ctx.\cf5 \strokec5 strokeText\cf2 \strokec2 (l, \cf7 \strokec7 400\cf2 \strokec2 , y);\cb1 \
-\cb3         ctx.fillStyle \cf8 \strokec8 =\cf2 \strokec2  color;\cb1 \
-\cb3         ctx.\cf5 \strokec5 fillText\cf2 \strokec2 (l, \cf7 \strokec7 400\cf2 \strokec2 , y);\cb1 \
-\cb3       \});\cb1 \
-\cb3     \}\cb1 \
-\
-\cb3     \cf8 \strokec8 function\cf2 \strokec2  \cf5 \strokec5 roundRect\cf2 \strokec2 (\cf10 \strokec10 ctx\cf2 \strokec2 , \cf10 \strokec10 x\cf2 \strokec2 , \cf10 \strokec10 y\cf2 \strokec2 , \cf10 \strokec10 width\cf2 \strokec2 , \cf10 \strokec10 height\cf2 \strokec2 , \cf10 \strokec10 radius\cf2 \strokec2 , \cf10 \strokec10 fill\cf2 \strokec2 , \cf10 \strokec10 stroke\cf2 \strokec2 ) \{\cb1 \
-\cb3       ctx.\cf5 \strokec5 beginPath\cf2 \strokec2 ();\cb1 \
-\cb3       ctx.\cf5 \strokec5 moveTo\cf2 \strokec2 (x \cf8 \strokec8 +\cf2 \strokec2  radius, y);\cb1 \
-\cb3       ctx.\cf5 \strokec5 lineTo\cf2 \strokec2 (x \cf8 \strokec8 +\cf2 \strokec2  width \cf8 \strokec8 -\cf2 \strokec2  radius, y);\cb1 \
-\cb3       ctx.\cf5 \strokec5 quadraticCurveTo\cf2 \strokec2 (x \cf8 \strokec8 +\cf2 \strokec2  width, y, x \cf8 \strokec8 +\cf2 \strokec2  width, y \cf8 \strokec8 +\cf2 \strokec2  radius);\cb1 \
-\cb3       ctx.\cf5 \strokec5 lineTo\cf2 \strokec2 (x \cf8 \strokec8 +\cf2 \strokec2  width, y \cf8 \strokec8 +\cf2 \strokec2  height \cf8 \strokec8 -\cf2 \strokec2  radius);\cb1 \
-\cb3       ctx.\cf5 \strokec5 quadraticCurveTo\cf2 \strokec2 (x \cf8 \strokec8 +\cf2 \strokec2  width, y \cf8 \strokec8 +\cf2 \strokec2  height, x \cf8 \strokec8 +\cf2 \strokec2  width \cf8 \strokec8 -\cf2 \strokec2  radius, y \cf8 \strokec8 +\cf2 \strokec2  height);\cb1 \
-\cb3       ctx.\cf5 \strokec5 lineTo\cf2 \strokec2 (x \cf8 \strokec8 +\cf2 \strokec2  radius, y \cf8 \strokec8 +\cf2 \strokec2  height);\cb1 \
-\cb3       ctx.\cf5 \strokec5 quadraticCurveTo\cf2 \strokec2 (x, y \cf8 \strokec8 +\cf2 \strokec2  height, x, y \cf8 \strokec8 +\cf2 \strokec2  height \cf8 \strokec8 -\cf2 \strokec2  radius);\cb1 \
-\cb3       ctx.\cf5 \strokec5 lineTo\cf2 \strokec2 (x, y \cf8 \strokec8 +\cf2 \strokec2  radius);\cb1 \
-\cb3       ctx.\cf5 \strokec5 quadraticCurveTo\cf2 \strokec2 (x, y, x \cf8 \strokec8 +\cf2 \strokec2  radius, y);\cb1 \
-\cb3       ctx.\cf5 \strokec5 closePath\cf2 \strokec2 ();\cb1 \
-\cb3       \cf8 \strokec8 if\cf2 \strokec2  (fill) ctx.\cf5 \strokec5 fill\cf2 \strokec2 ();\cb1 \
-\cb3       \cf8 \strokec8 if\cf2 \strokec2  (stroke) ctx.\cf5 \strokec5 stroke\cf2 \strokec2 ();\cb1 \
-\cb3     \}\cb1 \
-\
-\cb3     \cf9 \strokec9 // --- \uc0\u12452 \u12521 \u12473 \u12488 \u25551 \u30011 \u35036 \u21161 \u38306 \u25968 \u32676  ---\cf2 \cb1 \strokec2 \
-\cb3     \cf8 \strokec8 function\cf2 \strokec2  \cf5 \strokec5 drawPopStar\cf2 \strokec2 (\cf10 \strokec10 ctx\cf2 \strokec2 , \cf10 \strokec10 cx\cf2 \strokec2 , \cf10 \strokec10 cy\cf2 \strokec2 , \cf10 \strokec10 color\cf2 \strokec2 , \cf10 \strokec10 size\cf2 \strokec2 ) \{\cb1 \
-\cb3       ctx.\cf5 \strokec5 save\cf2 \strokec2 (); ctx.fillStyle \cf8 \strokec8 =\cf2 \strokec2  color; ctx.\cf5 \strokec5 beginPath\cf2 \strokec2 ();\cb1 \
-\cb3       \cf8 \strokec8 for\cf2 \strokec2  (\cf8 \strokec8 let\cf2 \strokec2  i \cf8 \strokec8 =\cf2 \strokec2  \cf7 \strokec7 0\cf2 \strokec2 ; i \cf8 \strokec8 <\cf2 \strokec2  \cf7 \strokec7 5\cf2 \strokec2 ; i\cf8 \strokec8 ++\cf2 \strokec2 ) \{\cb1 \
-\cb3         ctx.\cf5 \strokec5 lineTo\cf2 \strokec2 (Math.\cf5 \strokec5 cos\cf2 \strokec2 ((\cf7 \strokec7 18\cf2 \strokec2  \cf8 \strokec8 +\cf2 \strokec2  i \cf8 \strokec8 *\cf2 \strokec2  \cf7 \strokec7 72\cf2 \strokec2 ) \cf8 \strokec8 *\cf2 \strokec2  Math.\cf7 \strokec7 PI\cf2 \strokec2  \cf8 \strokec8 /\cf2 \strokec2  \cf7 \strokec7 180\cf2 \strokec2 ) \cf8 \strokec8 *\cf2 \strokec2  size \cf8 \strokec8 +\cf2 \strokec2  cx, \cf8 \strokec8 -\cf2 \strokec2 Math.\cf5 \strokec5 sin\cf2 \strokec2 ((\cf7 \strokec7 18\cf2 \strokec2  \cf8 \strokec8 +\cf2 \strokec2  i \cf8 \strokec8 *\cf2 \strokec2  \cf7 \strokec7 72\cf2 \strokec2 ) \cf8 \strokec8 *\cf2 \strokec2  Math.\cf7 \strokec7 PI\cf2 \strokec2  \cf8 \strokec8 /\cf2 \strokec2  \cf7 \strokec7 180\cf2 \strokec2 ) \cf8 \strokec8 *\cf2 \strokec2  size \cf8 \strokec8 +\cf2 \strokec2  cy);\cb1 \
-\cb3         ctx.\cf5 \strokec5 lineTo\cf2 \strokec2 (Math.\cf5 \strokec5 cos\cf2 \strokec2 ((\cf7 \strokec7 54\cf2 \strokec2  \cf8 \strokec8 +\cf2 \strokec2  i \cf8 \strokec8 *\cf2 \strokec2  \cf7 \strokec7 72\cf2 \strokec2 ) \cf8 \strokec8 *\cf2 \strokec2  Math.\cf7 \strokec7 PI\cf2 \strokec2  \cf8 \strokec8 /\cf2 \strokec2  \cf7 \strokec7 180\cf2 \strokec2 ) \cf8 \strokec8 *\cf2 \strokec2  (size\cf8 \strokec8 /\cf7 \strokec7 2\cf2 \strokec2 ) \cf8 \strokec8 +\cf2 \strokec2  cx, \cf8 \strokec8 -\cf2 \strokec2 Math.\cf5 \strokec5 sin\cf2 \strokec2 ((\cf7 \strokec7 54\cf2 \strokec2  \cf8 \strokec8 +\cf2 \strokec2  i \cf8 \strokec8 *\cf2 \strokec2  \cf7 \strokec7 72\cf2 \strokec2 ) \cf8 \strokec8 *\cf2 \strokec2  Math.\cf7 \strokec7 PI\cf2 \strokec2  \cf8 \strokec8 /\cf2 \strokec2  \cf7 \strokec7 180\cf2 \strokec2 ) \cf8 \strokec8 *\cf2 \strokec2  (size\cf8 \strokec8 /\cf7 \strokec7 2\cf2 \strokec2 ) \cf8 \strokec8 +\cf2 \strokec2  cy);\cb1 \
-\cb3       \}\cb1 \
-\cb3       ctx.\cf5 \strokec5 closePath\cf2 \strokec2 (); ctx.\cf5 \strokec5 fill\cf2 \strokec2 (); ctx.\cf5 \strokec5 restore\cf2 \strokec2 ();\cb1 \
-\cb3     \}\cb1 \
-\
-\cb3     \cf8 \strokec8 function\cf2 \strokec2  \cf5 \strokec5 drawPopPopper\cf2 \strokec2 (\cf10 \strokec10 ctx\cf2 \strokec2 , \cf10 \strokec10 x\cf2 \strokec2 , \cf10 \strokec10 y\cf2 \strokec2 , \cf10 \strokec10 color\cf2 \strokec2 , \cf10 \strokec10 isFlip\cf2 \strokec2 ) \{\cb1 \
-\cb3       ctx.\cf5 \strokec5 save\cf2 \strokec2 (); ctx.\cf5 \strokec5 translate\cf2 \strokec2 (x, y);\cb1 \
-\cb3       \cf8 \strokec8 if\cf2 \strokec2  (isFlip) ctx.\cf5 \strokec5 scale\cf2 \strokec2 (\cf8 \strokec8 -\cf7 \strokec7 1\cf2 \strokec2 , \cf7 \strokec7 1\cf2 \strokec2 );\cb1 \
-\cb3       ctx.fillStyle \cf8 \strokec8 =\cf2 \strokec2  color; ctx.\cf5 \strokec5 beginPath\cf2 \strokec2 ();\cb1 \
-\cb3       ctx.\cf5 \strokec5 moveTo\cf2 \strokec2 (\cf7 \strokec7 0\cf2 \strokec2 , \cf7 \strokec7 0\cf2 \strokec2 ); ctx.\cf5 \strokec5 lineTo\cf2 \strokec2 (\cf8 \strokec8 -\cf7 \strokec7 40\cf2 \strokec2 , \cf8 \strokec8 -\cf7 \strokec7 50\cf2 \strokec2 ); ctx.\cf5 \strokec5 lineTo\cf2 \strokec2 (\cf7 \strokec7 10\cf2 \strokec2 , \cf8 \strokec8 -\cf7 \strokec7 60\cf2 \strokec2 ); ctx.\cf5 \strokec5 closePath\cf2 \strokec2 (); ctx.\cf5 \strokec5 fill\cf2 \strokec2 ();\cb1 \
-\cb3       ctx.strokeStyle \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 '#FFD600'\cf2 \strokec2 ; ctx.lineWidth \cf8 \strokec8 =\cf2 \strokec2  \cf7 \strokec7 4\cf2 \strokec2 ; ctx.\cf5 \strokec5 beginPath\cf2 \strokec2 ();\cb1 \
-\cb3       ctx.\cf5 \strokec5 moveTo\cf2 \strokec2 (\cf8 \strokec8 -\cf7 \strokec7 10\cf2 \strokec2 , \cf8 \strokec8 -\cf7 \strokec7 70\cf2 \strokec2 ); ctx.\cf5 \strokec5 lineTo\cf2 \strokec2 (\cf8 \strokec8 -\cf7 \strokec7 20\cf2 \strokec2 , \cf8 \strokec8 -\cf7 \strokec7 100\cf2 \strokec2 ); ctx.\cf5 \strokec5 moveTo\cf2 \strokec2 (\cf7 \strokec7 10\cf2 \strokec2 , \cf8 \strokec8 -\cf7 \strokec7 70\cf2 \strokec2 ); ctx.\cf5 \strokec5 lineTo\cf2 \strokec2 (\cf7 \strokec7 30\cf2 \strokec2 , \cf8 \strokec8 -\cf7 \strokec7 95\cf2 \strokec2 ); ctx.\cf5 \strokec5 stroke\cf2 \strokec2 ();\cb1 \
-\cb3       ctx.\cf5 \strokec5 restore\cf2 \strokec2 ();\cb1 \
-\cb3     \}\cb1 \
-\
-\cb3     \cf8 \strokec8 function\cf2 \strokec2  \cf5 \strokec5 drawMusicNote\cf2 \strokec2 (\cf10 \strokec10 ctx\cf2 \strokec2 , \cf10 \strokec10 x\cf2 \strokec2 , \cf10 \strokec10 y\cf2 \strokec2 , \cf10 \strokec10 color\cf2 \strokec2 ) \{\cb1 \
-\cb3       ctx.fillStyle \cf8 \strokec8 =\cf2 \strokec2  color; ctx.\cf5 \strokec5 beginPath\cf2 \strokec2 (); ctx.\cf5 \strokec5 arc\cf2 \strokec2 (x, y, \cf7 \strokec7 12\cf2 \strokec2 , \cf7 \strokec7 0\cf2 \strokec2 , Math.\cf7 \strokec7 PI\cf2 \strokec2  \cf8 \strokec8 *\cf2 \strokec2  \cf7 \strokec7 2\cf2 \strokec2 ); ctx.\cf5 \strokec5 fill\cf2 \strokec2 ();\cb1 \
-\cb3       ctx.\cf5 \strokec5 fillRect\cf2 \strokec2 (x \cf8 \strokec8 +\cf2 \strokec2  \cf7 \strokec7 6\cf2 \strokec2 , y \cf8 \strokec8 -\cf2 \strokec2  \cf7 \strokec7 30\cf2 \strokec2 , \cf7 \strokec7 6\cf2 \strokec2 , \cf7 \strokec7 30\cf2 \strokec2 ); ctx.\cf5 \strokec5 fillRect\cf2 \strokec2 (x \cf8 \strokec8 +\cf2 \strokec2  \cf7 \strokec7 6\cf2 \strokec2 , y \cf8 \strokec8 -\cf2 \strokec2  \cf7 \strokec7 30\cf2 \strokec2 , \cf7 \strokec7 16\cf2 \strokec2 , \cf7 \strokec7 6\cf2 \strokec2 );\cb1 \
-\cb3     \}\cb1 \
-\
-\cb3     \cf8 \strokec8 function\cf2 \strokec2  \cf5 \strokec5 drawStar\cf2 \strokec2 (\cf10 \strokec10 ctx\cf2 \strokec2 , \cf10 \strokec10 cx\cf2 \strokec2 , \cf10 \strokec10 cy\cf2 \strokec2 , \cf10 \strokec10 spikes\cf2 \strokec2 , \cf10 \strokec10 outerRadius\cf2 \strokec2 , \cf10 \strokec10 innerRadius\cf2 \strokec2 , \cf10 \strokec10 color\cf2 \strokec2 ) \{\cb1 \
-\cb3       \cf8 \strokec8 var\cf2 \strokec2  rot \cf8 \strokec8 =\cf2 \strokec2  Math.\cf7 \strokec7 PI\cf8 \strokec8 /\cf7 \strokec7 2\cf8 \strokec8 *\cf7 \strokec7 3\cf2 \strokec2 ; \cf8 \strokec8 var\cf2 \strokec2  x \cf8 \strokec8 =\cf2 \strokec2  cx; \cf8 \strokec8 var\cf2 \strokec2  y \cf8 \strokec8 =\cf2 \strokec2  cy; \cf8 \strokec8 var\cf2 \strokec2  step \cf8 \strokec8 =\cf2 \strokec2  Math.\cf7 \strokec7 PI\cf8 \strokec8 /\cf2 \strokec2 spikes;\cb1 \
-\cb3       ctx.\cf5 \strokec5 beginPath\cf2 \strokec2 (); ctx.\cf5 \strokec5 moveTo\cf2 \strokec2 (cx, cy \cf8 \strokec8 -\cf2 \strokec2  outerRadius);\cb1 \
-\cb3       \cf8 \strokec8 for\cf2 \strokec2 (i\cf8 \strokec8 =\cf7 \strokec7 0\cf2 \strokec2 ; i\cf8 \strokec8 <\cf2 \strokec2 spikes; i\cf8 \strokec8 ++\cf2 \strokec2 )\{\cb1 \
-\cb3         x \cf8 \strokec8 =\cf2 \strokec2  cx \cf8 \strokec8 +\cf2 \strokec2  Math.\cf5 \strokec5 cos\cf2 \strokec2 (rot)\cf8 \strokec8 *\cf2 \strokec2 outerRadius; y \cf8 \strokec8 =\cf2 \strokec2  cy \cf8 \strokec8 +\cf2 \strokec2  Math.\cf5 \strokec5 sin\cf2 \strokec2 (rot)\cf8 \strokec8 *\cf2 \strokec2 outerRadius; ctx.\cf5 \strokec5 lineTo\cf2 \strokec2 (x, y); rot \cf8 \strokec8 +=\cf2 \strokec2  step;\cb1 \
-\cb3         x \cf8 \strokec8 =\cf2 \strokec2  cx \cf8 \strokec8 +\cf2 \strokec2  Math.\cf5 \strokec5 cos\cf2 \strokec2 (rot)\cf8 \strokec8 *\cf2 \strokec2 innerRadius; y \cf8 \strokec8 =\cf2 \strokec2  cy \cf8 \strokec8 +\cf2 \strokec2  Math.\cf5 \strokec5 sin\cf2 \strokec2 (rot)\cf8 \strokec8 *\cf2 \strokec2 innerRadius; ctx.\cf5 \strokec5 lineTo\cf2 \strokec2 (x, y); rot \cf8 \strokec8 +=\cf2 \strokec2  step;\cb1 \
-\cb3       \}\cb1 \
-\cb3       ctx.\cf5 \strokec5 lineTo\cf2 \strokec2 (cx, cy \cf8 \strokec8 -\cf2 \strokec2  outerRadius); ctx.\cf5 \strokec5 closePath\cf2 \strokec2 (); ctx.fillStyle \cf8 \strokec8 =\cf2 \strokec2  color; ctx.\cf5 \strokec5 fill\cf2 \strokec2 ();\cb1 \
-\cb3     \}\cb1 \
-\
-\cb3     \cf8 \strokec8 function\cf2 \strokec2  \cf5 \strokec5 drawBigTrophy\cf2 \strokec2 (\cf10 \strokec10 ctx\cf2 \strokec2 , \cf10 \strokec10 x\cf2 \strokec2 , \cf10 \strokec10 y\cf2 \strokec2 ) \{\cb1 \
-\cb3       ctx.fillStyle \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 '#F59E0B'\cf2 \strokec2 ; ctx.\cf5 \strokec5 beginPath\cf2 \strokec2 ();\cb1 \
-\cb3       ctx.\cf5 \strokec5 arc\cf2 \strokec2 (x, y, \cf7 \strokec7 50\cf2 \strokec2 , \cf7 \strokec7 0\cf2 \strokec2 , Math.\cf7 \strokec7 PI\cf2 \strokec2 , \cf7 \strokec7 false\cf2 \strokec2 ); ctx.\cf5 \strokec5 fillRect\cf2 \strokec2 (x \cf8 \strokec8 -\cf2 \strokec2  \cf7 \strokec7 50\cf2 \strokec2 , y \cf8 \strokec8 -\cf2 \strokec2  \cf7 \strokec7 60\cf2 \strokec2 , \cf7 \strokec7 100\cf2 \strokec2 , \cf7 \strokec7 60\cf2 \strokec2 );\cb1 \
-\cb3       ctx.\cf5 \strokec5 fillRect\cf2 \strokec2 (x \cf8 \strokec8 -\cf2 \strokec2  \cf7 \strokec7 15\cf2 \strokec2 , y, \cf7 \strokec7 30\cf2 \strokec2 , \cf7 \strokec7 50\cf2 \strokec2 ); ctx.\cf5 \strokec5 fillRect\cf2 \strokec2 (x \cf8 \strokec8 -\cf2 \strokec2  \cf7 \strokec7 40\cf2 \strokec2 , y \cf8 \strokec8 +\cf2 \strokec2  \cf7 \strokec7 50\cf2 \strokec2 , \cf7 \strokec7 80\cf2 \strokec2 , \cf7 \strokec7 20\cf2 \strokec2 ); ctx.\cf5 \strokec5 fill\cf2 \strokec2 ();\cb1 \
-\cb3     \}\cb1 \
-\
-\cb3     \cf8 \strokec8 function\cf2 \strokec2  \cf5 \strokec5 drawFuji\cf2 \strokec2 (\cf10 \strokec10 ctx\cf2 \strokec2 , \cf10 \strokec10 x\cf2 \strokec2 , \cf10 \strokec10 y\cf2 \strokec2 ) \{\cb1 \
-\cb3       ctx.fillStyle \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 '#3B82F6'\cf2 \strokec2 ; ctx.\cf5 \strokec5 beginPath\cf2 \strokec2 ();\cb1 \
-\cb3       ctx.\cf5 \strokec5 moveTo\cf2 \strokec2 (x, y\cf8 \strokec8 -\cf7 \strokec7 50\cf2 \strokec2 ); ctx.\cf5 \strokec5 lineTo\cf2 \strokec2 (x\cf8 \strokec8 +\cf7 \strokec7 80\cf2 \strokec2 , y\cf8 \strokec8 +\cf7 \strokec7 40\cf2 \strokec2 ); ctx.\cf5 \strokec5 lineTo\cf2 \strokec2 (x\cf8 \strokec8 -\cf7 \strokec7 80\cf2 \strokec2 , y\cf8 \strokec8 +\cf7 \strokec7 40\cf2 \strokec2 ); ctx.\cf5 \strokec5 closePath\cf2 \strokec2 (); ctx.\cf5 \strokec5 fill\cf2 \strokec2 ();\cb1 \
-\cb3       ctx.fillStyle \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 '#FFFFFF'\cf2 \strokec2 ; ctx.\cf5 \strokec5 beginPath\cf2 \strokec2 ();\cb1 \
-\cb3       ctx.\cf5 \strokec5 moveTo\cf2 \strokec2 (x, y\cf8 \strokec8 -\cf7 \strokec7 50\cf2 \strokec2 ); ctx.\cf5 \strokec5 lineTo\cf2 \strokec2 (x\cf8 \strokec8 +\cf7 \strokec7 30\cf2 \strokec2 , y\cf8 \strokec8 -\cf7 \strokec7 10\cf2 \strokec2 ); ctx.\cf5 \strokec5 lineTo\cf2 \strokec2 (x\cf8 \strokec8 -\cf7 \strokec7 30\cf2 \strokec2 , y\cf8 \strokec8 -\cf7 \strokec7 10\cf2 \strokec2 ); ctx.\cf5 \strokec5 closePath\cf2 \strokec2 (); ctx.\cf5 \strokec5 fill\cf2 \strokec2 ();\cb1 \
-\cb3     \}\cb1 \
-\
-\cb3     \cf8 \strokec8 function\cf2 \strokec2  \cf5 \strokec5 drawTeacup\cf2 \strokec2 (\cf10 \strokec10 ctx\cf2 \strokec2 , \cf10 \strokec10 x\cf2 \strokec2 , \cf10 \strokec10 y\cf2 \strokec2 ) \{\cb1 \
-\cb3       ctx.fillStyle \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 '#0F172A'\cf2 \strokec2 ; ctx.\cf5 \strokec5 beginPath\cf2 \strokec2 ();\cb1 \
-\cb3       ctx.\cf5 \strokec5 arc\cf2 \strokec2 (x, y\cf8 \strokec8 +\cf7 \strokec7 20\cf2 \strokec2 , \cf7 \strokec7 25\cf2 \strokec2 , \cf7 \strokec7 0\cf2 \strokec2 , Math.\cf7 \strokec7 PI\cf2 \strokec2 , \cf7 \strokec7 false\cf2 \strokec2 ); ctx.\cf5 \strokec5 fillRect\cf2 \strokec2 (x\cf8 \strokec8 -\cf7 \strokec7 25\cf2 \strokec2 , y\cf8 \strokec8 -\cf7 \strokec7 15\cf2 \strokec2 , \cf7 \strokec7 50\cf2 \strokec2 , \cf7 \strokec7 35\cf2 \strokec2 ); ctx.\cf5 \strokec5 fill\cf2 \strokec2 ();\cb1 \
-\cb3     \}\cb1 \
-\
-\cb3     \cf8 \strokec8 function\cf2 \strokec2  \cf5 \strokec5 drawDango\cf2 \strokec2 (\cf10 \strokec10 ctx\cf2 \strokec2 , \cf10 \strokec10 x\cf2 \strokec2 , \cf10 \strokec10 y\cf2 \strokec2 ) \{\cb1 \
-\cb3       ctx.fillStyle \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 '#EF4444'\cf2 \strokec2 ; ctx.\cf5 \strokec5 beginPath\cf2 \strokec2 (); ctx.\cf5 \strokec5 arc\cf2 \strokec2 (x, y\cf8 \strokec8 -\cf7 \strokec7 20\cf2 \strokec2 , \cf7 \strokec7 15\cf2 \strokec2 , \cf7 \strokec7 0\cf2 \strokec2 , Math.\cf7 \strokec7 PI\cf8 \strokec8 *\cf7 \strokec7 2\cf2 \strokec2 ); ctx.\cf5 \strokec5 fill\cf2 \strokec2 ();\cb1 \
-\cb3       ctx.fillStyle \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 '#FFFFFF'\cf2 \strokec2 ; ctx.\cf5 \strokec5 beginPath\cf2 \strokec2 (); ctx.\cf5 \strokec5 arc\cf2 \strokec2 (x, y, \cf7 \strokec7 15\cf2 \strokec2 , \cf7 \strokec7 0\cf2 \strokec2 , Math.\cf7 \strokec7 PI\cf8 \strokec8 *\cf7 \strokec7 2\cf2 \strokec2 ); ctx.\cf5 \strokec5 fill\cf2 \strokec2 ();\cb1 \
-\cb3       ctx.fillStyle \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 '#10B981'\cf2 \strokec2 ; ctx.\cf5 \strokec5 beginPath\cf2 \strokec2 (); ctx.\cf5 \strokec5 arc\cf2 \strokec2 (x, y\cf8 \strokec8 +\cf7 \strokec7 20\cf2 \strokec2 , \cf7 \strokec7 15\cf2 \strokec2 , \cf7 \strokec7 0\cf2 \strokec2 , Math.\cf7 \strokec7 PI\cf8 \strokec8 *\cf7 \strokec7 2\cf2 \strokec2 ); ctx.\cf5 \strokec5 fill\cf2 \strokec2 ();\cb1 \
-\cb3     \}\cb1 \
-\
-\cb3     \cf8 \strokec8 function\cf2 \strokec2  \cf5 \strokec5 drawMedal\cf2 \strokec2 (\cf10 \strokec10 ctx\cf2 \strokec2 , \cf10 \strokec10 x\cf2 \strokec2 , \cf10 \strokec10 y\cf2 \strokec2 ) \{\cb1 \
-\cb3       ctx.fillStyle \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 '#D97706'\cf2 \strokec2 ; ctx.\cf5 \strokec5 beginPath\cf2 \strokec2 (); ctx.\cf5 \strokec5 arc\cf2 \strokec2 (x, y, \cf7 \strokec7 40\cf2 \strokec2 , \cf7 \strokec7 0\cf2 \strokec2 , Math.\cf7 \strokec7 PI\cf8 \strokec8 *\cf7 \strokec7 2\cf2 \strokec2 ); ctx.\cf5 \strokec5 fill\cf2 \strokec2 ();\cb1 \
-\cb3       ctx.fillStyle \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 '#F59E0B'\cf2 \strokec2 ; ctx.\cf5 \strokec5 beginPath\cf2 \strokec2 (); ctx.\cf5 \strokec5 arc\cf2 \strokec2 (x, y, \cf7 \strokec7 30\cf2 \strokec2 , \cf7 \strokec7 0\cf2 \strokec2 , Math.\cf7 \strokec7 PI\cf8 \strokec8 *\cf7 \strokec7 2\cf2 \strokec2 ); ctx.\cf5 \strokec5 fill\cf2 \strokec2 ();\cb1 \
-\cb3     \}\cb1 \
-\
-\cb3     \cf9 \strokec9 // --- \uc0\u12463 \u12522 \u12483 \u12503 \u12508 \u12540 \u12489 \u30011 \u20687 \u12467 \u12500 \u12540 \u65286 \u25937 \u28168 \u20966 \u29702  ---\cf2 \cb1 \strokec2 \
-\cb3     \cf8 \strokec8 function\cf2 \strokec2  \cf5 \strokec5 copyCanvasImage\cf2 \strokec2 () \{\cb1 \
-\cb3       \cf8 \strokec8 var\cf2 \strokec2  canvas \cf8 \strokec8 =\cf2 \strokec2  document.\cf5 \strokec5 getElementById\cf2 \strokec2 (\cf6 \strokec6 'holdCanvas'\cf2 \strokec2 );\cb1 \
-\cb3       \cf8 \strokec8 if\cf2 \strokec2  (\cf8 \strokec8 !\cf2 \strokec2 navigator.clipboard \cf8 \strokec8 ||\cf2 \strokec2  \cf8 \strokec8 !\cf2 \strokec2 window.ClipboardItem) \{\cb1 \
-\cb3         \cf5 \strokec5 showCopyModal\cf2 \strokec2 ();\cb1 \
-\cb3         \cf8 \strokec8 return\cf2 \strokec2 ;\cb1 \
-\cb3       \}\cb1 \
-\cb3       canvas.\cf5 \strokec5 toBlob\cf2 \strokec2 (\cf8 \strokec8 function\cf2 \strokec2 (\cf10 \strokec10 blob\cf2 \strokec2 ) \{\cb1 \
-\cb3         \cf8 \strokec8 try\cf2 \strokec2  \{\cb1 \
-\cb3           \cf8 \strokec8 var\cf2 \strokec2  item \cf8 \strokec8 =\cf2 \strokec2  \cf8 \strokec8 new\cf2 \strokec2  \cf5 \strokec5 ClipboardItem\cf2 \strokec2 (\{ \cf6 \strokec6 "image/png"\cf2 \strokec2 : blob \});\cb1 \
-\cb3           navigator.clipboard.\cf5 \strokec5 write\cf2 \strokec2 ([item]).\cf5 \strokec5 then\cf2 \strokec2 (\cf8 \strokec8 function\cf2 \strokec2 () \{\cb1 \
-\cb3             \cf5 \strokec5 alert\cf2 \strokec2 (\cf6 \strokec6 '\uc0\u30011 \u20687 \u12434 \u12463 \u12522 \u12483 \u12503 \u12508 \u12540 \u12489 \u12395 \u12467 \u12500 \u12540 \u12375 \u12414 \u12375 \u12383 \u65281 '\cf2 \strokec2 );\cb1 \
-\cb3           \}).\cf5 \strokec5 catch\cf2 \strokec2 (\cf8 \strokec8 function\cf2 \strokec2 () \{\cb1 \
-\cb3             \cf5 \strokec5 showCopyModal\cf2 \strokec2 ();\cb1 \
-\cb3           \});\cb1 \
-\cb3         \} \cf8 \strokec8 catch\cf2 \strokec2  (err) \{\cb1 \
-\cb3           \cf5 \strokec5 showCopyModal\cf2 \strokec2 ();\cb1 \
-\cb3         \}\cb1 \
-\cb3       \});\cb1 \
-\cb3     \}\cb1 \
-\
-\cb3     \cf8 \strokec8 function\cf2 \strokec2  \cf5 \strokec5 showCopyModal\cf2 \strokec2 () \{\cb1 \
-\cb3       \cf8 \strokec8 var\cf2 \strokec2  canvas \cf8 \strokec8 =\cf2 \strokec2  document.\cf5 \strokec5 getElementById\cf2 \strokec2 (\cf6 \strokec6 'holdCanvas'\cf2 \strokec2 );\cb1 \
-\cb3       \cf8 \strokec8 var\cf2 \strokec2  modalImg \cf8 \strokec8 =\cf2 \strokec2  document.\cf5 \strokec5 getElementById\cf2 \strokec2 (\cf6 \strokec6 'modalImg'\cf2 \strokec2 );\cb1 \
-\cb3       modalImg.src \cf8 \strokec8 =\cf2 \strokec2  canvas.\cf5 \strokec5 toDataURL\cf2 \strokec2 ();\cb1 \
-\cb3       document.\cf5 \strokec5 getElementById\cf2 \strokec2 (\cf6 \strokec6 'copyModal'\cf2 \strokec2 ).style.display \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 'flex'\cf2 \strokec2 ;\cb1 \
-\cb3     \}\cb1 \
-\
-\cb3     \cf8 \strokec8 function\cf2 \strokec2  \cf5 \strokec5 closeModal\cf2 \strokec2 () \{\cb1 \
-\cb3       document.\cf5 \strokec5 getElementById\cf2 \strokec2 (\cf6 \strokec6 'copyModal'\cf2 \strokec2 ).style.display \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 'none'\cf2 \strokec2 ;\cb1 \
-\cb3     \}\cb1 \
-\
-\cb3     \cf8 \strokec8 function\cf2 \strokec2  \cf5 \strokec5 downloadImage\cf2 \strokec2 () \{\cb1 \
-\cb3       \cf8 \strokec8 var\cf2 \strokec2  canvas \cf8 \strokec8 =\cf2 \strokec2  document.\cf5 \strokec5 getElementById\cf2 \strokec2 (\cf6 \strokec6 'holdCanvas'\cf2 \strokec2 );\cb1 \
-\cb3       \cf8 \strokec8 var\cf2 \strokec2  link \cf8 \strokec8 =\cf2 \strokec2  document.\cf5 \strokec5 createElement\cf2 \strokec2 (\cf6 \strokec6 'a'\cf2 \strokec2 );\cb1 \
-\cb3       link.download \cf8 \strokec8 =\cf2 \strokec2  \cf6 \strokec6 'pending-card.png'\cf2 \strokec2 ;\cb1 \
-\cb3       link.href \cf8 \strokec8 =\cf2 \strokec2  canvas.\cf5 \strokec5 toDataURL\cf2 \strokec2 ();\cb1 \
-\cb3       link.\cf5 \strokec5 click\cf2 \strokec2 ();\cb1 \
-\cb3     \}\cb1 \
-\cb3   </\cf4 \strokec4 script\cf2 \strokec2 >\cb1 \
-\cb3 </\cf4 \strokec4 body\cf2 \strokec2 >\cb1 \
-\cb3 </\cf4 \strokec4 html\cf2 \strokec2 >\cb1 \
-}
+    .container {
+      width: 100%;
+      max-width: 420px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    header { text-align: center; }
+    h1 { font-size: 1.5rem; font-weight: 700; color: #0f172a; }
+    .sub-title { font-size: 0.85rem; color: #64748b; margin-top: 4px; }
+
+    /* 生成画像表示エリア */
+    .image-preview-area {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      animation: fadeIn 0.4s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    canvas {
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.2);
+    }
+
+    /* SNS・画像アクションボタン */
+    .share-container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .share-label {
+      font-size: 0.8rem;
+      color: #64748b;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .share-buttons-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .action-buttons-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .share-btn {
+      padding: 10px 0;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      color: #ffffff;
+      cursor: pointer;
+      text-decoration: none;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      transition: opacity 0.2s;
+    }
+    .share-btn:hover { opacity: 0.85; }
+
+    .btn-x { background-color: #000000; }
+    .btn-line { background-color: #06c755; }
+    .btn-fb { background-color: #1877f2; }
+    .btn-copy-img { background-color: #2563eb; }
+    .btn-download { background-color: #475569; }
+
+    /* 入力フォーム系 */
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e8f0;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 14px;
+      font-size: 1rem;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 10px;
+      outline: none;
+      background-color: #f8fafc;
+      color: #0f172a;
+      text-align: center;
+    }
+
+    input[type="text"]:focus {
+      border-color: #2563eb;
+      background-color: #ffffff;
+    }
+
+    .preset-container { display: flex; gap: 6px; }
+
+    .preset-btn {
+      flex: 1;
+      background-color: #f1f5f9;
+      color: #334155;
+      border: 1px solid #cbd5e1;
+      padding: 10px 0;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .preset-btn:hover { background-color: #e2e8f0; }
+
+    .action-btn {
+      background-color: #1e3a8a;
+      color: #ffffff;
+      font-size: 1.1rem;
+      font-weight: 700;
+      padding: 16px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    /* 画像コピー失敗時の救済モーダル */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.7);
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+    .modal-content {
+      background: #fff;
+      padding: 20px;
+      border-radius: 16px;
+      text-align: center;
+      max-width: 360px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .modal-content img { width: 100%; border-radius: 8px; }
+    .close-btn {
+      padding: 8px;
+      background: #475569;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1>⏸️ 保留ボタン</h1>
+      <p class="sub-title">今決めない、知的でポジティブな選択</p>
+    </header>
+
+    <!-- 画像表示・シェアエリア -->
+    <div id="imagePreviewArea" class="image-preview-area">
+      <canvas id="holdCanvas" width="800" height="800"></canvas>
+      
+      <div class="share-container">
+        <div class="share-label">＼ SNSでシェア・画像を共有 ／</div>
+        <!-- LINE, X, Facebook ボタン -->
+        <div class="share-buttons-grid">
+          <a id="shareX" class="share-btn btn-x" target="_blank">X</a>
+          <a id="shareLine" class="share-btn btn-line" target="_blank">LINE</a>
+          <a id="shareFb" class="share-btn btn-fb" target="_blank">Facebook</a>
+        </div>
+        <!-- コピー・ダウンロード ボタン -->
+        <div class="action-buttons-grid">
+          <button type="button" class="share-btn btn-copy-img" onclick="copyCanvasImage()">📋 画像コピー</button>
+          <button type="button" class="share-btn btn-download" onclick="downloadImage()">💾 画像保存</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 入力フォームエリア -->
+    <div class="input-group">
+      <input type="text" id="targetText" placeholder="何について保留しますか？">
+      
+      <div class="preset-container">
+        <button type="button" class="preset-btn" onclick="appendPreset('という判断')">という判断</button>
+        <button type="button" class="preset-btn" onclick="appendPreset('という結論')">という結論</button>
+        <button type="button" class="preset-btn" onclick="appendPreset('という評価')">という評価</button>
+      </div>
+
+      <button type="button" class="action-btn" onclick="generateHoldCard()">保留</button>
+    </div>
+  </div>
+
+  <!-- 画像長押し用のモーダル（コピー失敗時の救済） -->
+  <div id="copyModal" class="modal">
+    <div class="modal-content">
+      <p style="font-weight: bold; font-size: 0.9rem;">画像を長押し（または右クリック）して「コピー」または「保存」してください</p>
+      <img id="modalImg" src="" alt="保留カード">
+      <button class="close-btn" onclick="closeModal()">閉じる</button>
+    </div>
+  </div>
+
+  <script>
+    function appendPreset(textToAppend) {
+      var inputEl = document.getElementById('targetText');
+      inputEl.value = inputEl.value + textToAppend;
+      inputEl.focus();
+    }
+
+    function generateHoldCard() {
+      var val = document.getElementById('targetText').value;
+      if (!val || !val.trim()) {
+        alert('保留する内容を入力してください');
+        return;
+      }
+
+      var text = val.trim();
+      var canvas = document.getElementById('holdCanvas');
+      var ctx = canvas.getContext('2d');
+
+      // 5種類のテーマからランダム決定
+      var themeIndex = Math.floor(Math.random() * 5);
+      
+      // Canvas描画
+      drawTheme(ctx, themeIndex, text);
+
+      // 表示切り替え
+      document.getElementById('imagePreviewArea').style.display = 'flex';
+
+      // SNS共有URLの設定
+      var shareText = encodeURIComponent(`「${text}」を保留しました。 #保留ボタン`);
+      var pageUrl = encodeURIComponent(window.location.href);
+
+      document.getElementById('shareX').href = `https://twitter.com/intent/tweet?text=${shareText}&url=${pageUrl}`;
+      document.getElementById('shareLine').href = `https://line.me/R/msg/text/?${shareText}%20${pageUrl}`;
+      document.getElementById('shareFb').href = `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`;
+    }
+
+    // 豪華イラスト描画関数
+    function drawTheme(ctx, themeIndex, text) {
+      ctx.clearRect(0, 0, 800, 800);
+
+      if (themeIndex === 0) {
+        // 【1. 🎉 POP! パラダイス・クラッカー（視認性＆イラスト強化版）】
+        // カラフルなドット背景
+        ctx.fillStyle = '#FFFDE7';
+        ctx.fillRect(0, 0, 800, 800);
+
+        for (let x = 40; x < 800; x += 80) {
+          for (let y = 40; y < 800; y += 80) {
+            ctx.fillStyle = '#FFE082';
+            ctx.beginPath();
+            ctx.arc(x, y, 6, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        }
+
+        // 太いPOP外枠
+        ctx.strokeStyle = '#FF3D00';
+        ctx.lineWidth = 16;
+        ctx.strokeRect(30, 30, 740, 740);
+
+        // POPイラスト群（星、音符、クラッカー）
+        drawPopStar(ctx, 100, 100, '#FF4081', 30);
+        drawPopStar(ctx, 700, 100, '#00E676', 25);
+        drawPopStar(ctx, 120, 700, '#FF9100', 25);
+        drawPopStar(ctx, 680, 700, '#00E5FF', 30);
+
+        drawPopPopper(ctx, 90, 240, '#FF4081', false);
+        drawPopPopper(ctx, 710, 240, '#00E676', true);
+
+        drawMusicNote(ctx, 220, 120, '#D500F9');
+        drawMusicNote(ctx, 580, 120, '#FF3D00');
+
+        // 文字の視認性を高める「白プレート（座布団）」
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.92)';
+        ctx.strokeStyle = '#FF3D00';
+        ctx.lineWidth = 6;
+        roundRect(ctx, 80, 180, 640, 480, 24, true, true);
+
+        // ヘッダーテキスト
+        ctx.fillStyle = '#FF3D00';
+        ctx.font = 'bold 38px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('🎉 ＼ 見事な決断！ ／ 🎉', 400, 250);
+
+        // メイン入力文字
+        drawPopText(ctx, text, '#212121', 380);
+
+        // 結びの言葉
+        ctx.font = 'bold 50px sans-serif';
+        ctx.strokeStyle = '#FFFFFF';
+        ctx.lineWidth = 14;
+        ctx.strokeText('を保留しました！', 400, 580);
+        ctx.fillStyle = '#FF3D00';
+        ctx.fillText('を保留しました！', 400, 580);
+
+      } else if (themeIndex === 1) {
+        // 【2. 🏆 黄金のトロフィー＆殿堂入り】
+        const grad = ctx.createRadialGradient(400, 400, 100, 400, 400, 500);
+        grad.addColorStop(0, '#1E293B'); grad.addColorStop(1, '#0F172A');
+        ctx.fillStyle = grad; ctx.fillRect(0, 0, 800, 800);
+
+        ctx.strokeStyle = '#F59E0B'; ctx.lineWidth = 12;
+        ctx.strokeRect(40, 40, 720, 720);
+
+        for(let i=0; i<30; i++) {
+          drawStar(ctx, 80 + Math.random()*640, 80 + Math.random()*640, 5, 12, 6, '#FDE047');
+        }
+
+        drawBigTrophy(ctx, 400, 200);
+
+        ctx.fillStyle = '#F8FAFC'; ctx.font = 'bold 32px sans-serif'; ctx.textAlign = 'center';
+        ctx.fillText('🏆 殿堂入り級の英断 🏆', 400, 290);
+
+        drawText(ctx, text, '#38BDF8', 430);
+
+        ctx.font = 'bold 48px sans-serif'; ctx.fillStyle = '#F59E0B';
+        ctx.fillText('を保留しました', 400, 600);
+
+      } else if (themeIndex === 2) {
+        // 【3. 🍵 ほっこり和風茶屋】
+        ctx.fillStyle = '#F8FAFC'; ctx.fillRect(0, 0, 800, 800);
+        ctx.strokeStyle = '#334155'; ctx.lineWidth = 12;
+        ctx.strokeRect(40, 40, 720, 720);
+
+        drawFuji(ctx, 400, 190);
+        drawDango(ctx, 160, 220);
+        drawTeacup(ctx, 640, 220);
+
+        ctx.fillStyle = '#1E293B'; ctx.font = 'bold 34px serif'; ctx.textAlign = 'center';
+        ctx.fillText('🍵 あせらず、熟考の一服', 400, 280);
+
+        drawText(ctx, text, '#0F172A', 430);
+
+        ctx.font = 'bold 46px serif'; ctx.fillStyle = '#475569';
+        ctx.fillText('を保留いたしました', 400, 600);
+
+      } else if (themeIndex === 3) {
+        // 【4. ⚡ サイバーネオン・フェスティバル】
+        ctx.fillStyle = '#020617'; ctx.fillRect(0, 0, 800, 800);
+
+        ctx.strokeStyle = '#38BDF8'; ctx.lineWidth = 8;
+        ctx.strokeRect(40, 40, 720, 720);
+
+        ctx.strokeStyle = 'rgba(56, 189, 248, 0.15)'; ctx.lineWidth = 2;
+        for(let x=0; x<800; x+=40) { ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,800); ctx.stroke(); }
+        for(let y=0; y<800; y+=40) { ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(800,y); ctx.stroke(); }
+
+        ctx.fillStyle = '#F43F5E'; ctx.font = 'bold 38px monospace'; ctx.textAlign = 'center';
+        ctx.fillText('⚡ [SYSTEM: PENDING] ⚡', 400, 180);
+
+        drawText(ctx, text, '#22C55E', 380);
+
+        ctx.font = 'bold 50px monospace'; ctx.fillStyle = '#38BDF8';
+        ctx.fillText('を保留しました！', 400, 580);
+
+      } else {
+        // 【5. 📜 豪華・特許＆認定書】
+        ctx.fillStyle = '#FFFBEB'; ctx.fillRect(0, 0, 800, 800);
+
+        ctx.strokeStyle = '#B45309'; ctx.lineWidth = 16;
+        ctx.strokeRect(30, 30, 740, 740);
+        ctx.strokeStyle = '#D97706'; ctx.lineWidth = 4;
+        ctx.strokeRect(50, 50, 700, 700);
+
+        drawMedal(ctx, 400, 160);
+
+        ctx.fillStyle = '#78350F'; ctx.font = 'bold 44px serif'; ctx.textAlign = 'center';
+        ctx.fillText('公式 保留認定書', 400, 260);
+
+        drawText(ctx, text, '#1E293B', 410);
+
+        ctx.font = 'bold 44px serif'; ctx.fillStyle = '#B45309';
+        ctx.fillText('を保留したことを証明する', 400, 600);
+      }
+    }
+
+    // --- テキスト描画補助関数 ---
+    function drawText(ctx, text, color, startY) {
+      ctx.fillStyle = color; ctx.font = 'bold 52px sans-serif'; ctx.textAlign = 'center';
+      let words = text.split(''); let line = ''; let lines = [];
+      for (let n = 0; n < words.length; n++) {
+        let testLine = line + words[n];
+        if (ctx.measureText(testLine).width > 600 && n > 0) {
+          lines.push(line); line = words[n];
+        } else { line = testLine; }
+      }
+      lines.push(line);
+      lines.forEach((l, index) => { ctx.fillText(l, 400, startY + (index * 64)); });
+    }
+
+    function drawPopText(ctx, text, color, startY) {
+      ctx.font = 'bold 54px sans-serif';
+      ctx.textAlign = 'center';
+      
+      let words = text.split(''); let line = ''; let lines = [];
+      for (let n = 0; n < words.length; n++) {
+        let testLine = line + words[n];
+        if (ctx.measureText(testLine).width > 560 && n > 0) {
+          lines.push(line); line = words[n];
+        } else { line = testLine; }
+      }
+      lines.push(line);
+
+      lines.forEach((l, index) => {
+        let y = startY + (index * 68);
+        ctx.strokeStyle = '#FFFFFF';
+        ctx.lineWidth = 16;
+        ctx.strokeText(l, 400, y);
+        ctx.fillStyle = color;
+        ctx.fillText(l, 400, y);
+      });
+    }
+
+    function roundRect(ctx, x, y, width, height, radius, fill, stroke) {
+      ctx.beginPath();
+      ctx.moveTo(x + radius, y);
+      ctx.lineTo(x + width - radius, y);
+      ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+      ctx.lineTo(x + width, y + height - radius);
+      ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+      ctx.lineTo(x + radius, y + height);
+      ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+      ctx.lineTo(x, y + radius);
+      ctx.quadraticCurveTo(x, y, x + radius, y);
+      ctx.closePath();
+      if (fill) ctx.fill();
+      if (stroke) ctx.stroke();
+    }
+
+    // --- イラスト描画補助関数群 ---
+    function drawPopStar(ctx, cx, cy, color, size) {
+      ctx.save(); ctx.fillStyle = color; ctx.beginPath();
+      for (let i = 0; i < 5; i++) {
+        ctx.lineTo(Math.cos((18 + i * 72) * Math.PI / 180) * size + cx, -Math.sin((18 + i * 72) * Math.PI / 180) * size + cy);
+        ctx.lineTo(Math.cos((54 + i * 72) * Math.PI / 180) * (size/2) + cx, -Math.sin((54 + i * 72) * Math.PI / 180) * (size/2) + cy);
+      }
+      ctx.closePath(); ctx.fill(); ctx.restore();
+    }
+
+    function drawPopPopper(ctx, x, y, color, isFlip) {
+      ctx.save(); ctx.translate(x, y);
+      if (isFlip) ctx.scale(-1, 1);
+      ctx.fillStyle = color; ctx.beginPath();
+      ctx.moveTo(0, 0); ctx.lineTo(-40, -50); ctx.lineTo(10, -60); ctx.closePath(); ctx.fill();
+      ctx.strokeStyle = '#FFD600'; ctx.lineWidth = 4; ctx.beginPath();
+      ctx.moveTo(-10, -70); ctx.lineTo(-20, -100); ctx.moveTo(10, -70); ctx.lineTo(30, -95); ctx.stroke();
+      ctx.restore();
+    }
+
+    function drawMusicNote(ctx, x, y, color) {
+      ctx.fillStyle = color; ctx.beginPath(); ctx.arc(x, y, 12, 0, Math.PI * 2); ctx.fill();
+      ctx.fillRect(x + 6, y - 30, 6, 30); ctx.fillRect(x + 6, y - 30, 16, 6);
+    }
+
+    function drawStar(ctx, cx, cy, spikes, outerRadius, innerRadius, color) {
+      var rot = Math.PI/2*3; var x = cx; var y = cy; var step = Math.PI/spikes;
+      ctx.beginPath(); ctx.moveTo(cx, cy - outerRadius);
+      for(i=0; i<spikes; i++){
+        x = cx + Math.cos(rot)*outerRadius; y = cy + Math.sin(rot)*outerRadius; ctx.lineTo(x, y); rot += step;
+        x = cx + Math.cos(rot)*innerRadius; y = cy + Math.sin(rot)*innerRadius; ctx.lineTo(x, y); rot += step;
+      }
+      ctx.lineTo(cx, cy - outerRadius); ctx.closePath(); ctx.fillStyle = color; ctx.fill();
+    }
+
+    function drawBigTrophy(ctx, x, y) {
+      ctx.fillStyle = '#F59E0B'; ctx.beginPath();
+      ctx.arc(x, y, 50, 0, Math.PI, false); ctx.fillRect(x - 50, y - 60, 100, 60);
+      ctx.fillRect(x - 15, y, 30, 50); ctx.fillRect(x - 40, y + 50, 80, 20); ctx.fill();
+    }
+
+    function drawFuji(ctx, x, y) {
+      ctx.fillStyle = '#3B82F6'; ctx.beginPath();
+      ctx.moveTo(x, y-50); ctx.lineTo(x+80, y+40); ctx.lineTo(x-80, y+40); ctx.closePath(); ctx.fill();
+      ctx.fillStyle = '#FFFFFF'; ctx.beginPath();
+      ctx.moveTo(x, y-50); ctx.lineTo(x+30, y-10); ctx.lineTo(x-30, y-10); ctx.closePath(); ctx.fill();
+    }
+
+    function drawTeacup(ctx, x, y) {
+      ctx.fillStyle = '#0F172A'; ctx.beginPath();
+      ctx.arc(x, y+20, 25, 0, Math.PI, false); ctx.fillRect(x-25, y-15, 50, 35); ctx.fill();
+    }
+
+    function drawDango(ctx, x, y) {
+      ctx.fillStyle = '#EF4444'; ctx.beginPath(); ctx.arc(x, y-20, 15, 0, Math.PI*2); ctx.fill();
+      ctx.fillStyle = '#FFFFFF'; ctx.beginPath(); ctx.arc(x, y, 15, 0, Math.PI*2); ctx.fill();
+      ctx.fillStyle = '#10B981'; ctx.beginPath(); ctx.arc(x, y+20, 15, 0, Math.PI*2); ctx.fill();
+    }
+
+    function drawMedal(ctx, x, y) {
+      ctx.fillStyle = '#D97706'; ctx.beginPath(); ctx.arc(x, y, 40, 0, Math.PI*2); ctx.fill();
+      ctx.fillStyle = '#F59E0B'; ctx.beginPath(); ctx.arc(x, y, 30, 0, Math.PI*2); ctx.fill();
+    }
+
+    // --- クリップボード画像コピー＆救済処理 ---
+    function copyCanvasImage() {
+      var canvas = document.getElementById('holdCanvas');
+      if (!navigator.clipboard || !window.ClipboardItem) {
+        showCopyModal();
+        return;
+      }
+      canvas.toBlob(function(blob) {
+        try {
+          var item = new ClipboardItem({ "image/png": blob });
+          navigator.clipboard.write([item]).then(function() {
+            alert('画像をクリップボードにコピーしました！');
+          }).catch(function() {
+            showCopyModal();
+          });
+        } catch (err) {
+          showCopyModal();
+        }
+      });
+    }
+
+    function showCopyModal() {
+      var canvas = document.getElementById('holdCanvas');
+      var modalImg = document.getElementById('modalImg');
+      modalImg.src = canvas.toDataURL();
+      document.getElementById('copyModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('copyModal').style.display = 'none';
+    }
+
+    function downloadImage() {
+      var canvas = document.getElementById('holdCanvas');
+      var link = document.createElement('a');
+      link.download = 'pending-card.png';
+      link.href = canvas.toDataURL();
+      link.click();
+    }
+  </script>
+</body>
+</html>
