@@ -69,6 +69,21 @@
       padding: 16px; border: none; border-radius: 10px; cursor: pointer;
     }
 
+    /* 3) スマホのホーム追加案内スタイル */
+    .pwa-notice {
+      background: #eff6ff; border: 1px dashed #93c5fd; border-radius: 12px;
+      padding: 12px 16px; text-align: center; font-size: 0.82rem; color: #1e40af; line-height: 1.5;
+    }
+
+    /* 4) 背景画像募集スタイル */
+    .recruitment-box {
+      text-align: center; font-size: 0.82rem; color: #64748b; margin-top: 4px;
+    }
+    .recruitment-link {
+      color: #2563eb; font-weight: bold; text-decoration: underline; cursor: pointer;
+      background: none; border: none; font-size: inherit; padding: 0;
+    }
+
     .modal {
       display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
       background: rgba(0,0,0,0.7); align-items: center; justify-content: center; z-index: 1000; padding: 20px;
@@ -85,23 +100,23 @@
 
   <div class="container">
     <header>
-      <h1>⏸️ 保留ボタン</h1>
-      <p class="sub-title">今決めない、知的でポジティブな選択</p>
+      <h1 id="appTitle">⏸️ 保留ボタン</h1>
+      <p id="appSubTitle" class="sub-title">今決めない、知的でポジティブな選択</p>
     </header>
 
     <div id="imagePreviewArea" class="image-preview-area">
       <canvas id="holdCanvas" width="800" height="800"></canvas>
       
       <div class="share-container">
-        <div class="share-label">＼ SNSでシェア・画像を共有 ／</div>
+        <div id="shareLabel" class="share-label">＼ SNSでシェア・画像を共有 ／</div>
         <div class="share-buttons-grid">
-          <a id="shareX" class="share-btn btn-x" target="_blank">X</a>
-          <a id="shareLine" class="share-btn btn-line" target="_blank">LINE</a>
-          <a id="shareFb" class="share-btn btn-fb" target="_blank">Facebook</a>
+          <button type="button" id="shareX" class="share-btn btn-x" onclick="shareToSNS('x')">X</button>
+          <button type="button" id="shareLine" class="share-btn btn-line" onclick="shareToSNS('line')">LINE</button>
+          <button type="button" id="shareFb" class="share-btn btn-fb" onclick="shareToSNS('fb')">Facebook</button>
         </div>
         <div class="action-buttons-grid">
-          <button type="button" class="share-btn btn-copy-img" onclick="copyCanvasImage()">📋 画像コピー</button>
-          <button type="button" class="share-btn btn-download" onclick="downloadImage()">💾 画像保存</button>
+          <button type="button" id="btnCopyImg" class="share-btn btn-copy-img" onclick="copyCanvasImage()">📋 画像コピー</button>
+          <button type="button" id="btnDownload" class="share-btn btn-download" onclick="downloadImage()">💾 画像保存</button>
         </div>
       </div>
     </div>
@@ -110,18 +125,28 @@
       <input type="text" id="targetText" placeholder="何について保留しますか？">
       
       <div class="preset-container">
-        <button type="button" class="preset-btn" onclick="appendPreset('という判断')">という判断</button>
-        <button type="button" class="preset-btn" onclick="appendPreset('という結論')">という結論</button>
-        <button type="button" class="preset-btn" onclick="appendPreset('という評価')">という評価</button>
+        <button type="button" id="preset1" class="preset-btn" onclick="appendPreset('という判断')">という判断</button>
+        <button type="button" id="preset2" class="preset-btn" onclick="appendPreset('という結論')">という結論</button>
+        <button type="button" id="preset3" class="preset-btn" onclick="appendPreset('という評価')">という評価</button>
       </div>
 
-      <button type="button" class="action-btn" onclick="generateHoldCard()">保留</button>
+      <button type="button" id="actionBtn" class="action-btn" onclick="generateHoldCard()">保留</button>
+
+      <!-- 3) スマホのホーム追加案内 -->
+      <div id="pwaNotice" class="pwa-notice">
+        📱 あなたのスマホに保留ボタンを出したい方は<br><strong>共有からホーム画面に追加</strong>を
+      </div>
+
+      <!-- 4) 背景画像募集 ＆ コピペ機能 -->
+      <div class="recruitment-box">
+        🎨 <button type="button" class="recruitment-link" onclick="copySpecToClipboard()">背景画像募集中！（クリックで仕様をコピー）</button>
+      </div>
     </div>
   </div>
 
   <div id="copyModal" class="modal">
     <div class="modal-content">
-      <p style="font-weight: bold; font-size: 0.9rem;">画像を長押し（または右クリック）して「コピー」または「保存」してください</p>
+      <p id="modalMsg" style="font-weight: bold; font-size: 0.9rem;">画像を長押し（または右クリック）して「コピー」または「保存」してください</p>
       <img id="modalImg" src="" alt="保留カード">
       <button class="close-btn" onclick="closeModal()">閉じる</button>
     </div>
@@ -132,12 +157,72 @@
     const GITHUB_REPO = 'Horyu-button';
     const FOLDER_PATH = 'images';
 
-    // 🌐 多言語対応用の定型文定義
-    const CURRENT_LANG = 'ja';
+    // 1) ブラウザ言語の自動検出 (日本語以外は英語適用)
+    const userLang = (navigator.language || navigator.userLanguage || 'ja').startsWith('ja') ? 'ja' : 'en';
+
     const TRANSLATIONS = {
-      ja: { suffix: 'を保留しました' },
-      en: { suffix: 'Put on Hold' }
+      ja: {
+        title: '⏸️ 保留ボタン',
+        subTitle: '今決めない、知的でポジティブな選択',
+        placeholder: '何について保留しますか？',
+        preset1: 'という判断',
+        preset2: 'という結論',
+        preset3: 'という評価',
+        actionBtn: '保留',
+        suffix: 'を保留しました',
+        shareLabel: '＼ SNSでシェア・画像を共有 ／',
+        copyImg: '📋 画像コピー',
+        download: '💾 画像保存',
+        pwaNotice: '📱 あなたのスマホに保留ボタンを出したい方は<br><strong>共有からホーム画面に追加</strong>を',
+        recruitment: '🎨 <button type="button" class="recruitment-link" onclick="copySpecToClipboard()">背景画像募集中！（クリックで仕様をコピー）</button>',
+        alertInput: '保留する内容を入力してください',
+        alertNotFound: 'images フォルダ内に画像が見つかりませんでした。',
+        alertLoadError: '画像の読み込みに失敗しました。',
+        alertCopiedSpec: '背景画像の作成仕様（プロンプト等）をクリップボードにコピーしました！AIやデザイナーに渡してご活用ください。',
+        alertCopiedImg: '画像をクリップボードにコピーしました！',
+        modalMsg: '画像を長押し（または右クリック）して「コピー」または「保存」してSNSに添付してください'
+      },
+      en: {
+        title: '⏸️ Pending Button',
+        subTitle: 'A smart & positive choice to pause',
+        placeholder: 'What do you want to put on hold?',
+        preset1: 'Decision: ',
+        preset2: 'Conclusion: ',
+        preset3: 'Evaluation: ',
+        actionBtn: 'Hold',
+        suffix: 'Put on Hold',
+        shareLabel: '＼ Share Image on SNS ／',
+        copyImg: '📋 Copy Image',
+        download: '💾 Save Image',
+        pwaNotice: '📱 Want this button on your phone?<br><strong>Tap Share -> Add to Home Screen</strong>',
+        recruitment: '🎨 <button type="button" class="recruitment-link" onclick="copySpecToClipboard()">Backgrounds Wanted! (Click to copy specs)</button>',
+        alertInput: 'Please enter something to put on hold.',
+        alertNotFound: 'No images found in images folder.',
+        alertLoadError: 'Failed to load images.',
+        alertCopiedSpec: 'Creation specs copied to clipboard! Share it with AI or designers.',
+        alertCopiedImg: 'Image copied to clipboard!',
+        modalMsg: 'Press & hold (or right-click) the image to save/copy and attach to your post.'
+      }
     };
+
+    const t = TRANSLATIONS[userLang];
+
+    // UI初期化 (多言語適用の反映)
+    window.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('appTitle').innerText = t.title;
+      document.getElementById('appSubTitle').innerText = t.subTitle;
+      document.getElementById('targetText').placeholder = t.placeholder;
+      document.getElementById('preset1').innerText = t.preset1;
+      document.getElementById('preset2').innerText = t.preset2;
+      document.getElementById('preset3').innerText = t.preset3;
+      document.getElementById('actionBtn').innerText = t.actionBtn;
+      document.getElementById('shareLabel').innerText = t.shareLabel;
+      document.getElementById('btnCopyImg').innerText = t.copyImg;
+      document.getElementById('btnDownload').innerText = t.download;
+      document.getElementById('pwaNotice').innerHTML = t.pwaNotice;
+      document.querySelector('.recruitment-box').innerHTML = t.recruitment;
+      document.getElementById('modalMsg').innerText = t.modalMsg;
+    });
 
     function appendPreset(textToAppend) {
       var inputEl = document.getElementById('targetText');
@@ -148,7 +233,7 @@
     function generateHoldCard() {
       var val = document.getElementById('targetText').value;
       if (!val || !val.trim()) {
-        alert('保留する内容を入力してください');
+        alert(t.alertInput);
         return;
       }
 
@@ -158,7 +243,6 @@
 
       var apiUrl = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${FOLDER_PATH}`;
 
-      // GitHub APIから画像一覧とbg_config.jsonを取得
       Promise.all([
         fetch(apiUrl).then(res => res.json()),
         fetch(`${FOLDER_PATH}/bg_config.json`).then(res => res.ok ? res.json() : {}).catch(() => ({}))
@@ -167,7 +251,7 @@
         var imageFiles = files.filter(file => file.name.match(/\.(png|jpe?g|webp|gif)$/i));
 
         if (imageFiles.length === 0) {
-          alert('images フォルダ内に画像が見つかりませんでした。');
+          alert(t.alertNotFound);
           return;
         }
 
@@ -187,17 +271,10 @@
           drawOverlayTextWithConfig(ctx, text, imageConfig);
 
           document.getElementById('imagePreviewArea').style.display = 'flex';
-
-          var shareText = encodeURIComponent(`「${text}」${TRANSLATIONS[CURRENT_LANG].suffix}。 #保留ボタン`);
-          var pageUrl = encodeURIComponent(window.location.href);
-
-          document.getElementById('shareX').href = `https://twitter.com/intent/tweet?text=${shareText}&url=${pageUrl}`;
-          document.getElementById('shareLine').href = `https://line.me/R/msg/text/?${shareText}%20${pageUrl}`;
-          document.getElementById('shareFb').href = `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`;
         };
       })
       .catch(err => {
-        alert('画像の読み込みに失敗しました。');
+        alert(t.alertLoadError);
         console.error(err);
       });
     }
@@ -205,7 +282,6 @@
     function drawOverlayTextWithConfig(ctx, text, config) {
       ctx.textAlign = 'center';
 
-      // 1. ユーザー入力テキスト
       var inputCfg = config.input || {};
       var inputColor = inputCfg.color || '#0F172A';
       var inputStroke = inputCfg.strokeColor || '#FFFFFF';
@@ -234,9 +310,7 @@
         ctx.fillText(l, 400, y);
       });
 
-      // 2. 「保留しました」定型テキスト
-      var suffixText = TRANSLATIONS[CURRENT_LANG].suffix;
-      
+      var suffixText = t.suffix;
       var suffixCfg = config.suffix || {};
       var suffixColor = suffixCfg.color || '#2563eb';
       var suffixStroke = suffixCfg.strokeColor || '#FFFFFF';
@@ -251,6 +325,26 @@
       ctx.fillText(suffixText, 400, suffixY);
     }
 
+    // 2) 画像共有ロジック (Web Share API 優先 → 画像モーダル表示)
+    function shareToSNS(platform) {
+      var canvas = document.getElementById('holdCanvas');
+      canvas.toBlob(function(blob) {
+        var file = new File([blob], "pending-card.png", { type: "image/png" });
+
+        // スマホなどのWeb Share APIが画像共有に対応している場合
+        if (navigator.canShare && navigator.canShare({ files: [file] })) {
+          navigator.share({
+            files: [file],
+            title: t.title,
+            text: `#保留ボタン`
+          }).catch(() => {});
+        } else {
+          // PCや直接添付非対応ブラウザの場合は画像をモーダル表示して長押し/右クリック誘導
+          showCopyModal();
+        }
+      });
+    }
+
     function copyCanvasImage() {
       var canvas = document.getElementById('holdCanvas');
       if (!navigator.clipboard || !window.ClipboardItem) {
@@ -260,7 +354,7 @@
         try {
           var item = new ClipboardItem({ "image/png": blob });
           navigator.clipboard.write([item]).then(function() {
-            alert('画像をクリップボードにコピーしました！');
+            alert(t.alertCopiedImg);
           }).catch(function() { showCopyModal(); });
         } catch (err) { showCopyModal(); }
       });
@@ -282,6 +376,54 @@
       link.download = 'pending-card.png';
       link.href = canvas.toDataURL();
       link.click();
+    }
+
+    // 4) 背景画像作成仕様のコピペ機能
+    function copySpecToClipboard() {
+      const specText = `【依頼】「保留ボタン」用 背景画像 ＆ スタイル設定JSON作成
+
+「保留ボタン」Webアプリに使用する背景画像（800x800px）と、その背景画像に合わせるテキストスタイル設定JSONを作成してください。
+
+---
+
+### 1. 背景画像の制作条件
+- サイズ: 800 × 800 px（正方形 / 1:1）
+- フォーマット: PNG（推奨）または JPG
+- セーフゾーン（厳守）:
+  - 画像中央の【横600px × 縦450px】（x:100~700, y:175~625）はユーザーの入力文字が描画される「文字専用エリア」です。
+  - セーフゾーン内はイラスト・濃い柄・文字を絶対に配置せず、白や薄い単色、またはクリアな空間にしてください。
+  - 装飾（フレーム、イラスト、紙吹雪など）は画像の四隅・外周フチ部分のみに配置してください。
+- 文字埋め込み禁止: 画像内に直接「保留」や「PENDING」等の文字を描き込まないでください（多言語化対応のため）。
+
+---
+
+### 2. セットで作成するJSONの出力フォーマット
+画像のデザインテーマに合わせて、文字色やフォント（明朝系 / ゴシック系）、描画高さ（y座標）を調整した以下のJSONを出力してください。
+
+\`\`\`json
+{
+  "ファイル名.png": {
+    "input": {
+      "color": "メイン文字色（16進数コード）",
+      "strokeColor": "文字のフチ色（16進数コード）",
+      "font": "フォント指定（例: bold 52px sans-serif）",
+      "y": 360
+    },
+    "suffix": {
+      "color": "定型文の文字色（16進数コード）",
+      "strokeColor": "定型文のフチ色（16進数コード）",
+      "font": "フォント指定（例: bold 44px sans-serif）",
+      "y": 560
+    }
+  }
+}
+\`\`\``;
+
+      navigator.clipboard.writeText(specText).then(() => {
+        alert(t.alertCopiedSpec);
+      }).catch(err => {
+        alert('コピーに失敗しました。');
+      });
     }
   </script>
 </body>
