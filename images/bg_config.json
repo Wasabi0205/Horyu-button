@@ -1,4 +1,18 @@
 {
+"red_carpet_trophy_clear_safezone_800x800.png": {
+    "input": {
+      "color": "#111827",
+      "strokeColor": "#FFFFFF",
+      "font": "bold 52px serif",
+      "y": 360
+    },
+    "suffix": {
+      "color": "#C59B27",
+      "strokeColor": "#111827",
+      "font": "bold 40px serif",
+      "y": 560
+    }
+  }
   "fairytale_animals_celebration.png": {
     "input": {
       "color": "#4A3B32",
