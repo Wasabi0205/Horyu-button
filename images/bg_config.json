@@ -1,0 +1,16 @@
+{
+  "american_comic_hero_safe_zone.png": {
+    "input": {
+      "color": "#000000",
+      "strokeColor": "#FFFFFF",
+      "font": "bold 52px sans-serif",
+      "y": 360
+    },
+    "suffix": {
+      "color": "#D32F2F",
+      "strokeColor": "#FFFFFF",
+      "font": "bold 44px sans-serif",
+      "y": 560
+    }
+  }
+}
