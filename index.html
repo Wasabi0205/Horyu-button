@@ -5,207 +5,80 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>保留ボタン</title>
   
-  <!-- ホーム画面アイコン -->
   <link rel="apple-touch-icon" href="icon.png">
-
-  <!-- SNSシェア用のサムネイル設定 -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="保留ボタン">
-  <meta property="og:description" content="毎日に少し置いておくという選択肢を">
+  <meta property="og:description" content="毎日に保留という選択肢を">
   <meta property="og:image" content="https://wasabi0205.github.io/Horyu-button/icon.png">
-  <meta property="og:image:width" content="180">
-  <meta property="og:image:height" content="180">
-  
-  <!-- Twitter / Discord 用のカード設定（summary にすることで正方形アイコンが大きく出やすくなります） -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="保留ボタン">
-  <meta name="twitter:description" content="一度立ち止まれたあなたに">
-  <meta name="twitter:image" content="https://wasabi0205.github.io/Horyu-button/icon.png">
 
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background-color: #f0f4f8;
-      color: #1e293b;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-      padding: 32px 16px;
+      background-color: #f0f4f8; color: #1e293b;
+      display: flex; flex-direction: column; align-items: center;
+      min-height: 100vh; padding: 32px 16px;
     }
-
-    .container {
-      width: 100%;
-      max-width: 420px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
+    .container { width: 100%; max-width: 420px; display: flex; flex-direction: column; gap: 20px; }
     header { text-align: center; }
     h1 { font-size: 1.5rem; font-weight: 700; color: #0f172a; }
     .sub-title { font-size: 0.85rem; color: #64748b; margin-top: 4px; }
 
-    /* 生成画像表示エリア */
     .image-preview-area {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      gap: 16px;
+      display: none; flex-direction: column; align-items: center; gap: 16px;
       animation: fadeIn 0.4s ease-out;
     }
-
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(-10px); }
       to { opacity: 1; transform: translateY(0); }
     }
+    canvas { width: 100%; height: auto; border-radius: 16px; box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.2); }
 
-    canvas {
-      width: 100%;
-      height: auto;
-      border-radius: 16px;
-      box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.2);
-    }
-
-    /* SNS・画像アクションボタン */
-    .share-container {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .share-label {
-      font-size: 0.8rem;
-      color: #64748b;
-      text-align: center;
-      font-weight: 600;
-    }
-
-    .share-buttons-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-    }
-
-    .action-buttons-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-    }
+    .share-container { width: 100%; display: flex; flex-direction: column; gap: 10px; }
+    .share-label { font-size: 0.8rem; color: #64748b; text-align: center; font-weight: 600; }
+    .share-buttons-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .action-buttons-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 
     .share-btn {
-      padding: 10px 0;
-      border: none;
-      border-radius: 8px;
-      font-size: 0.85rem;
-      font-weight: bold;
-      color: #ffffff;
-      cursor: pointer;
-      text-decoration: none;
-      text-align: center;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 4px;
-      transition: opacity 0.2s;
+      padding: 10px 0; border: none; border-radius: 8px; font-size: 0.85rem; font-weight: bold;
+      color: #ffffff; cursor: pointer; text-decoration: none; text-align: center;
+      display: flex; align-items: center; justify-content: center; gap: 4px;
     }
-    .share-btn:hover { opacity: 0.85; }
-
     .btn-x { background-color: #000000; }
     .btn-line { background-color: #06c755; }
     .btn-fb { background-color: #1877f2; }
     .btn-copy-img { background-color: #2563eb; }
     .btn-download { background-color: #475569; }
 
-    /* 入力フォーム系 */
     .input-group {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      background-color: #ffffff;
-      padding: 20px;
-      border-radius: 16px;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-      border: 1px solid #e2e8f0;
+      display: flex; flex-direction: column; gap: 12px; background-color: #ffffff;
+      padding: 20px; border-radius: 16px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); border: 1px solid #e2e8f0;
     }
-
     input[type="text"] {
-      width: 100%;
-      padding: 14px;
-      font-size: 1rem;
-      border: 1.5px solid #cbd5e1;
-      border-radius: 10px;
-      outline: none;
-      background-color: #f8fafc;
-      color: #0f172a;
-      text-align: center;
+      width: 100%; padding: 14px; font-size: 1rem; border: 1.5px solid #cbd5e1;
+      border-radius: 10px; outline: none; background-color: #f8fafc; color: #0f172a; text-align: center;
     }
-
-    input[type="text"]:focus {
-      border-color: #2563eb;
-      background-color: #ffffff;
-    }
-
     .preset-container { display: flex; gap: 6px; }
-
     .preset-btn {
-      flex: 1;
-      background-color: #f1f5f9;
-      color: #334155;
-      border: 1px solid #cbd5e1;
-      padding: 10px 0;
-      font-size: 0.8rem;
-      font-weight: 600;
-      border-radius: 8px;
-      cursor: pointer;
+      flex: 1; background-color: #f1f5f9; color: #334155; border: 1px solid #cbd5e1;
+      padding: 10px 0; font-size: 0.8rem; font-weight: 600; border-radius: 8px; cursor: pointer;
     }
-
-    .preset-btn:hover { background-color: #e2e8f0; }
-
     .action-btn {
-      background-color: #1e3a8a;
-      color: #ffffff;
-      font-size: 1.1rem;
-      font-weight: 700;
-      padding: 16px;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
+      background-color: #1e3a8a; color: #ffffff; font-size: 1.1rem; font-weight: 700;
+      padding: 16px; border: none; border-radius: 10px; cursor: pointer;
     }
 
-    /* 画像コピー失敗時の救済モーダル */
     .modal {
-      display: none;
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.7);
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-      padding: 20px;
+      display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.7); align-items: center; justify-content: center; z-index: 1000; padding: 20px;
     }
     .modal-content {
-      background: #fff;
-      padding: 20px;
-      border-radius: 16px;
-      text-align: center;
-      max-width: 360px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
+      background: #fff; padding: 20px; border-radius: 16px; text-align: center; max-width: 360px;
+      display: flex; flex-direction: column; gap: 12px;
     }
     .modal-content img { width: 100%; border-radius: 8px; }
-    .close-btn {
-      padding: 8px;
-      background: #475569;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
+    .close-btn { padding: 8px; background: #475569; color: white; border: none; border-radius: 6px; cursor: pointer; }
   </style>
 </head>
 <body>
@@ -216,19 +89,16 @@
       <p class="sub-title">今決めない、知的でポジティブな選択</p>
     </header>
 
-    <!-- 画像表示・シェアエリア -->
     <div id="imagePreviewArea" class="image-preview-area">
       <canvas id="holdCanvas" width="800" height="800"></canvas>
       
       <div class="share-container">
         <div class="share-label">＼ SNSでシェア・画像を共有 ／</div>
-        <!-- LINE, X, Facebook ボタン -->
         <div class="share-buttons-grid">
           <a id="shareX" class="share-btn btn-x" target="_blank">X</a>
           <a id="shareLine" class="share-btn btn-line" target="_blank">LINE</a>
           <a id="shareFb" class="share-btn btn-fb" target="_blank">Facebook</a>
         </div>
-        <!-- コピー・ダウンロード ボタン -->
         <div class="action-buttons-grid">
           <button type="button" class="share-btn btn-copy-img" onclick="copyCanvasImage()">📋 画像コピー</button>
           <button type="button" class="share-btn btn-download" onclick="downloadImage()">💾 画像保存</button>
@@ -236,7 +106,6 @@
       </div>
     </div>
 
-    <!-- 入力フォームエリア -->
     <div class="input-group">
       <input type="text" id="targetText" placeholder="何について保留しますか？">
       
@@ -250,7 +119,6 @@
     </div>
   </div>
 
-  <!-- 画像長押し用のモーダル（コピー失敗時の救済） -->
   <div id="copyModal" class="modal">
     <div class="modal-content">
       <p style="font-weight: bold; font-size: 0.9rem;">画像を長押し（または右クリック）して「コピー」または「保存」してください</p>
@@ -260,6 +128,17 @@
   </div>
 
   <script>
+    const GITHUB_USER = 'wasabi0205';
+    const GITHUB_REPO = 'Horyu-button';
+    const FOLDER_PATH = 'images';
+
+    // 🌐 多言語対応用の定型文定義
+    const CURRENT_LANG = 'ja';
+    const TRANSLATIONS = {
+      ja: { suffix: 'を保留しました' },
+      en: { suffix: 'Put on Hold' }
+    };
+
     function appendPreset(textToAppend) {
       var inputEl = document.getElementById('targetText');
       inputEl.value = inputEl.value + textToAppend;
@@ -277,186 +156,70 @@
       var canvas = document.getElementById('holdCanvas');
       var ctx = canvas.getContext('2d');
 
-      // 5種類のテーマからランダム決定
-      var themeIndex = Math.floor(Math.random() * 5);
-      
-      // Canvas描画
-      drawTheme(ctx, themeIndex, text);
+      var apiUrl = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${FOLDER_PATH}`;
 
-      // 表示切り替え
-      document.getElementById('imagePreviewArea').style.display = 'flex';
+      // GitHub APIから画像一覧とbg_config.jsonを取得
+      Promise.all([
+        fetch(apiUrl).then(res => res.json()),
+        fetch(`${FOLDER_PATH}/bg_config.json`).then(res => res.ok ? res.json() : {}).catch(() => ({}))
+      ])
+      .then(([files, configMap]) => {
+        var imageFiles = files.filter(file => file.name.match(/\.(png|jpe?g|webp|gif)$/i));
 
-      // SNS共有URLの設定
-      var shareText = encodeURIComponent(`「${text}」を保留しました。 #保留ボタン`);
-      var pageUrl = encodeURIComponent(window.location.href);
-
-      document.getElementById('shareX').href = `https://twitter.com/intent/tweet?text=${shareText}&url=${pageUrl}`;
-      document.getElementById('shareLine').href = `https://line.me/R/msg/text/?${shareText}%20${pageUrl}`;
-      document.getElementById('shareFb').href = `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`;
-    }
-
-    // 豪華イラスト描画関数
-    function drawTheme(ctx, themeIndex, text) {
-      ctx.clearRect(0, 0, 800, 800);
-
-      if (themeIndex === 0) {
-        // 【1. 🎉 POP! パラダイス・クラッカー（視認性＆イラスト強化版）】
-        // カラフルなドット背景
-        ctx.fillStyle = '#FFFDE7';
-        ctx.fillRect(0, 0, 800, 800);
-
-        for (let x = 40; x < 800; x += 80) {
-          for (let y = 40; y < 800; y += 80) {
-            ctx.fillStyle = '#FFE082';
-            ctx.beginPath();
-            ctx.arc(x, y, 6, 0, Math.PI * 2);
-            ctx.fill();
-          }
+        if (imageFiles.length === 0) {
+          alert('images フォルダ内に画像が見つかりませんでした。');
+          return;
         }
 
-        // 太いPOP外枠
-        ctx.strokeStyle = '#FF3D00';
-        ctx.lineWidth = 16;
-        ctx.strokeRect(30, 30, 740, 740);
+        var randomIndex = Math.floor(Math.random() * imageFiles.length);
+        var selectedImage = imageFiles[randomIndex];
+        var imageName = selectedImage.name;
+        var imageConfig = configMap[imageName] || {};
 
-        // POPイラスト群（星、音符、クラッカー）
-        drawPopStar(ctx, 100, 100, '#FF4081', 30);
-        drawPopStar(ctx, 700, 100, '#00E676', 25);
-        drawPopStar(ctx, 120, 700, '#FF9100', 25);
-        drawPopStar(ctx, 680, 700, '#00E5FF', 30);
+        var img = new Image();
+        img.crossOrigin = 'anonymous';
+        img.src = selectedImage.download_url;
 
-        drawPopPopper(ctx, 90, 240, '#FF4081', false);
-        drawPopPopper(ctx, 710, 240, '#00E676', true);
+        img.onload = function() {
+          ctx.clearRect(0, 0, 800, 800);
+          ctx.drawImage(img, 0, 0, 800, 800);
 
-        drawMusicNote(ctx, 220, 120, '#D500F9');
-        drawMusicNote(ctx, 580, 120, '#FF3D00');
+          drawOverlayTextWithConfig(ctx, text, imageConfig);
 
-        // 文字の視認性を高める「白プレート（座布団）」
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.92)';
-        ctx.strokeStyle = '#FF3D00';
-        ctx.lineWidth = 6;
-        roundRect(ctx, 80, 180, 640, 480, 24, true, true);
+          document.getElementById('imagePreviewArea').style.display = 'flex';
 
-        // ヘッダーテキスト
-        ctx.fillStyle = '#FF3D00';
-        ctx.font = 'bold 38px sans-serif';
-        ctx.textAlign = 'center';
-        ctx.fillText('🎉 ＼ 見事な決断！ ／ 🎉', 400, 250);
+          var shareText = encodeURIComponent(`「${text}」${TRANSLATIONS[CURRENT_LANG].suffix}。 #保留ボタン`);
+          var pageUrl = encodeURIComponent(window.location.href);
 
-        // メイン入力文字
-        drawPopText(ctx, text, '#212121', 380);
-
-        // 結びの言葉
-        ctx.font = 'bold 50px sans-serif';
-        ctx.strokeStyle = '#FFFFFF';
-        ctx.lineWidth = 14;
-        ctx.strokeText('を保留しました！', 400, 580);
-        ctx.fillStyle = '#FF3D00';
-        ctx.fillText('を保留しました！', 400, 580);
-
-      } else if (themeIndex === 1) {
-        // 【2. 🏆 黄金のトロフィー＆殿堂入り】
-        const grad = ctx.createRadialGradient(400, 400, 100, 400, 400, 500);
-        grad.addColorStop(0, '#1E293B'); grad.addColorStop(1, '#0F172A');
-        ctx.fillStyle = grad; ctx.fillRect(0, 0, 800, 800);
-
-        ctx.strokeStyle = '#F59E0B'; ctx.lineWidth = 12;
-        ctx.strokeRect(40, 40, 720, 720);
-
-        for(let i=0; i<30; i++) {
-          drawStar(ctx, 80 + Math.random()*640, 80 + Math.random()*640, 5, 12, 6, '#FDE047');
-        }
-
-        drawBigTrophy(ctx, 400, 200);
-
-        ctx.fillStyle = '#F8FAFC'; ctx.font = 'bold 32px sans-serif'; ctx.textAlign = 'center';
-        ctx.fillText('🏆 殿堂入り級の英断 🏆', 400, 290);
-
-        drawText(ctx, text, '#38BDF8', 430);
-
-        ctx.font = 'bold 48px sans-serif'; ctx.fillStyle = '#F59E0B';
-        ctx.fillText('を保留しました', 400, 600);
-
-      } else if (themeIndex === 2) {
-        // 【3. 🍵 ほっこり和風茶屋】
-        ctx.fillStyle = '#F8FAFC'; ctx.fillRect(0, 0, 800, 800);
-        ctx.strokeStyle = '#334155'; ctx.lineWidth = 12;
-        ctx.strokeRect(40, 40, 720, 720);
-
-        drawFuji(ctx, 400, 190);
-        drawDango(ctx, 160, 220);
-        drawTeacup(ctx, 640, 220);
-
-        ctx.fillStyle = '#1E293B'; ctx.font = 'bold 34px serif'; ctx.textAlign = 'center';
-        ctx.fillText('🍵 あせらず、熟考の一服', 400, 280);
-
-        drawText(ctx, text, '#0F172A', 430);
-
-        ctx.font = 'bold 46px serif'; ctx.fillStyle = '#475569';
-        ctx.fillText('を保留いたしました', 400, 600);
-
-      } else if (themeIndex === 3) {
-        // 【4. ⚡ サイバーネオン・フェスティバル】
-        ctx.fillStyle = '#020617'; ctx.fillRect(0, 0, 800, 800);
-
-        ctx.strokeStyle = '#38BDF8'; ctx.lineWidth = 8;
-        ctx.strokeRect(40, 40, 720, 720);
-
-        ctx.strokeStyle = 'rgba(56, 189, 248, 0.15)'; ctx.lineWidth = 2;
-        for(let x=0; x<800; x+=40) { ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,800); ctx.stroke(); }
-        for(let y=0; y<800; y+=40) { ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(800,y); ctx.stroke(); }
-
-        ctx.fillStyle = '#F43F5E'; ctx.font = 'bold 38px monospace'; ctx.textAlign = 'center';
-        ctx.fillText('⚡ [SYSTEM: PENDING] ⚡', 400, 180);
-
-        drawText(ctx, text, '#22C55E', 380);
-
-        ctx.font = 'bold 50px monospace'; ctx.fillStyle = '#38BDF8';
-        ctx.fillText('を保留しました！', 400, 580);
-
-      } else {
-        // 【5. 📜 豪華・特許＆認定書】
-        ctx.fillStyle = '#FFFBEB'; ctx.fillRect(0, 0, 800, 800);
-
-        ctx.strokeStyle = '#B45309'; ctx.lineWidth = 16;
-        ctx.strokeRect(30, 30, 740, 740);
-        ctx.strokeStyle = '#D97706'; ctx.lineWidth = 4;
-        ctx.strokeRect(50, 50, 700, 700);
-
-        drawMedal(ctx, 400, 160);
-
-        ctx.fillStyle = '#78350F'; ctx.font = 'bold 44px serif'; ctx.textAlign = 'center';
-        ctx.fillText('公式 保留認定書', 400, 260);
-
-        drawText(ctx, text, '#1E293B', 410);
-
-        ctx.font = 'bold 44px serif'; ctx.fillStyle = '#B45309';
-        ctx.fillText('を保留したことを証明する', 400, 600);
-      }
+          document.getElementById('shareX').href = `https://twitter.com/intent/tweet?text=${shareText}&url=${pageUrl}`;
+          document.getElementById('shareLine').href = `https://line.me/R/msg/text/?${shareText}%20${pageUrl}`;
+          document.getElementById('shareFb').href = `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`;
+        };
+      })
+      .catch(err => {
+        alert('画像の読み込みに失敗しました。');
+        console.error(err);
+      });
     }
 
-    // --- テキスト描画補助関数 ---
-    function drawText(ctx, text, color, startY) {
-      ctx.fillStyle = color; ctx.font = 'bold 52px sans-serif'; ctx.textAlign = 'center';
-      let words = text.split(''); let line = ''; let lines = [];
-      for (let n = 0; n < words.length; n++) {
-        let testLine = line + words[n];
-        if (ctx.measureText(testLine).width > 600 && n > 0) {
-          lines.push(line); line = words[n];
-        } else { line = testLine; }
-      }
-      lines.push(line);
-      lines.forEach((l, index) => { ctx.fillText(l, 400, startY + (index * 64)); });
-    }
-
-    function drawPopText(ctx, text, color, startY) {
-      ctx.font = 'bold 54px sans-serif';
+    function drawOverlayTextWithConfig(ctx, text, config) {
       ctx.textAlign = 'center';
+
+      // 1. ユーザー入力テキスト
+      var inputCfg = config.input || {};
+      var inputColor = inputCfg.color || '#0F172A';
+      var inputStroke = inputCfg.strokeColor || '#FFFFFF';
+      var inputFont = inputCfg.font || 'bold 50px sans-serif';
+      var startY = inputCfg.y || 360;
+
+      ctx.font = inputFont;
       
-      let words = text.split(''); let line = ''; let lines = [];
+      let words = text.split('');
+      let line = '';
+      let lines = [];
       for (let n = 0; n < words.length; n++) {
         let testLine = line + words[n];
-        if (ctx.measureText(testLine).width > 560 && n > 0) {
+        if (ctx.measureText(testLine).width > 540 && n > 0) {
           lines.push(line); line = words[n];
         } else { line = testLine; }
       }
@@ -464,119 +227,48 @@
 
       lines.forEach((l, index) => {
         let y = startY + (index * 68);
-        ctx.strokeStyle = '#FFFFFF';
-        ctx.lineWidth = 16;
+        ctx.strokeStyle = inputStroke;
+        ctx.lineWidth = 14;
         ctx.strokeText(l, 400, y);
-        ctx.fillStyle = color;
+        ctx.fillStyle = inputColor;
         ctx.fillText(l, 400, y);
       });
+
+      // 2. 「保留しました」定型テキスト
+      var suffixText = TRANSLATIONS[CURRENT_LANG].suffix;
+      
+      var suffixCfg = config.suffix || {};
+      var suffixColor = suffixCfg.color || '#2563eb';
+      var suffixStroke = suffixCfg.strokeColor || '#FFFFFF';
+      var suffixFont = suffixCfg.font || 'bold 44px sans-serif';
+      var suffixY = suffixCfg.y || (startY + (lines.length * 68) + 20);
+
+      ctx.font = suffixFont;
+      ctx.strokeStyle = suffixStroke;
+      ctx.lineWidth = 12;
+      ctx.strokeText(suffixText, 400, suffixY);
+      ctx.fillStyle = suffixColor;
+      ctx.fillText(suffixText, 400, suffixY);
     }
 
-    function roundRect(ctx, x, y, width, height, radius, fill, stroke) {
-      ctx.beginPath();
-      ctx.moveTo(x + radius, y);
-      ctx.lineTo(x + width - radius, y);
-      ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
-      ctx.lineTo(x + width, y + height - radius);
-      ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
-      ctx.lineTo(x + radius, y + height);
-      ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
-      ctx.lineTo(x, y + radius);
-      ctx.quadraticCurveTo(x, y, x + radius, y);
-      ctx.closePath();
-      if (fill) ctx.fill();
-      if (stroke) ctx.stroke();
-    }
-
-    // --- イラスト描画補助関数群 ---
-    function drawPopStar(ctx, cx, cy, color, size) {
-      ctx.save(); ctx.fillStyle = color; ctx.beginPath();
-      for (let i = 0; i < 5; i++) {
-        ctx.lineTo(Math.cos((18 + i * 72) * Math.PI / 180) * size + cx, -Math.sin((18 + i * 72) * Math.PI / 180) * size + cy);
-        ctx.lineTo(Math.cos((54 + i * 72) * Math.PI / 180) * (size/2) + cx, -Math.sin((54 + i * 72) * Math.PI / 180) * (size/2) + cy);
-      }
-      ctx.closePath(); ctx.fill(); ctx.restore();
-    }
-
-    function drawPopPopper(ctx, x, y, color, isFlip) {
-      ctx.save(); ctx.translate(x, y);
-      if (isFlip) ctx.scale(-1, 1);
-      ctx.fillStyle = color; ctx.beginPath();
-      ctx.moveTo(0, 0); ctx.lineTo(-40, -50); ctx.lineTo(10, -60); ctx.closePath(); ctx.fill();
-      ctx.strokeStyle = '#FFD600'; ctx.lineWidth = 4; ctx.beginPath();
-      ctx.moveTo(-10, -70); ctx.lineTo(-20, -100); ctx.moveTo(10, -70); ctx.lineTo(30, -95); ctx.stroke();
-      ctx.restore();
-    }
-
-    function drawMusicNote(ctx, x, y, color) {
-      ctx.fillStyle = color; ctx.beginPath(); ctx.arc(x, y, 12, 0, Math.PI * 2); ctx.fill();
-      ctx.fillRect(x + 6, y - 30, 6, 30); ctx.fillRect(x + 6, y - 30, 16, 6);
-    }
-
-    function drawStar(ctx, cx, cy, spikes, outerRadius, innerRadius, color) {
-      var rot = Math.PI/2*3; var x = cx; var y = cy; var step = Math.PI/spikes;
-      ctx.beginPath(); ctx.moveTo(cx, cy - outerRadius);
-      for(i=0; i<spikes; i++){
-        x = cx + Math.cos(rot)*outerRadius; y = cy + Math.sin(rot)*outerRadius; ctx.lineTo(x, y); rot += step;
-        x = cx + Math.cos(rot)*innerRadius; y = cy + Math.sin(rot)*innerRadius; ctx.lineTo(x, y); rot += step;
-      }
-      ctx.lineTo(cx, cy - outerRadius); ctx.closePath(); ctx.fillStyle = color; ctx.fill();
-    }
-
-    function drawBigTrophy(ctx, x, y) {
-      ctx.fillStyle = '#F59E0B'; ctx.beginPath();
-      ctx.arc(x, y, 50, 0, Math.PI, false); ctx.fillRect(x - 50, y - 60, 100, 60);
-      ctx.fillRect(x - 15, y, 30, 50); ctx.fillRect(x - 40, y + 50, 80, 20); ctx.fill();
-    }
-
-    function drawFuji(ctx, x, y) {
-      ctx.fillStyle = '#3B82F6'; ctx.beginPath();
-      ctx.moveTo(x, y-50); ctx.lineTo(x+80, y+40); ctx.lineTo(x-80, y+40); ctx.closePath(); ctx.fill();
-      ctx.fillStyle = '#FFFFFF'; ctx.beginPath();
-      ctx.moveTo(x, y-50); ctx.lineTo(x+30, y-10); ctx.lineTo(x-30, y-10); ctx.closePath(); ctx.fill();
-    }
-
-    function drawTeacup(ctx, x, y) {
-      ctx.fillStyle = '#0F172A'; ctx.beginPath();
-      ctx.arc(x, y+20, 25, 0, Math.PI, false); ctx.fillRect(x-25, y-15, 50, 35); ctx.fill();
-    }
-
-    function drawDango(ctx, x, y) {
-      ctx.fillStyle = '#EF4444'; ctx.beginPath(); ctx.arc(x, y-20, 15, 0, Math.PI*2); ctx.fill();
-      ctx.fillStyle = '#FFFFFF'; ctx.beginPath(); ctx.arc(x, y, 15, 0, Math.PI*2); ctx.fill();
-      ctx.fillStyle = '#10B981'; ctx.beginPath(); ctx.arc(x, y+20, 15, 0, Math.PI*2); ctx.fill();
-    }
-
-    function drawMedal(ctx, x, y) {
-      ctx.fillStyle = '#D97706'; ctx.beginPath(); ctx.arc(x, y, 40, 0, Math.PI*2); ctx.fill();
-      ctx.fillStyle = '#F59E0B'; ctx.beginPath(); ctx.arc(x, y, 30, 0, Math.PI*2); ctx.fill();
-    }
-
-    // --- クリップボード画像コピー＆救済処理 ---
     function copyCanvasImage() {
       var canvas = document.getElementById('holdCanvas');
       if (!navigator.clipboard || !window.ClipboardItem) {
-        showCopyModal();
-        return;
+        showCopyModal(); return;
       }
       canvas.toBlob(function(blob) {
         try {
           var item = new ClipboardItem({ "image/png": blob });
           navigator.clipboard.write([item]).then(function() {
             alert('画像をクリップボードにコピーしました！');
-          }).catch(function() {
-            showCopyModal();
-          });
-        } catch (err) {
-          showCopyModal();
-        }
+          }).catch(function() { showCopyModal(); });
+        } catch (err) { showCopyModal(); }
       });
     }
 
     function showCopyModal() {
       var canvas = document.getElementById('holdCanvas');
-      var modalImg = document.getElementById('modalImg');
-      modalImg.src = canvas.toDataURL();
+      document.getElementById('modalImg').src = canvas.toDataURL();
       document.getElementById('copyModal').style.display = 'flex';
     }
 
