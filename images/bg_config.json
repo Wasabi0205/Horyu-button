@@ -1,4 +1,18 @@
 {
+"asymmetric_fireworks_no_corners_800x800.png": {
+    "input": {
+      "color": "#FFD700",
+      "strokeColor": "#0F172A",
+      "font": "bold 52px sans-serif",
+      "y": 360
+    },
+    "suffix": {
+      "color": "#FFFFFF",
+      "strokeColor": "#0F172A",
+      "font": "bold 40px sans-serif",
+      "y": 560
+    }
+  }
 "pop_celebration_confetti_800x800.png": {
     "input": {
       "color": "#D32F2F",
