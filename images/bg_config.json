@@ -13,4 +13,18 @@
       "y": 560
     }
   }
+  "edomae_praise_bg.png": {
+    "input": {
+      "color": "#1A2536",
+      "strokeColor": "#FFFFFF",
+      "font": "bold 52px serif",
+      "y": 360
+    },
+    "suffix": {
+      "color": "#B71C1C",
+      "strokeColor": "#FFFFFF",
+      "font": "bold 40px serif",
+      "y": 560
+    }
+  }
 }
