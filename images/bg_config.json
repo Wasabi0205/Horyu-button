@@ -1,4 +1,18 @@
 {
+"pop_celebration_confetti_800x800.png": {
+    "input": {
+      "color": "#D32F2F",
+      "strokeColor": "#FFFFFF",
+      "font": "bold 52px sans-serif",
+      "y": 360
+    },
+    "suffix": {
+      "color": "#1976D2",
+      "strokeColor": "#FFFFFF",
+      "font": "bold 40px sans-serif",
+      "y": 560
+    }
+  }
 "red_carpet_trophy_clear_safezone_800x800.png": {
     "input": {
       "color": "#111827",
@@ -38,20 +52,6 @@
       "color": "#D32F2F",
       "strokeColor": "#FFFFFF",
       "font": "bold 44px sans-serif",
-      "y": 560
-    }
-  }
-  "edomae_praise_bg.png": {
-    "input": {
-      "color": "#1A2536",
-      "strokeColor": "#FFFFFF",
-      "font": "bold 52px serif",
-      "y": 360
-    },
-    "suffix": {
-      "color": "#B71C1C",
-      "strokeColor": "#FFFFFF",
-      "font": "bold 40px serif",
       "y": 560
     }
   }
