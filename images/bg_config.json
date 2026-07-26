@@ -1,4 +1,18 @@
 {
+  "fairytale_animals_celebration.png": {
+    "input": {
+      "color": "#4A3B32",
+      "strokeColor": "#FFFFFF",
+      "font": "bold 52px sans-serif",
+      "y": 360
+    },
+    "suffix": {
+      "color": "#E56B81",
+      "strokeColor": "#FFFFFF",
+      "font": "bold 40px sans-serif",
+      "y": 560
+    }
+  }
   "american_comic_hero_safe_zone.png": {
     "input": {
       "color": "#000000",
