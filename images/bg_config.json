@@ -12,9 +12,7 @@
       "font": "bold 40px 'Cinzel', 'Yu Mincho', 'Shippori Mincho', serif",
       "y": 560
     }
-  }
-}
-{
+  },
   "pop_celebration_confetti_800x800.png": {
     "input": {
       "color": "#E53935",
@@ -28,9 +26,7 @@
       "font": "700 42px 'M PLUS Rounded 1c', 'Hiragino Maru Gothic ProN', sans-serif",
       "y": 560
     }
-  }
-}
-{
+  },
   "asymmetric_fireworks_no_corners_800x800.png": {
     "input": {
       "color": "#FFE600",
@@ -44,9 +40,7 @@
       "font": "700 40px 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif",
       "y": 560
     }
-  }
-}
-{
+  },
   "fluffy_animal_parade_forest.png": {
     "input": {
       "color": "#7C5D41",
@@ -60,9 +54,7 @@
       "font": "600 40px 'Kosugi Maru', 'Yu Gothic', sans-serif",
       "y": 560
     }
-  }
-}
-{
+  },
   "american_comic_hero_safe_zone.png": {
     "input": {
       "color": "#1A1D20",
