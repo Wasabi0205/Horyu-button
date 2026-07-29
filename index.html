@@ -269,7 +269,7 @@
       inputEl.focus();
     }
 
-    function generateHoldCard() {
+function generateHoldCard() {
       var val = document.getElementById('targetText').value;
       if (!val || !val.trim()) {
         alert(t.alertInput);
@@ -281,10 +281,12 @@
       var ctx = canvas.getContext('2d');
 
       var apiUrl = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${FOLDER_PATH}`;
+      // 🌟 raw.githubusercontent.com から直接キャッシュなしでJSONを取得するURL
+      var jsonUrl = `https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/main/${FOLDER_PATH}/bg_config.json?v=${new Date().getTime()}`;
 
       Promise.all([
         fetch(apiUrl).then(res => res.json()),
-        fetch(`${FOLDER_PATH}/bg_config.json`).then(res => res.ok ? res.json() : {}).catch(() => ({}))
+        fetch(jsonUrl).then(res => res.ok ? res.json() : {}).catch(() => ({}))
       ])
       .then(([files, configMap]) => {
         var imageFiles = files.filter(file => file.name.match(/\.(png|jpe?g|webp|gif)$/i));
@@ -297,9 +299,14 @@
         var randomIndex = Math.floor(Math.random() * imageFiles.length);
         var selectedImage = imageFiles[randomIndex];
         var imageName = selectedImage.name;
+        
+        // 🌟 画像名が完全に一致しているか確認して設定を取得
         var imageConfig = configMap[imageName] || {};
 
-        // 22種類の中からランダム選出
+        // デバッグ用（ブラウザのコンソールで設定が読み込めているか確認できます）
+        console.log('選択された画像:', imageName);
+        console.log('適用された設定:', imageConfig);
+
         var randomMsgIndex = Math.floor(Math.random() * t.messages.length);
         var selectedMsg = t.messages[randomMsgIndex];
 
@@ -321,7 +328,6 @@
         console.error(err);
       });
     }
-
     function drawOverlayTextWithConfig(ctx, text, config, topMsg) {
       ctx.textAlign = 'center';
 
