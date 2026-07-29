@@ -8,7 +8,7 @@
   <link rel="apple-touch-icon" href="icon.png">
   <meta property="og:type" content="website">
   <meta property="og:title" content="保留ボタン">
-  <meta property="og:description" content="毎日に保留という選択肢を">
+  <meta property="og:description" content="判断や返信をちょっと保留したいときに。画像を作ってシェアできるWebツール。">
   <meta property="og:image" content="https://wasabi0205.github.io/Horyu-button/icon.png">
   <meta name="twitter:card" content="summary">
 
@@ -146,7 +146,6 @@
     const GITHUB_REPO = 'Horyu-button';
     const FOLDER_PATH = 'images';
 
-    // ブラウザ言語自動取得（日本語以外は英語を自動適用）
     const userLang = (navigator.language || navigator.userLanguage || 'ja').startsWith('ja') ? 'ja' : 'en';
 
     const TRANSLATIONS = {
@@ -159,6 +158,31 @@
         preset3: 'という評価',
         actionBtn: '保留',
         suffix: 'を保留しました',
+        // 🌟 上部にランダム表示される褒め言葉・ポジティブフレーズ（22選）
+        messages: [
+          '✨ 見事な判断力！',
+          '🏆 殿堂級の英断',
+          '🌿 白黒つけなくたっていいじゃない',
+          '💡 新しい視点が芽生える予感',
+          '☕️ まずは一息入れる余裕',
+          '🧠 熟成させる時間こそ宝',
+          '🎯 最高のタイミングを見極める選択',
+          '🕊️ 心の平和を守るファインプレー',
+          '💎 勇気ある「保留」に拍手',
+          '🧘 焦らない大人の戦略',
+          '🌟 今日の自分を褒め称えよう',
+          '🍷 答えが熟すのを待つ時間',
+          '🚀 次の一手をじっくり練る時間',
+          '🛡️ 感情に流されないスマートな選択',
+          '🎉 判断保留という名の決断！',
+          '🍀 余白を楽しむ余裕',
+          '🦉 知的な戦略的撤退（一時的）',
+          '👑 自分のペースを守り抜いた証',
+          '⏳ 時が解決してくれることもある',
+          '🌈 選択肢を広げるためのポーズ',
+          '🤝 納得いくまで急がない勇気',
+          '✨ ナイス・ホールド！'
+        ],
         shareLabel: '＼ 画像を共有・保存 ／',
         share: '📤 シェア',
         copyImg: '📋 コピー',
@@ -181,6 +205,30 @@
         preset3: 'Evaluation: ',
         actionBtn: 'Hold',
         suffix: 'Put on Hold',
+        messages: [
+          '✨ Brilliant Judgment!',
+          '🏆 Masterpiece Choice!',
+          '🌿 No need to rush to conclusions',
+          '💡 A new perspective might emerge',
+          '☕️ The wisdom of taking a breath',
+          '🧠 Time lets great ideas mature',
+          '🎯 Waiting for the perfect moment',
+          '🕊️ Peace of mind preserved',
+          '💎 Applause for a courageous pause',
+          '🧘 Smart strategy without hurry',
+          '🌟 Praise your choice today',
+          '🍷 Letting answers age like fine wine',
+          '🚀 Strategic time to plan the next move',
+          '🛡️ Emotion-free, intelligent choice',
+          '🎉 A decision called "Pending"!',
+          '🍀 Room for growth and margin',
+          '🦉 A wise, temporary tactical pause',
+          '👑 Proof of keeping your own pace',
+          '⏳ Time will bring clarity',
+          '🌈 Pausing to expand possibilities',
+          '🤝 Courage to wait for full conviction',
+          '✨ Nice Hold!'
+        ],
         shareLabel: '＼ Share or Save Image ／',
         share: '📤 Share',
         copyImg: '📋 Copy',
@@ -251,6 +299,10 @@
         var imageName = selectedImage.name;
         var imageConfig = configMap[imageName] || {};
 
+        // 22種類の中からランダム選出
+        var randomMsgIndex = Math.floor(Math.random() * t.messages.length);
+        var selectedMsg = t.messages[randomMsgIndex];
+
         var img = new Image();
         img.crossOrigin = 'anonymous';
         img.src = selectedImage.download_url;
@@ -259,7 +311,7 @@
           ctx.clearRect(0, 0, 800, 800);
           ctx.drawImage(img, 0, 0, 800, 800);
 
-          drawOverlayTextWithConfig(ctx, text, imageConfig);
+          drawOverlayTextWithConfig(ctx, text, imageConfig, selectedMsg);
 
           document.getElementById('imagePreviewArea').style.display = 'flex';
         };
@@ -270,14 +322,25 @@
       });
     }
 
-    function drawOverlayTextWithConfig(ctx, text, config) {
+    function drawOverlayTextWithConfig(ctx, text, config, topMsg) {
       ctx.textAlign = 'center';
 
+      // 1. 【画面上部】褒め言葉をランダム描画
+      if (topMsg) {
+        ctx.font = 'bold 28px sans-serif';
+        ctx.strokeStyle = '#FFFFFF';
+        ctx.lineWidth = 6;
+        ctx.strokeText(topMsg, 400, 230);
+        ctx.fillStyle = '#475569';
+        ctx.fillText(topMsg, 400, 230);
+      }
+
+      // 2. 【中央】入力テキスト描画
       var inputCfg = config.input || {};
       var inputColor = inputCfg.color || '#0F172A';
       var inputStroke = inputCfg.strokeColor || '#FFFFFF';
       var inputFont = inputCfg.font || 'bold 50px sans-serif';
-      var startY = inputCfg.y || 360;
+      var startY = inputCfg.y || 380;
 
       ctx.font = inputFont;
       
@@ -301,12 +364,13 @@
         ctx.fillText(l, 400, y);
       });
 
+      // 3. 【中央下】定型文描画
       var suffixText = t.suffix;
       var suffixCfg = config.suffix || {};
       var suffixColor = suffixCfg.color || '#2563eb';
       var suffixStroke = suffixCfg.strokeColor || '#FFFFFF';
       var suffixFont = suffixCfg.font || 'bold 44px sans-serif';
-      var suffixY = suffixCfg.y || (startY + (lines.length * 68) + 20);
+      var suffixY = suffixCfg.y || (startY + (lines.length * 68) + 15);
 
       ctx.font = suffixFont;
       ctx.strokeStyle = suffixStroke;
