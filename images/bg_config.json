@@ -1,72 +1,80 @@
 {
-"asymmetric_fireworks_no_corners_800x800.png": {
+  "red_carpet_trophy_800x800.png": {
     "input": {
-      "color": "#FFD700",
-      "strokeColor": "#0F172A",
-      "font": "bold 52px sans-serif",
+      "color": "#FFFFFF",
+      "strokeColor": "#3E0208",
+      "font": "bold 52px 'Cinzel', 'Yu Mincho', 'Shippori Mincho', serif",
+      "y": 360
+    },
+    "suffix": {
+      "color": "#F3C649",
+      "strokeColor": "#2A0004",
+      "font": "bold 40px 'Cinzel', 'Yu Mincho', 'Shippori Mincho', serif",
+      "y": 560
+    }
+  }
+}
+{
+  "pop_celebration_confetti_800x800.png": {
+    "input": {
+      "color": "#E53935",
+      "strokeColor": "#FFFFFF",
+      "font": "900 54px 'M PLUS Rounded 1c', 'Hiragino Maru Gothic ProN', sans-serif",
+      "y": 360
+    },
+    "suffix": {
+      "color": "#1E88E5",
+      "strokeColor": "#FFFFFF",
+      "font": "700 42px 'M PLUS Rounded 1c', 'Hiragino Maru Gothic ProN', sans-serif",
+      "y": 560
+    }
+  }
+}
+{
+  "asymmetric_fireworks_no_corners_800x800.png": {
+    "input": {
+      "color": "#FFE600",
+      "strokeColor": "#0A0E1A",
+      "font": "900 52px 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif",
       "y": 360
     },
     "suffix": {
       "color": "#FFFFFF",
-      "strokeColor": "#0F172A",
-      "font": "bold 40px sans-serif",
+      "strokeColor": "#0A0E1A",
+      "font": "700 40px 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif",
       "y": 560
     }
   }
-"pop_celebration_confetti_800x800.png": {
+}
+{
+  "fluffy_animal_parade_forest.png": {
     "input": {
-      "color": "#D32F2F",
+      "color": "#7C5D41",
       "strokeColor": "#FFFFFF",
-      "font": "bold 52px sans-serif",
+      "font": "800 48px 'Kosugi Maru', 'Yu Gothic', sans-serif",
       "y": 360
     },
     "suffix": {
-      "color": "#1976D2",
+      "color": "#B48B6C",
       "strokeColor": "#FFFFFF",
-      "font": "bold 40px sans-serif",
+      "font": "600 40px 'Kosugi Maru', 'Yu Gothic', sans-serif",
       "y": 560
     }
   }
-"red_carpet_trophy_clear_safezone_800x800.png": {
-    "input": {
-      "color": "#111827",
-      "strokeColor": "#FFFFFF",
-      "font": "bold 52px serif",
-      "y": 360
-    },
-    "suffix": {
-      "color": "#C59B27",
-      "strokeColor": "#111827",
-      "font": "bold 40px serif",
-      "y": 560
-    }
-  }
-  "fairytale_animals_celebration.png": {
-    "input": {
-      "color": "#4A3B32",
-      "strokeColor": "#FFFFFF",
-      "font": "bold 52px sans-serif",
-      "y": 360
-    },
-    "suffix": {
-      "color": "#E56B81",
-      "strokeColor": "#FFFFFF",
-      "font": "bold 40px sans-serif",
-      "y": 560
-    }
-  }
+}
+{
   "american_comic_hero_safe_zone.png": {
     "input": {
-      "color": "#000000",
+      "color": "#1A1D20",
       "strokeColor": "#FFFFFF",
-      "font": "bold 52px sans-serif",
-      "y": 360
+      "font": "900 54px Impact, 'Arial Black', sans-serif",
+      "y": 350
     },
     "suffix": {
       "color": "#D32F2F",
-      "strokeColor": "#FFFFFF",
-      "font": "bold 44px sans-serif",
-      "y": 560
+      "strokeColor": "#FFEB3B",
+      "font": "bold 42px 'Trebuchet MS', sans-serif",
+      "y": 550
     }
   }
 }
