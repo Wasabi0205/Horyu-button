@@ -284,23 +284,20 @@
     }
 
 function drawOverlayTextWithConfig(ctx, text, config, topMsg) {
-      // 🌟 Canvas全体でテキストの中央揃え・基準線を明示的にセット
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
+      // 🌟 ベースラインを安定した標準値（alphabetic）に固定
+      ctx.textBaseline = 'alphabetic';
 
-      // 1. 【画面上部】褒め言葉・メッセージ描画 (x: 400px = 正確な中央)
+      // 1. 【画面上部】褒め言葉・メッセージ描画 (y: 180px に変更して余裕を確保)
       if (topMsg) {
-        ctx.textAlign = 'center'; // 念のため毎回再指定
+        ctx.textAlign = 'center';
         ctx.font = 'bold 28px sans-serif';
         
-        // 白フチ描画
         ctx.strokeStyle = '#FFFFFF';
         ctx.lineWidth = 6;
-        ctx.strokeText(topMsg, 400, 210);
+        ctx.strokeText(topMsg, 400, 180);
         
-        // メイン文字描画
         ctx.fillStyle = '#475569';
-        ctx.fillText(topMsg, 400, 210);
+        ctx.fillText(topMsg, 400, 180);
       }
 
       // 2. 【中央】入力テキスト描画
@@ -310,7 +307,6 @@ function drawOverlayTextWithConfig(ctx, text, config, topMsg) {
       var inputFont = inputCfg.font || "bold 50px sans-serif";
       var startY = inputCfg.y || 370;
 
-      ctx.textAlign = 'center';
       ctx.font = inputFont;
       
       let words = text.split('');
@@ -326,6 +322,7 @@ function drawOverlayTextWithConfig(ctx, text, config, topMsg) {
 
       lines.forEach((l, index) => {
         let y = startY + (index * 68);
+        ctx.textAlign = 'center'; // 毎行確実にセンタリング
         ctx.strokeStyle = inputStroke;
         ctx.lineWidth = 14;
         ctx.strokeText(l, 400, y);
