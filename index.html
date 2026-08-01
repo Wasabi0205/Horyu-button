@@ -283,26 +283,34 @@
       });
     }
 
-    function drawOverlayTextWithConfig(ctx, text, config, topMsg) {
+function drawOverlayTextWithConfig(ctx, text, config, topMsg) {
+      // 🌟 Canvas全体でテキストの中央揃え・基準線を明示的にセット
       ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
 
-      // 1. 上部メッセージ
+      // 1. 【画面上部】褒め言葉・メッセージ描画 (x: 400px = 正確な中央)
       if (topMsg) {
+        ctx.textAlign = 'center'; // 念のため毎回再指定
         ctx.font = 'bold 28px sans-serif';
+        
+        // 白フチ描画
         ctx.strokeStyle = '#FFFFFF';
         ctx.lineWidth = 6;
-        ctx.strokeText(topMsg, 400, 230);
+        ctx.strokeText(topMsg, 400, 210);
+        
+        // メイン文字描画
         ctx.fillStyle = '#475569';
-        ctx.fillText(topMsg, 400, 230);
+        ctx.fillText(topMsg, 400, 210);
       }
 
-      // 2. メインの入力文字
+      // 2. 【中央】入力テキスト描画
       var inputCfg = config.input || {};
       var inputColor = inputCfg.color || '#0F172A';
       var inputStroke = inputCfg.strokeColor || '#FFFFFF';
       var inputFont = inputCfg.font || "bold 50px sans-serif";
-      var startY = inputCfg.y || 380;
+      var startY = inputCfg.y || 370;
 
+      ctx.textAlign = 'center';
       ctx.font = inputFont;
       
       let words = text.split('');
@@ -325,7 +333,7 @@
         ctx.fillText(l, 400, y);
       });
 
-      // 3. 定型文（〜を保留しました）
+      // 3. 【中央下】定型文（〜を保留しました）描画
       var suffixText = t.suffix;
       var suffixCfg = config.suffix || {};
       var suffixColor = suffixCfg.color || '#2563eb';
@@ -333,6 +341,7 @@
       var suffixFont = suffixCfg.font || "bold 44px sans-serif";
       var suffixY = suffixCfg.y || (startY + (lines.length * 68) + 15);
 
+      ctx.textAlign = 'center';
       ctx.font = suffixFont;
       ctx.strokeStyle = suffixStroke;
       ctx.lineWidth = 12;
