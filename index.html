@@ -8,7 +8,7 @@
   <link rel="apple-touch-icon" href="icon.png">
   <meta property="og:type" content="website">
   <meta property="og:title" content="保留ボタン">
-  <meta property="og:description" content="即断即決しなくたっていいじゃない">
+  <meta property="og:description" content="やらないという選択肢がいいこともある">
   <meta property="og:image" content="https://wasabi0205.github.io/Horyu-button/icon.png">
   <meta name="twitter:card" content="summary">
 
@@ -237,7 +237,7 @@
       Promise.all([
         fetch(apiUrl).then(res => res.json()),
         fetch(jsonUrl).then(res => res.ok ? res.json() : {}).catch(err => {
-          console.warn("bg_config.jsonの読み込みに失敗しました。構文エラーの可能性があります:", err);
+          console.warn("bg_config.jsonの読み込みに失敗しました:", err);
           return {};
         })
       ])
@@ -253,13 +253,7 @@
         var selectedImage = imageFiles[randomIndex];
         var imageName = selectedImage.name;
         
-        // 画像名でJSON内の設定を取得
         var imageConfig = configMap[imageName] || {};
-
-        console.log("--------------------------------");
-        console.log("📷 選択された画像:", imageName);
-        console.log("🎨 読み込まれた設定:", imageConfig);
-        console.log("--------------------------------");
 
         var randomMsgIndex = Math.floor(Math.random() * t.messages.length);
         var selectedMsg = t.messages[randomMsgIndex];
@@ -283,12 +277,14 @@
       });
     }
 
-function drawOverlayTextWithConfig(ctx, text, config, topMsg) {
-      // 🌟 ベースラインを安定した標準値（alphabetic）に固定
+    function drawOverlayTextWithConfig(ctx, text, config, topMsg) {
+      // 🌟 全体の文字揃えルールをリセットして厳密に初期化
+      ctx.textAlign = 'center';
       ctx.textBaseline = 'alphabetic';
 
-      // 1. 【画面上部】褒め言葉・メッセージ描画 (y: 180px に変更して余裕を確保)
+      // 1. 【画面上部】褒め言葉・メッセージ描画 (y: 180px)
       if (topMsg) {
+        ctx.save();
         ctx.textAlign = 'center';
         ctx.font = 'bold 28px sans-serif';
         
@@ -298,6 +294,7 @@ function drawOverlayTextWithConfig(ctx, text, config, topMsg) {
         
         ctx.fillStyle = '#475569';
         ctx.fillText(topMsg, 400, 180);
+        ctx.restore();
       }
 
       // 2. 【中央】入力テキスト描画
@@ -307,6 +304,7 @@ function drawOverlayTextWithConfig(ctx, text, config, topMsg) {
       var inputFont = inputCfg.font || "bold 50px sans-serif";
       var startY = inputCfg.y || 370;
 
+      ctx.save();
       ctx.font = inputFont;
       
       let words = text.split('');
@@ -322,13 +320,14 @@ function drawOverlayTextWithConfig(ctx, text, config, topMsg) {
 
       lines.forEach((l, index) => {
         let y = startY + (index * 68);
-        ctx.textAlign = 'center'; // 毎行確実にセンタリング
+        ctx.textAlign = 'center';
         ctx.strokeStyle = inputStroke;
         ctx.lineWidth = 14;
         ctx.strokeText(l, 400, y);
         ctx.fillStyle = inputColor;
         ctx.fillText(l, 400, y);
       });
+      ctx.restore();
 
       // 3. 【中央下】定型文（〜を保留しました）描画
       var suffixText = t.suffix;
@@ -338,6 +337,7 @@ function drawOverlayTextWithConfig(ctx, text, config, topMsg) {
       var suffixFont = suffixCfg.font || "bold 44px sans-serif";
       var suffixY = suffixCfg.y || (startY + (lines.length * 68) + 15);
 
+      ctx.save();
       ctx.textAlign = 'center';
       ctx.font = suffixFont;
       ctx.strokeStyle = suffixStroke;
@@ -345,6 +345,7 @@ function drawOverlayTextWithConfig(ctx, text, config, topMsg) {
       ctx.strokeText(suffixText, 400, suffixY);
       ctx.fillStyle = suffixColor;
       ctx.fillText(suffixText, 400, suffixY);
+      ctx.restore();
     }
 
     function shareImage() {
@@ -387,8 +388,45 @@ function drawOverlayTextWithConfig(ctx, text, config, topMsg) {
     }
 
     function copySpecToClipboard() {
-      const specText = `【依頼】「保留ボタン」用 背景画像 ＆ スタイル設定JSON作成\n...`;
-      navigator.clipboard.writeText(specText).then(() => alert(t.alertCopiedSpec));
+      const specText = `【依頼】「保留ボタン」用 背景画像 ＆ スタイル設定JSON作成
+
+「保留ボタン」Webアプリに使用する背景画像（800x800px）と、その背景画像に合わせるテキストスタイル設定JSONを作成してください。
+
+---
+
+### 1. 背景画像の制作条件（文字主役・広域余白）
+- サイズ: 800 × 800 px（正方形 / 1:1）
+- フォーマット: PNG（推奨）または JPG
+- セーフゾーン（最重要）:
+  - 画像中央の【横680px × 縦620px】（x:60~740, y:90~710）は、テキストがゆったり入る「超広域・文字専用エリア」です。
+  - セーフゾーン内にはイラスト・濃い柄・文字を絶対に配置せず、白や薄い単色、またはクリアな空間にしてください。
+  - 装飾（フレーム、イラスト、紙吹雪など）は画像の「外周フチ（上下左右80px以内）」や「四隅」のみに配置してください（額縁スタイル）。
+- 文字埋め込み禁止: 画像内に直接「保留」や「PENDING」等の文字を描き込まないでください。
+
+---
+
+### 2. セットで作成するJSONの出力フォーマット
+画像のデザインテーマに合わせて、文字色やフォント、描画高さ（y座標）を調整した以下のJSONを出力してください。
+
+\`\`\`json
+{
+  "ファイル名.png": {
+    "input": {
+      "color": "メイン文字色（16進数コード）",
+      "strokeColor": "文字のフチ色（16進数コード）",
+      "font": "フォント指定（例: bold 52px sans-serif）",
+      "y": 360
+    },
+    "suffix": {
+      "color": "定型文の文字色（16進数コード）",
+      "strokeColor": "定型文のフチ色（16進数コード）",
+      "font": "フォント指定（例: bold 44px sans-serif）",
+      "y": 560
+    }
+  }
+}
+\`\`\``;
+      navigator.clipboard.writeText(specText).then(() => alert(t.alertCopiedSpec)).catch(() => alert('コピーに失敗しました。'));
     }
   </script>
 </body>
