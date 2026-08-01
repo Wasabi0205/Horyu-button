@@ -3,13 +3,13 @@
     "input": {
       "color": "#FFFFFF",
       "strokeColor": "#3E0208",
-      "font": "bold 52px 'Cinzel', 'Yu Mincho', 'Shippori Mincho', serif",
+      "font": "bold 52px serif",
       "y": 360
     },
     "suffix": {
       "color": "#F3C649",
       "strokeColor": "#2A0004",
-      "font": "bold 40px 'Cinzel', 'Yu Mincho', 'Shippori Mincho', serif",
+      "font": "bold 40px serif",
       "y": 560
     }
   },
@@ -17,13 +17,13 @@
     "input": {
       "color": "#E53935",
       "strokeColor": "#FFFFFF",
-      "font": "900 54px 'M PLUS Rounded 1c', 'Hiragino Maru Gothic ProN', sans-serif",
+      "font": "bold 54px sans-serif",
       "y": 360
     },
     "suffix": {
       "color": "#1E88E5",
       "strokeColor": "#FFFFFF",
-      "font": "700 42px 'M PLUS Rounded 1c', 'Hiragino Maru Gothic ProN', sans-serif",
+      "font": "bold 42px sans-serif",
       "y": 560
     }
   },
@@ -31,13 +31,13 @@
     "input": {
       "color": "#FFE600",
       "strokeColor": "#0A0E1A",
-      "font": "900 52px 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif",
+      "font": "bold 52px sans-serif",
       "y": 360
     },
     "suffix": {
       "color": "#FFFFFF",
       "strokeColor": "#0A0E1A",
-      "font": "700 40px 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif",
+      "font": "bold 40px sans-serif",
       "y": 560
     }
   },
@@ -45,13 +45,13 @@
     "input": {
       "color": "#7C5D41",
       "strokeColor": "#FFFFFF",
-      "font": "800 48px 'Kosugi Maru', 'Yu Gothic', sans-serif",
+      "font": "bold 48px sans-serif",
       "y": 360
     },
     "suffix": {
       "color": "#B48B6C",
       "strokeColor": "#FFFFFF",
-      "font": "600 40px 'Kosugi Maru', 'Yu Gothic', sans-serif",
+      "font": "bold 40px sans-serif",
       "y": 560
     }
   },
@@ -59,13 +59,13 @@
     "input": {
       "color": "#1A1D20",
       "strokeColor": "#FFFFFF",
-      "font": "900 54px Impact, 'Arial Black', sans-serif",
+      "font": "bold 54px sans-serif",
       "y": 350
     },
     "suffix": {
       "color": "#D32F2F",
       "strokeColor": "#FFEB3B",
-      "font": "bold 42px 'Trebuchet MS', sans-serif",
+      "font": "bold 42px sans-serif",
       "y": 550
     }
   }
